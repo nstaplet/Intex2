@@ -8,6 +8,20 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+#bannerimage {
+    width: 100%;
+    background-image: url(../burial.jpg);
+    height: 200px;
+    background-color: purple;
+    background-position: center;
+    padding: 0;
+
+}
+
+nav {
+    background-color: #002a5d;
+}
+
 header {
     -webkit-box-shadow: 0 8px 6px -6px #999;
     -moz-box-shadow: 0 8px 6px -6px #999;
