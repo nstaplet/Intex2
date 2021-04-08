@@ -25,6 +25,11 @@ namespace Intex.Controllers
             return View();
         }
 
+        public IActionResult BurialSummaryList()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
