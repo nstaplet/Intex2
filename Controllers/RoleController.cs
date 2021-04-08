@@ -114,12 +114,12 @@ namespace Intex.Controllers
 
         }
 
-        [HttpGet]
-        public IActionResult EditUsers(string userid)
-        {
-            IdentityUser user = UserManager.Us.where(user.Id == userid);
-            return View(user);
-        }
+        //[HttpGet]
+        //public IActionResult EditUsers(string userid)
+        //{
+        //    IdentityUser user = UserManager.Us.where(user.Id == userid);
+        //    return View(user);
+        //}
 
 
         [HttpGet]
