@@ -141,27 +141,29 @@ namespace Intex.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> GrantUserPermissions(RoleModification model)
+        public async Task<IActionResult> GrantUserPermissions(UserModification model)
         {
             IdentityResult result;
             if (ModelState.IsValid)
             {
-                foreach (string userId in model.AddIds ?? new string[] { })
+                IdentityUser identityUser = await userManager.FindByIdAsync(model.UserId);
+
+                foreach (string roleId in model.AddIds ?? new string[] { })
                 {
-                    IdentityUser user = await userManager.FindByIdAsync(userId);
-                    if (user != null)
+                    IdentityRole role = await roleManager.FindByIdAsync(roleId);
+                    if (role != null)
                     {
-                        result = await userManager.AddToRoleAsync(user, model.RoleName);
+                        result = await userManager.AddToRoleAsync(identityUser, role.Name);
                         if (!result.Succeeded)
                             Errors(result);
                     }
                 }
-                foreach (string userId in model.DeleteIds ?? new string[] { })
+                foreach (string roleId in model.DeleteIds ?? new string[] { })
                 {
-                    IdentityUser user = await userManager.FindByIdAsync(userId);
-                    if (user != null)
+                    IdentityRole role = await roleManager.FindByIdAsync(roleId);
+                    if (role != null)
                     {
-                        result = await userManager.RemoveFromRoleAsync(user, model.RoleName);
+                        result = await userManager.RemoveFromRoleAsync(identityUser, role.Name);
                         if (!result.Succeeded)
                             Errors(result);
                     }
@@ -169,9 +171,9 @@ namespace Intex.Controllers
             }
 
             if (ModelState.IsValid)
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(ManageUsers));
             else
-                return await Update(model.RoleId);
+                return await GrantUserPermissions(model.UserId);
 
         }
 
