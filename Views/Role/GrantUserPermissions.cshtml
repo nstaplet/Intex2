@@ -4,6 +4,55 @@
 @{
 }
 
-@model IdentityUser
+@model UpdateUserPermissions
 
-<p>@Model.Id </p>
+
+<h1 class="blue_button text-white" style="padding-left: .3em">Update User Permissions</h1>
+<a asp-action="ManageUsers" class="btn btn-secondary">Back</a>
+<div asp-validation-summary="All" class="text-danger"></div>
+
+<form method="post">
+    <input type="hidden" name="userName" value="@Model.User.UserName" />
+    <input type="hidden" name="userId" value="@Model.User.Id" />
+
+    <h2 class="blue_button p-1 text-white" style="padding-left: .3em">Add Permissions For @Model.User.UserName</h2>
+    <table class="table table-bordered table-sm">
+        @if (Model.NonPermissions.Count() == 0)
+        {
+            <tr><td colspan="2">User Has All Permissions</td></tr>
+        }
+        else
+        {
+            @foreach (IdentityRole role in Model.NonPermissions)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <input type="checkbox" name="AddIds" value="@role.Id">
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+
+    <h2 class="blue_button p-1 text-white" style="padding-left: .3em">Remove Permissions From @Model.User.UserName</h2>
+    <table class="table table-bordered table-sm">
+        @if (Model.Permissions.Count() == 0)
+        {
+            <tr><td colspan="2">No Permissions Granted</td></tr>
+        }
+        else
+        {
+            @foreach (IdentityRole role in Model.Permissions)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <input type="checkbox" name="DeleteIds" value="@role.Id">
+                    </td>
+                </tr>
+            }
+        }
+    </table>
+    <button type="submit" class="blue_button btn">Save</button>
+</form>

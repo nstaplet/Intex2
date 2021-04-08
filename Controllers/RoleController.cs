@@ -121,6 +121,67 @@ namespace Intex.Controllers
         //    return View(user);
         //}
 
+        public async Task<IActionResult> GrantUserPermissions(string id)
+        {
+            IdentityUser user = await userManager.FindByIdAsync(id);
+            List<IdentityRole> permissions = new List<IdentityRole>();
+            List<IdentityRole> nonPermissions = new List<IdentityRole>();
+            foreach (IdentityRole role in roleManager.Roles)
+            {
+                var list = await userManager.IsInRoleAsync(user, role.Name) ? permissions : nonPermissions;
+                list.Add(role);
+            }
+            return View(new UpdateUserPermissions
+            {
+                User = user,
+                NonPermissions = nonPermissions,
+                Permissions = permissions
+            });
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> GrantUserPermissions(RoleModification model)
+        {
+            IdentityResult result;
+            if (ModelState.IsValid)
+            {
+                foreach (string userId in model.AddIds ?? new string[] { })
+                {
+                    IdentityUser user = await userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        result = await userManager.AddToRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                }
+                foreach (string userId in model.DeleteIds ?? new string[] { })
+                {
+                    IdentityUser user = await userManager.FindByIdAsync(userId);
+                    if (user != null)
+                    {
+                        result = await userManager.RemoveFromRoleAsync(user, model.RoleName);
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                }
+            }
+
+            if (ModelState.IsValid)
+                return RedirectToAction(nameof(Index));
+            else
+                return await Update(model.RoleId);
+
+        }
+
+
+
+
+
+
+
+
 
         [HttpGet]
         public IActionResult ManageUsers()
