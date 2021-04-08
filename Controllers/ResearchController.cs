@@ -11,9 +11,20 @@ namespace Intex.Controllers
     [Authorize(Roles = "Researcher,Admin")]
     public class ResearchController : Controller
     {
+        public string viewReturn { get; private set; }
+
         public IActionResult Index()
         {
-            return View();
+            if (User.IsInRole("Admin") == true)
+            {
+                viewReturn = "DeletableIndex";
+            }
+            else
+            {
+                viewReturn = "Index";
+            }
+
+            return View(viewReturn);
         }
     }
 }
