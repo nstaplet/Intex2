@@ -16,6 +16,9 @@ namespace Intex.Controllers
     {
         private RoleManager<IdentityRole> roleManager;
         private UserManager<IdentityUser> userManager;
+
+        public object editeduser { get; private set; }
+
         public RoleController(RoleManager<IdentityRole> roleMgr, UserManager<IdentityUser> userMrg)
         {
             roleManager = roleMgr;
@@ -110,6 +113,14 @@ namespace Intex.Controllers
                 return await Update(model.RoleId);
 
         }
+
+        [HttpGet]
+        public IActionResult EditUsers(string userid)
+        {
+            IdentityUser user = UserManager.Us.where(user.Id == userid);
+            return View(user);
+        }
+
 
         [HttpGet]
         public IActionResult ManageUsers()
