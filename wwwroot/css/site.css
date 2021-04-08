@@ -8,6 +8,12 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+.blue_button {
+    background-color: #002a5d !important;
+    color: white;
+    border-radius: 4px;
+}
+
 #bannerimage {
     width: 100%;
     background-image: url(../burial.jpg);
