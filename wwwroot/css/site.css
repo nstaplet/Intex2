@@ -8,6 +8,11 @@ a.navbar-brand {
     word-break: break-all;
 }
 
+header {
+    -webkit-box-shadow: 0 8px 6px -6px #999;
+    -moz-box-shadow: 0 8px 6px -6px #999;
+    box-shadow: 0 8px 6px -6px #999;
+}
 /* Provide sufficient contrast against white background */
 a {
   color: #0366d6;
