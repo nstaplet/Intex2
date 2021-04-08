@@ -110,6 +110,30 @@ namespace Intex.Controllers
                 return await Update(model.RoleId);
 
         }
+
+        [HttpGet]
+        public IActionResult ManageUsers()
+        {
+            return View(userManager.Users);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            IdentityUser user = await userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                IdentityResult result = await userManager.DeleteAsync(user);
+                if (result.Succeeded)
+                    return RedirectToAction("ManageUsers");
+                else
+                    Errors(result);
+            }
+            else
+                ModelState.AddModelError("", "User Not Found");
+            return View("ManageUsers", userManager.Users);
+        }
+
         private void Errors(IdentityResult result)
         {
             foreach (IdentityError error in result.Errors)
