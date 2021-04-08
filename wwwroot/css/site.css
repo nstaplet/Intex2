@@ -14,6 +14,12 @@ a.navbar-brand {
     border-radius: 4px;
 }
 
+.orange_button {
+    background-color: #B94300 !important;
+    color: white;
+    border-radius: 4px;
+}
+
 #bannerimage {
     width: 100%;
     background-image: url(../burial.jpg);
