@@ -14,10 +14,12 @@ namespace Intex.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MummyBurialContext burialContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, MummyBurialContext ctx)
         {
             _logger = logger;
+            burialContext = ctx;
         }
 
         public IActionResult Index()
@@ -27,7 +29,7 @@ namespace Intex.Controllers
 
         public IActionResult BurialSummaryList()
         {
-            return View();
+            return View(burialContext.Burial.ToList());
         }
 
         public IActionResult Privacy()

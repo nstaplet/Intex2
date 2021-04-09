@@ -3,6 +3,8 @@
 *@
 @{
 }
+
+@model IEnumerable<Burial>
 <h2>Burial List</h2>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -20,14 +22,18 @@
 
         <tbody>
             <!--This is where our loop action can go.-->
-            <tr>
-                <td>All the fun info</td>
-                <td>All the fun info</td>
-                <td>All the fun info</td>
-                <td>All the fun info</td>
-                <td>All the fun info</td>
-                <td>All the fun info</td>
-            </tr>
+            @foreach (Burial b in Model)
+            {
+                <tr>
+                    <td>@b.BurialId</td>
+                    <td>@b.Calibrated95Dateavg</td>
+                    <td>All the fun info</td>
+                    <td>All the fun info</td>
+                    <td>All the fun info</td>
+                    <td>All the fun info</td>
+                </tr>
+            }
+
         </tbody>
     </table>
 </div>
