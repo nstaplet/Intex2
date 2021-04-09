@@ -49,7 +49,10 @@
             </div>
 
     </p>
-    <a href="#" class="btn blue_button">View Details</a>
+        <form method="get" asp-action="BurialDetails">
+            <input type="hidden" name="id" value="@b.SingleBurial.BurialId" />
+            <button class="btn blue_button" style="float:right" type="submit">View More Details</button>
+        </form>
 </div>
     </div>
 }
