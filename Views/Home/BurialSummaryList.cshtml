@@ -4,39 +4,26 @@
 @{
 }
 
-@model IEnumerable<Burial>
-<h2>Burial List</h2>
-<div class="table-responsive">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-                <th>Mummy Stuff Here</th>
-            </tr>
-        </thead>
+@model List<BasicBurial>
+<h2>Burial Database Catalogue</h2>
 
-        <tbody>
-            <!--This is where our loop action can go.-->
-            @foreach (Burial b in Model)
-            {
-                <tr>
-                    <td>@b.BurialId</td>
-                    <td>@b.Calibrated95Dateavg</td>
-                    <td>All the fun info</td>
-                    <td>All the fun info</td>
-                    <td>All the fun info</td>
-                    <td>All the fun info</td>
-                </tr>
-            }
 
-        </tbody>
-    </table>
-</div>
+@foreach (var b in Model)
+{
+    <div class="card">
+        <div class="card-header">
+            @b.SingleBurial.BurialId @b.SingleLocation.BurialLocationEw @b.SingleSublocation.Subplot
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+}
+
+
+
 
 
 

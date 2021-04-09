@@ -1,6 +1,8 @@
 ﻿using Intex.Models;
+using Intex.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,12 +31,23 @@ namespace Intex.Controllers
 
         public IActionResult BurialSummaryList()
         {
-            return View(burialContext.Burial.ToList());
-        }
+            var SelectedBurials = burialContext.Burial;
 
-        public IActionResult Privacy()
-        {
-            return View();
+            List<BasicBurial> PackageBurials = new List<BasicBurial>();
+
+            foreach (var sb in SelectedBurials)
+            {
+
+                PackageBurials.Add(
+                    new BasicBurial
+                    {
+                        SingleBurial = sb,
+                        SingleLocation = burialContext.Location.Where(b => b.LocationId == sb.LocationId).FirstOrDefault(),
+                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == sb.SublocationId).FirstOrDefault()
+                    });
+            }
+
+            return View(PackageBurials);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
