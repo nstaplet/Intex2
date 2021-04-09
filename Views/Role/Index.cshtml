@@ -5,14 +5,14 @@
 }
 @model IEnumerable<IdentityRole>
 
-<h1 class="blue_button text-white" style="padding-left: .3em"> All Roles</h1>
+<h1 class="blue_button text-white" style="padding-left: .3em">Permission Groups</h1>
 <br />
-<a asp-action="Create" class="btn btn-secondary">Create a Role</a>
+<a asp-action="Create" class="btn btn-secondary">Create a Group</a>
 <a asp-action="ManageUsers" class="btn btn-secondary">Manage Users</a>
 <br />
 <br />
 <table class="table table-sm table-bordered table-bordered">
-    <tr><th>ID</th><th>Name</th><th>Add/Remove Users</th><th>Delete</th></tr>
+    <tr><th>ID</th><th>Name</th><th>Add/Remove Users</th><th>Delete Group</th></tr>
     @foreach (var role in Model)
     {
         <tr>
