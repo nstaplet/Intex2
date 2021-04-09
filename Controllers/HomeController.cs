@@ -50,6 +50,23 @@ namespace Intex.Controllers
             return View(PackageBurials);
         }
 
+        public IActionResult BurialDetails(int id) 
+        {
+            Burial burial = burialContext.Burial.Where(b => b.BurialId == id).FirstOrDefault();
+            BasicBurial basicBurial = new BasicBurial
+            {
+
+
+                SingleBurial = burial,
+                SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
+                SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault()
+            };
+
+            return View(basicBurial);
+        }
+
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
