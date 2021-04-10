@@ -20,14 +20,14 @@
 
             <div class="form-group">
                 <label>Hair Color:</label>
-                <select name="filter">
+                <select name="filter" asp-items="@(new SelectList(ViewBag.HairColor , ViewBag.Filters.HairColor))">
                     <option value="all">All</option>
-                    <option value="K">Black</option>
+                    @*<option value="K">Black</option>
                     <option value="B">Brown</option>
                     <option value="R">Red</option>
                     <option value="A">Brown-Red</option>
                     <option value="D">Blond</option>
-                    <option value="U">Unknown</option>
+                    <option value="U">Unknown</option>*@
 
                 </select>
             </div>

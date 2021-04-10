@@ -42,13 +42,17 @@ namespace Intex.Controllers
         public IActionResult BurialSummaryList(string id, int pageNum = 1)
         {
             var filters = new Filters(id);
+            ViewBag.Filters = filters;
+            ViewBag.HairColor = burialContext.Burial.Select(b => b.HairColor).Where(b => b.Length > 0).Distinct();
+
+
             int pageSize = 5;
             var SelectedBurials = burialContext.Burial;
             IQueryable<Burial> query = SelectedBurials;
 
             if (filters.HasHairColor)
             {
-                query = query.Where(t => t.HairColorCode == filters.HairColor);
+                query = query.Where(t => t.HairColor == filters.HairColor);
             }
 
 
