@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Burial
+
+
+<h2>Add New Burial Record</h2>
+<h4>Essential Burial Information</h4>
+<br /> 
+
+<form method="post" asp-action="AddEssentialBurial">
+
+    <!--Values from previous form-->
+    <input type="hidden" asp-for="BurialNumber" value="@ViewBag.Burialnum" />
+    <input type="hidden" asp-for="LocationId" value="@ViewBag.Locid" />
+    <input type="hidden" asp-for="SublocationId" value="@ViewBag.Sublocid" />
+
+    Measurements (Enter in Meters)
+    <br /><br />
+    <label asp-for="LengthOfRemains">Length of Remains: </label>
+    <input asp-for="LengthOfRemains" />
+    <br />
+    <label asp-for="BurialDepthMeters">Burial Depth: </label>
+    <input asp-for="BurialDepthMeters" />
+    <br />
+    <label asp-for="SouthToHead">South to Head: </label>
+    <input asp-for="SouthToHead" />
+    <br />
+    <label asp-for="SouthToFeet">South to Feet: </label>
+    <input asp-for="SouthToFeet" />
+    <br />
+    <label asp-for="WestToHead">West to Head: </label>
+    <input asp-for="WestToHead" />
+    <br />
+    <label asp-for="WestToFeet">West to Feet: </label>
+    <input asp-for="WestToFeet" />
+    <br />
+    <br />
+    <label asp-for="PhotoTaken">Photo Taken? </label>
+    <select asp-for="PhotoTaken">
+        <option value="">Select One</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+    <label asp-for="Goods">Burial Goods? </label>
+    <select asp-for="Goods">
+        <option value="">Select One</option>
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+    <br />
+
+    <div asp-validation-summary="All" style="color:red"></div>
+
+    <button type="submit" name="submitbtn" value="finish">Submit</button>
+    <button type="submit" name="submitbtn" value="continue">Add Extensive Data</button>
+
+</form>

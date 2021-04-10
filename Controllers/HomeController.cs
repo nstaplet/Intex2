@@ -30,16 +30,17 @@ namespace Intex.Controllers
             return View();
         }
 
-        public IActionResult BurialSummaryList(int pageNum = 0)
+        public IActionResult BurialSummaryList(int pageNum = 1)
         {
-
+            int pageSize = 5;
             var SelectedBurials = burialContext.Burial;
-
+            var pageBurials = SelectedBurials.Skip((pageNum - 1) * pageSize).Take(pageSize);
             List<BasicBurial> PackageBurials = new List<BasicBurial>();
 
-            foreach (var sb in SelectedBurials)
-            {
 
+
+            foreach (var sb in pageBurials)
+            {
 
                 PackageBurials.Add(
                     new BasicBurial
@@ -50,21 +51,21 @@ namespace Intex.Controllers
 
                     });
             }
-            int pageSize = 5;
+            
 
             return View(new BurialSummaryViewModel
             {
                 Burials = PackageBurials,
 
-                pageNumbering = new PageNumbering
+            pageNumbering = new PageNumbering
                 {
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
 
-                    TotalNumItems = 49
+                    TotalNumItems = SelectedBurials.Count()
                 }
 
-            }) ;
+            });
         }
 
         public IActionResult BurialDetails(int id) 
@@ -165,11 +166,19 @@ namespace Intex.Controllers
                     ViewBag.Locid = locid;
                     ViewBag.Sublocid = sublocid;
                     ViewBag.Burialnum = burialnum;
-                    return View("AddNewBurial");
+                    return View("AddBurialEssential");
                 }
             }
 
             return View("AddBurialLocation");
+        }
+
+
+        //Action for getting to form for burial essentials
+        [HttpGet]
+        public IActionResult AddBurialEssential()
+        {
+            return View();
         }
 
 
