@@ -48,6 +48,8 @@ namespace Intex.Controllers
             ViewBag.Direction = burialContext.Burial.Select(b => b.BurialDirection).Where(b => b.Length > 0).Distinct();
             ViewBag.Gender = burialContext.Burial.Select(b => b.GenderCode).Where(b => b.Length > 0).Distinct();
             ViewBag.Age = burialContext.Burial.Select(b => b.AgeCodeSingle).Where(b => b.Length > 0).Distinct();
+            ViewBag.MinDepth = filters.DepthMin;
+            ViewBag.MaxDepth = filters.DepthMax;
             //****************************************************************************************************8
 
             int pageSize = 5;
@@ -70,6 +72,14 @@ namespace Intex.Controllers
             if (filters.HasAge)
             {
                 query = query.Where(t => t.AgeCodeSingle == filters.Age);
+            }
+            if (filters.HasMinDepth)
+            {
+                query = query.Where(t => t.BurialDepthMeters >= filters.DepthMin);
+            }
+            if (filters.HasMaxDepth)
+            {
+                query = query.Where(t => t.BurialDepthMeters <= filters.DepthMax);
             }
             //**********END IF STATEMENTS *********************************************************************8
 
