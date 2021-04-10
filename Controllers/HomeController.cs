@@ -43,7 +43,9 @@ namespace Intex.Controllers
         {
             var filters = new Filters(id);
             ViewBag.Filters = filters;
-            ViewBag.HairColor = burialContext.Burial.Select(b => b.HairColor).Where(b => b.Length > 0).Distinct();
+            ViewBag.HairColor = burialContext.Burial.Select(b => b.HairColorCode).Where(b => b.Length > 0).Distinct();
+            ViewBag.Direction = burialContext.Burial.Select(b => b.BurialDirection).Where(b => b.Length > 0).Distinct();
+            ViewBag.Gender = burialContext.Burial.Select(b => b.GenderCode).Where(b => b.Length > 0).Distinct();
 
 
             int pageSize = 5;
@@ -52,9 +54,17 @@ namespace Intex.Controllers
 
             if (filters.HasHairColor)
             {
-                query = query.Where(t => t.HairColor == filters.HairColor);
+                query = query.Where(t => t.HairColorCode == filters.HairColor);
             }
 
+            if (filters.HasBurialDirection)
+            {
+                query = query.Where(t => t.BurialDirection == filters.BurialDirection);
+            }
+            if (filters.HasGender)
+            {
+                query = query.Where(t => t.GenderCode == filters.Gender);
+            }
 
 
             var pageBurials = query.Skip((pageNum - 1) * pageSize).Take(pageSize);
@@ -85,7 +95,7 @@ namespace Intex.Controllers
                     NumItemsPerPage = pageSize,
                     CurrentPage = pageNum,
 
-                    TotalNumItems = SelectedBurials.Count()
+                    TotalNumItems = query.Count()
                 }
 
             });
