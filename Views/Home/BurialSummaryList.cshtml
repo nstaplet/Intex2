@@ -24,6 +24,18 @@
                     <option value="all">All</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label>Burial Direction</label>
+                <select name="filter" asp-items="@(new SelectList(ViewBag.Direction , ViewBag.Filters.BurialDirection))">
+                    <option value="all">All</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Gender Code</label>
+                <select name="filter" asp-items="@(new SelectList(ViewBag.Gender , ViewBag.Filters.Gender))">
+                    <option value="all">All</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn blue_button">Filter</button>
 
