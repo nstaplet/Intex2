@@ -27,6 +27,7 @@ namespace Intex.Models
         public string BurialDirection { get; }
         public string Gender { get; }
         public string Age { get; }
+        
 
 
 
