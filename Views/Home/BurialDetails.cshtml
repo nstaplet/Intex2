@@ -1,9 +1,13 @@
 ﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 @model BasicBurial
+
+    
+
+<img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image"/>
 
 <h2>Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber</h2>
 
@@ -13,19 +17,58 @@
 </form>
 
 <br />
+<br />
 
-<nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
+<div class="row">
+    <div class="col-8">
+        <h2 style="display: inline-block">
+            Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
+        </h2>
+    </div>
 
-        <a href="#buriallocation">Burial Location</a>
-        <a href="#burialsituation">Burial Situation</a>
-        <a href="#gender">Gender</a>
-        <a href="#osteology">Osteology</a>
-        <a href="#artifactstaken">Artifacts Taken</a>       
-        <a href="#age">Age</a>       
-        <a href="#dates">Dates</a>  
-        <a href="#skullinformation">Skull Information</a>
-        <a href="#carbondating">Carbon Dating</a>
+
+    <div class="col-4 text-right">
+        <a asp-action="#" class="btn orange_button">Edit Record</a>
+        <a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a>
+    </div>
+
+</div>
+
+
+<br />
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar border-bottom box-shadow mb-0" style="background-color: #002a5d; border-radius: 4px">
+    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+
+        <ul class="navbar-nav navbar-sub-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#buriallocation">Burial Location</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#burialsituation">Burial Situation</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#gender">Gender</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#osteology">Osteology</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#samplestaken">Samples Taken</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#age">Age</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#dates">Dates</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#skullinformation">Skull Information</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-light" href="#carbondating">Carbon Dating</a>
+            </li>
+        </ul>
 
     </div>
 </nav>
@@ -78,13 +121,16 @@
         </div>
         <br />
 
-
     </div>
 
     <div class="col-lg-6">
         <h3 id="burialsituation">Burial Situation </h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
+                <tr>
+                    <td>Burial Direction:</td>
+                    <td>@Model.SingleBurial.BurialDirection </td>
+                </tr>
                 <tr>
                     <td>Burial Situation Notes:</td>
                     <td>@Model.SingleBurial.BurialSituationNotes </td>
@@ -105,6 +151,10 @@
                     <td>Sample Number:</td>
                     <td>@Model.SingleBurial.SampleNumber </td>
                 </tr>
+                <tr>
+                    <td>Photo Taken</td>
+                    <td>@Model.SingleBurial.PhotoTaken </td>
+                </tr>
             </table>
         </div>
         <br />
@@ -113,7 +163,7 @@
 
     </div>
 
-    </div>
+</div>
 
 <div class="row">
     <div class="col-lg-6">
@@ -317,7 +367,7 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <h3 id="artifactstaken">Artifacts Taken</h3>
+        <h3 id="samplestaken">Samples Taken</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -445,10 +495,6 @@
                 <tr>
                     <td>Day Excavated:</td>
                     <td>@Model.SingleBurial.DayExcavated </td>
-                </tr>
-                <tr>
-                    <td>Burial Direction:</td>
-                    <td>@Model.SingleBurial.BurialDirection </td>
                 </tr>
                 <tr>
                     <td>Year on Skull:</td>
@@ -615,10 +661,6 @@
                 <tr>
                     <td>Lab Notes 14c:</td>
                     <td>@Model.SingleBurial.LabNotes14c </td>
-                </tr>
-                <tr>
-                    <td>Did We Get a Picture of This Sucker</td>
-                    <td>@Model.SingleBurial.PhotoTaken </td>
                 </tr>
             </table>
         </div>

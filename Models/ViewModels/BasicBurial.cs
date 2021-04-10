@@ -12,6 +12,7 @@ namespace Intex.Models.ViewModels
 
         public SubLocation SingleSublocation { get; set; }
 
+        public Image SingleImage { get; set; }
         
     }
 }
