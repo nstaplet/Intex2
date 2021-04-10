@@ -41,17 +41,19 @@ namespace Intex.Controllers
 
         public IActionResult BurialSummaryList(string id, int pageNum = 1)
         {
+            //**********SETTING UP VIEWBAG TO HAVE FILTER FORM RETAIN PARAMETERS ************************
             var filters = new Filters(id);
             ViewBag.Filters = filters;
             ViewBag.HairColor = burialContext.Burial.Select(b => b.HairColorCode).Where(b => b.Length > 0).Distinct();
             ViewBag.Direction = burialContext.Burial.Select(b => b.BurialDirection).Where(b => b.Length > 0).Distinct();
             ViewBag.Gender = burialContext.Burial.Select(b => b.GenderCode).Where(b => b.Length > 0).Distinct();
-
+            ViewBag.Age = burialContext.Burial.Select(b => b.AgeCodeSingle).Where(b => b.Length > 0).Distinct();
+            //****************************************************************************************************8
 
             int pageSize = 5;
             var SelectedBurials = burialContext.Burial;
             IQueryable<Burial> query = SelectedBurials;
-
+            //**********THIS IS THE IF STATEMENTS FOR THE FILTERING. ***************************************************8
             if (filters.HasHairColor)
             {
                 query = query.Where(t => t.HairColorCode == filters.HairColor);
@@ -65,7 +67,11 @@ namespace Intex.Controllers
             {
                 query = query.Where(t => t.GenderCode == filters.Gender);
             }
-
+            if (filters.HasAge)
+            {
+                query = query.Where(t => t.AgeCodeSingle == filters.Age);
+            }
+            //**********END IF STATEMENTS *********************************************************************8
 
             var pageBurials = query.Skip((pageNum - 1) * pageSize).Take(pageSize);
             List<BasicBurial> PackageBurials = new List<BasicBurial>();

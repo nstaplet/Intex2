@@ -36,6 +36,12 @@
                     <option value="all">All</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label>Age Code</label>
+                <select name="filter" asp-items="@(new SelectList(ViewBag.Age , ViewBag.Filters.Age))">
+                    <option value="all">All</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn blue_button">Filter</button>
 
