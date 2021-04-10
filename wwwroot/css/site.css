@@ -157,4 +157,17 @@ body {
     background-color: #fff;
 }
 
+.bottom-left {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+    color: #4d1f07;
+    font-size: 2.5vw;
+}
+
+.banner-container {
+    position: relative;
+    text-align: center;
+    color: white;
+}
 
