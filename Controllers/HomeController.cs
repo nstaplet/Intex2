@@ -222,19 +222,26 @@ namespace Intex.Controllers
 
                 burialContext.SaveChanges();
 
-                if (submitbtn == "finished")
+                if (submitbtn == "finish")
                 {
-                    return View("BurialSummaryList");
+                    return View("BurialAddConfirmation");
                 }
                 else
                 {
-                    return View("AddBurialAdvanced");
+                    return View("BurialSummaryList");
                 }
             }
             else
             {
                 return View("AddBurialEssential");
             }
+        }
+
+
+        [HttpGet]
+        public IActionResult BurialAddConfirmation()
+        {
+            return View();
         }
 
 
