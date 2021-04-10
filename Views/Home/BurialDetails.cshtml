@@ -8,290 +8,304 @@
 <h2>Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber</h2>
 
 <br />
-<hr />
 
-<a href="#buriallocation">Burial Location</a>
-<br />
-<a href="#burialsituation">Burial Situation</a>
-<br />
-<a href="#gender">Gender</a>
-<br />
-<a href="#osteology">Osteology</a>
-<br />
-<a href="#artifactstaken">Artifacts Taken</a>
-<br />
-<a href="#age">Age</a>
-<br />
-<a href="#dates">Dates</a>
-<br />
-<a href="#skullinformation">Skull Information</a>
-<br />
-<a href="#carbondating">Carbon Dating</a>
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+
+        <a href="#buriallocation">Burial Location</a>
+        <a href="#burialsituation">Burial Situation</a>
+        <a href="#gender">Gender</a>
+        <a href="#osteology">Osteology</a>
+        <a href="#artifactstaken">Artifacts Taken</a>       
+        <a href="#age">Age</a>       
+        <a href="#dates">Dates</a>  
+        <a href="#skullinformation">Skull Information</a>
+        <a href="#carbondating">Carbon Dating</a>
+
+    </div>
+</nav>
 
 <br />
-
+<br />
 
 <div class="row">
     <div class="col-lg-6">
         <h3 id="buriallocation">Burial Location</h3>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Burial ID:</td>
+                    <td>@Model.SingleBurial.BurialId</td>
+                </tr>
+                <tr>
+                    <td>Burial Location ID:</td>
+                    <td>@Model.SingleLocation.LocationId</td>
+                </tr>
+                <tr>
+                    <td>Sub-Location ID:</td>
+                    <td>@Model.SingleSublocation.SublocationId</td>
+                </tr>
+                <tr>
+                    <td>Burial Number:</td>
+                    <td>@Model.SingleBurial.BurialNumber</td>
+                </tr>
+                <tr>
+                    <td>Burial Depth (meters):</td>
+                    <td>@Model.SingleBurial.BurialDepthMeters</td>
+                </tr>
+                <tr>
+                    <td>South to Head:</td>
+                    <td>@Model.SingleBurial.SouthToHead</td>
+                </tr>
+                <tr>
+                    <td>South to Feet:</td>
+                    <td>@Model.SingleBurial.SouthToFeet</td>
+                </tr>
+                <tr>
+                    <td>West to Head:</td>
+                    <td>@Model.SingleBurial.WestToHead</td>
+                </tr>
+                <tr>
+                    <td>West to Feet:</td>
+                    <td>@Model.SingleBurial.WestToFeet </td>
+                </tr>
+            </table>
+        </div>
+        <br />
 
-        <table class="table">
-            <tr>
-                <td>Burial ID:</td>
-                <td>@Model.SingleBurial.BurialId</td>
-            </tr>
-            <tr>
-                <td>Burial Location ID:</td>
-                <td>@Model.SingleLocation.LocationId</td>
-            </tr>
-            <tr>
-                <td>Sub-Location ID:</td>
-                <td>@Model.SingleSublocation.SublocationId</td>
-            </tr>
-            <tr>
-                <td>Burial Number:</td>
-                <td>@Model.SingleBurial.BurialNumber</td>
-            </tr>
-            <tr>
-                <td>Burial Depth (meters):</td>
-                <td>@Model.SingleBurial.BurialDepthMeters</td>
-            </tr>
-            <tr>
-                <td>South to Head:</td>
-                <td>@Model.SingleBurial.SouthToHead</td>
-            </tr>
-            <tr>
-                <td>South to Feet:</td>
-                <td>@Model.SingleBurial.SouthToFeet</td>
-            </tr>
-            <tr>
-                <td>West to Head:</td>
-                <td>@Model.SingleBurial.WestToHead</td>
-            </tr>
-            <tr>
-                <td>West to Feet:</td>
-                <td>@Model.SingleBurial.WestToFeet </td>
-            </tr>
-        </table>
 
     </div>
 
     <div class="col-lg-6">
         <h3 id="burialsituation">Burial Situation </h3>
-        <table class="table">
-            <tr>
-                <td>Burial Situation Notes:</td>
-                <td>@Model.SingleBurial.BurialSituationNotes </td>
-            </tr>
-            <tr>
-                <td>Burial Preservation Notes:</td>
-                <td>@Model.SingleBurial.BurialPreservationNotes </td>
-            </tr>
-            <tr>
-                <td>Burial Wrapping:</td>
-                <td>@Model.SingleBurial.BurialWrapping</td>
-            </tr>
-            <tr>
-                <td>Length of Remains (meters):</td>
-                <td>@Model.SingleBurial.LengthOfRemains </td>
-            </tr>
-            <tr>
-                <td>Sample Number:</td>
-                <td>@Model.SingleBurial.SampleNumber </td>
-            </tr>
-        </table>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Burial Situation Notes:</td>
+                    <td>@Model.SingleBurial.BurialSituationNotes </td>
+                </tr>
+                <tr>
+                    <td>Burial Preservation Notes:</td>
+                    <td>@Model.SingleBurial.BurialPreservationNotes </td>
+                </tr>
+                <tr>
+                    <td>Burial Wrapping:</td>
+                    <td>@Model.SingleBurial.BurialWrapping</td>
+                </tr>
+                <tr>
+                    <td>Length of Remains (meters):</td>
+                    <td>@Model.SingleBurial.LengthOfRemains </td>
+                </tr>
+                <tr>
+                    <td>Sample Number:</td>
+                    <td>@Model.SingleBurial.SampleNumber </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+
+
 
     </div>
 
-</div>
+    </div>
 
 <div class="row">
     <div class="col-lg-6">
         <h3 id="gender">Gender</h3>
-        <table class="table">
-            <tr>
-                <td>Sex by Skull:</td>
-                <td>@Model.SingleBurial.SexBySkull </td>
-            </tr>
-            <tr>
-                <td>Gender Code:</td>
-                <td>@Model.SingleBurial.GenderCode </td>
-            </tr>
-            <tr>
-                <td>Burial Gender Method:</td>
-                <td>@Model.SingleBurial.BurialGenderMethod </td>
-            </tr>
-            <tr>
-                <td>Gender GE:</td>
-                <td>@Model.SingleBurial.GenderGe </td>
-            </tr>
-            <tr>
-                <td>GE Function Total:</td>
-                <td>@Model.SingleBurial.GeFunctionTotal </td>
-            </tr>
-            <tr>
-                <td>Gender Body Col:</td>
-                <td>@Model.SingleBurial.GenderBodyCol </td>
-            </tr>
-        </table>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Sex by Skull:</td>
+                    <td>@Model.SingleBurial.SexBySkull </td>
+                </tr>
+                <tr>
+                    <td>Gender Code:</td>
+                    <td>@Model.SingleBurial.GenderCode </td>
+                </tr>
+                <tr>
+                    <td>Burial Gender Method:</td>
+                    <td>@Model.SingleBurial.BurialGenderMethod </td>
+                </tr>
+                <tr>
+                    <td>Gender GE:</td>
+                    <td>@Model.SingleBurial.GenderGe </td>
+                </tr>
+                <tr>
+                    <td>GE Function Total:</td>
+                    <td>@Model.SingleBurial.GeFunctionTotal </td>
+                </tr>
+                <tr>
+                    <td>Gender Body Col:</td>
+                    <td>@Model.SingleBurial.GenderBodyCol </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+
+
     </div>
 
     <div class="col-lg-6">
         <h3 id="osteology">Osteology</h3>
-        <table class="table">
-            <tr>
-                <td>Basilar Suture:</td>
-                <td>@Model.SingleBurial.BasilarSuture </td>
-            </tr>
-            <tr>
-                <td>Ventral Arc:</td>
-                <td>@Model.SingleBurial.VentralArc </td>
-            </tr>
-            <tr>
-                <td>Subpubic Angle:</td>
-                <td>@Model.SingleBurial.SubpubicAngle </td>
-            </tr>
-            <tr>
-                <td>Sciatic Notch:</td>
-                <td>@Model.SingleBurial.SciaticNotch  </td>
-            </tr>
-            <tr>
-                <td>Pubic Bone:</td>
-                <td>@Model.SingleBurial.PubicBone </td>
-            </tr>
-            <tr>
-                <td>Preaur Sulcus:</td>
-                <td>@Model.SingleBurial.PreaurSulcus </td>
-            </tr>
-            <tr>
-                <td>Medial IP Ramus:</td>
-                <td>@Model.SingleBurial.MedialIpRamus </td>
-            </tr>
-            <tr>
-                <td>Dorsal Pitting:</td>
-                <td>@Model.SingleBurial.DorsalPitting </td>
-            </tr>
-            <tr>
-                <td>Foreman Magnum:</td>
-                <td>@Model.SingleBurial.ForemanMagnum </td>
-            </tr>
-            <tr>
-                <td>Femur Head:</td>
-                <td>@Model.SingleBurial.FemurHead </td>
-            </tr>
-            <tr>
-                <td>Humerus Head:</td>
-                <td>@Model.SingleBurial.HumerusHead </td>
-            </tr>
-            <tr>
-                <td>Osteophytosis:</td>
-                <td>@Model.SingleBurial.Osteophytosis </td>
-            </tr>
-            <tr>
-                <td>Pubic Symphysis:</td>
-                <td>@Model.SingleBurial.PubicSymphysis </td>
-            </tr>
-            <tr>
-                <td>Bone Length:</td>
-                <td>@Model.SingleBurial.BoneLength </td>
-            </tr>
-            <tr>
-                <td>Medial Clavicle:</td>
-                <td>@Model.SingleBurial.MedialClavicle </td>
-            </tr>
-            <tr>
-                <td>Iliac Crest:</td>
-                <td>@Model.SingleBurial.IliacCrest</td>
-            </tr>
-            <tr>
-                <td>Femur Diameter:</td>
-                <td>@Model.SingleBurial.FemurDiameter </td>
-            </tr>
-            <tr>
-                <td>Humerus:</td>
-                <td>@Model.SingleBurial.Humerus </td>
-            </tr>
-            <tr>
-                <td>Femur Length:</td>
-                <td>@Model.SingleBurial.FemurLength </td>
-            </tr>
-            <tr>
-                <td>Humerus Length:</td>
-                <td>@Model.SingleBurial.HumerusLength </td>
-            </tr>
-            <tr>
-                <td>Tibia Length:</td>
-                <td>@Model.SingleBurial.TibiaLength </td>
-            </tr>
-            <tr>
-                <td>Robust:</td>
-                <td>@Model.SingleBurial.Robust</td>
-            </tr>
-            <tr>
-                <td>Supraorbital Ridges:</td>
-                <td>@Model.SingleBurial.SupraorbitalRidges </td>
-            </tr>
-            <tr>
-                <td>ForemanMagnum:</td>
-                <td>@Model.SingleBurial. </td>
-            </tr>
-            <tr>
-                <td>Orbit Edge:</td>
-                <td>@Model.SingleBurial.OrbitEdge </td>
-            </tr>
-            <tr>
-                <td>Parietal Bossing:</td>
-                <td>@Model.SingleBurial.ParietalBossing </td>
-            </tr>
-            <tr>
-                <td>Gonian:</td>
-                <td>@Model.SingleBurial.Gonian </td>
-            </tr>
-            <tr>
-                <td>Nuchal Crest:</td>
-                <td>@Model.SingleBurial.NuchalCrest </td>
-            </tr>
-            <tr>
-                <td>Zygomatic Crest:</td>
-                <td>@Model.SingleBurial.ZygomaticCrest </td>
-            </tr>
-            <tr>
-                <td>Maximum Cranial Length:</td>
-                <td>@Model.SingleBurial.MaximumCranialLength </td>
-            </tr>
-            <tr>
-                <td>Maximum Cranial Breadth:</td>
-                <td>@Model.SingleBurial.MaximumNasalBreadth </td>
-            </tr>
-            <tr>
-                <td>Basion Bregma Height:</td>
-                <td>@Model.SingleBurial.BasionBregmaHeight </td>
-            </tr>
-            <tr>
-                <td>Basion Nasion:</td>
-                <td>@Model.SingleBurial.BasionNasion </td>
-            </tr>
-            <tr>
-                <td>Basion Prosthion Length:</td>
-                <td>@Model.SingleBurial.BasionProsthionLength </td>
-            </tr>
-            <tr>
-                <td>Bizygomatic Diameter:</td>
-                <td>@Model.SingleBurial.BizygomaticDiameter </td>
-            </tr>
-            <tr>
-                <td>Nasion Prosthion:</td>
-                <td>@Model.SingleBurial.NasionProsthion </td>
-            </tr>
-            <tr>
-                <td>Maximum Nasal Breadth:</td>
-                <td>@Model.SingleBurial.MaximumNasalBreadth </td>
-            </tr>
-            <tr>
-                <td>Interorbital Breadth:</td>
-                <td>@Model.SingleBurial.InterorbitalBreadth </td>
-            </tr>
-        </table>
+        <div style="height:20em;overflow:auto;">
+
+
+            <table class="table">
+                <tr>
+                    <td>Basilar Suture:</td>
+                    <td>@Model.SingleBurial.BasilarSuture </td>
+                </tr>
+                <tr>
+                    <td>Ventral Arc:</td>
+                    <td>@Model.SingleBurial.VentralArc </td>
+                </tr>
+                <tr>
+                    <td>Subpubic Angle:</td>
+                    <td>@Model.SingleBurial.SubpubicAngle </td>
+                </tr>
+                <tr>
+                    <td>Sciatic Notch:</td>
+                    <td>@Model.SingleBurial.SciaticNotch  </td>
+                </tr>
+                <tr>
+                    <td>Pubic Bone:</td>
+                    <td>@Model.SingleBurial.PubicBone </td>
+                </tr>
+                <tr>
+                    <td>Preaur Sulcus:</td>
+                    <td>@Model.SingleBurial.PreaurSulcus </td>
+                </tr>
+                <tr>
+                    <td>Medial IP Ramus:</td>
+                    <td>@Model.SingleBurial.MedialIpRamus </td>
+                </tr>
+                <tr>
+                    <td>Dorsal Pitting:</td>
+                    <td>@Model.SingleBurial.DorsalPitting </td>
+                </tr>
+                <tr>
+                    <td>Foreman Magnum:</td>
+                    <td>@Model.SingleBurial.ForemanMagnum </td>
+                </tr>
+                <tr>
+                    <td>Femur Head:</td>
+                    <td>@Model.SingleBurial.FemurHead </td>
+                </tr>
+                <tr>
+                    <td>Humerus Head:</td>
+                    <td>@Model.SingleBurial.HumerusHead </td>
+                </tr>
+                <tr>
+                    <td>Osteophytosis:</td>
+                    <td>@Model.SingleBurial.Osteophytosis </td>
+                </tr>
+                <tr>
+                    <td>Pubic Symphysis:</td>
+                    <td>@Model.SingleBurial.PubicSymphysis </td>
+                </tr>
+                <tr>
+                    <td>Bone Length:</td>
+                    <td>@Model.SingleBurial.BoneLength </td>
+                </tr>
+                <tr>
+                    <td>Medial Clavicle:</td>
+                    <td>@Model.SingleBurial.MedialClavicle </td>
+                </tr>
+                <tr>
+                    <td>Iliac Crest:</td>
+                    <td>@Model.SingleBurial.IliacCrest</td>
+                </tr>
+                <tr>
+                    <td>Femur Diameter:</td>
+                    <td>@Model.SingleBurial.FemurDiameter </td>
+                </tr>
+                <tr>
+                    <td>Humerus:</td>
+                    <td>@Model.SingleBurial.Humerus </td>
+                </tr>
+                <tr>
+                    <td>Femur Length:</td>
+                    <td>@Model.SingleBurial.FemurLength </td>
+                </tr>
+                <tr>
+                    <td>Humerus Length:</td>
+                    <td>@Model.SingleBurial.HumerusLength </td>
+                </tr>
+                <tr>
+                    <td>Tibia Length:</td>
+                    <td>@Model.SingleBurial.TibiaLength </td>
+                </tr>
+                <tr>
+                    <td>Robust:</td>
+                    <td>@Model.SingleBurial.Robust</td>
+                </tr>
+                <tr>
+                    <td>Supraorbital Ridges:</td>
+                    <td>@Model.SingleBurial.SupraorbitalRidges </td>
+                </tr>
+                <tr>
+                    <td>Orbit Edge:</td>
+                    <td>@Model.SingleBurial.OrbitEdge </td>
+                </tr>
+                <tr>
+                    <td>Parietal Bossing:</td>
+                    <td>@Model.SingleBurial.ParietalBossing </td>
+                </tr>
+                <tr>
+                    <td>Gonian:</td>
+                    <td>@Model.SingleBurial.Gonian </td>
+                </tr>
+                <tr>
+                    <td>Nuchal Crest:</td>
+                    <td>@Model.SingleBurial.NuchalCrest </td>
+                </tr>
+                <tr>
+                    <td>Zygomatic Crest:</td>
+                    <td>@Model.SingleBurial.ZygomaticCrest </td>
+                </tr>
+                <tr>
+                    <td>Maximum Cranial Length:</td>
+                    <td>@Model.SingleBurial.MaximumCranialLength </td>
+                </tr>
+                <tr>
+                    <td>Maximum Cranial Breadth:</td>
+                    <td>@Model.SingleBurial.MaximumNasalBreadth </td>
+                </tr>
+                <tr>
+                    <td>Basion Bregma Height:</td>
+                    <td>@Model.SingleBurial.BasionBregmaHeight </td>
+                </tr>
+                <tr>
+                    <td>Basion Nasion:</td>
+                    <td>@Model.SingleBurial.BasionNasion </td>
+                </tr>
+                <tr>
+                    <td>Basion Prosthion Length:</td>
+                    <td>@Model.SingleBurial.BasionProsthionLength </td>
+                </tr>
+                <tr>
+                    <td>Bizygomatic Diameter:</td>
+                    <td>@Model.SingleBurial.BizygomaticDiameter </td>
+                </tr>
+                <tr>
+                    <td>Nasion Prosthion:</td>
+                    <td>@Model.SingleBurial.NasionProsthion </td>
+                </tr>
+                <tr>
+                    <td>Maximum Nasal Breadth:</td>
+                    <td>@Model.SingleBurial.MaximumNasalBreadth </td>
+                </tr>
+                <tr>
+                    <td>Interorbital Breadth:</td>
+                    <td>@Model.SingleBurial.InterorbitalBreadth </td>
+                </tr>
+            </table>
+
+        </div>
+        <br />
+
+
     </div>
 
 </div>
@@ -299,102 +313,112 @@
 <div class="row">
     <div class="col-lg-6">
         <h3 id="artifactstaken">Artifacts Taken</h3>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Artifacts Description:</td>
+                    <td>@Model.SingleBurial.ArtifactsDescription </td>
+                </tr>
+                <tr>
+                    <td>Hair Color Code:</td>
+                    <td>@Model.SingleBurial.HairColorCode </td>
+                </tr>
+                <tr>
+                    <td>Hair Color:</td>
+                    <td>@Model.SingleBurial.HairColor </td>
+                </tr>
+                <tr>
+                    <td>Preservation Index:</td>
+                    <td>@Model.SingleBurial.PreservationIndex </td>
+                </tr>
+                <tr>
+                    <td>Hair Taken:</td>
+                    <td>@Model.SingleBurial.HairTaken </td>
+                </tr>
+                <tr>
+                    <td>Soft Tissue Taken:</td>
+                    <td>@Model.SingleBurial.SoftTissueTaken </td>
+                </tr>
+                <tr>
+                    <td>Bone Taken:</td>
+                    <td>@Model.SingleBurial.BoneTaken </td>
+                </tr>
+                <tr>
+                    <td>Tooth Taken:</td>
+                    <td>@Model.SingleBurial.ToothTaken </td>
+                </tr>
+                <tr>
+                    <td>Textile Taken:</td>
+                    <td>@Model.SingleBurial.TextileTaken </td>
+                </tr>
+                <tr>
+                    <td>Description of Taken:</td>
+                    <td>@Model.SingleBurial.DescriptionOfTaken </td>
+                </tr>
+                <tr>
+                    <td>Artifact Found:</td>
+                    <td>@Model.SingleBurial.ArtifactFound </td>
+                </tr>
 
-        <table class="table">
-            <tr>
-                <td>Artifacts Description:</td>
-                <td>@Model.SingleBurial.ArtifactsDescription </td>
-            </tr>
-            <tr>
-                <td>Hair Color Code:</td>
-                <td>@Model.SingleBurial.HairColorCode </td>
-            </tr>
-            <tr>
-                <td>Hair Color:</td>
-                <td>@Model.SingleBurial.HairColor </td>
-            </tr>
-            <tr>
-                <td>Preservation Index:</td>
-                <td>@Model.SingleBurial.PreservationIndex </td>
-            </tr>
-            <tr>
-                <td>Hair Taken:</td>
-                <td>@Model.SingleBurial.HairTaken </td>
-            </tr>
-            <tr>
-                <td>Soft Tissue Taken:</td>
-                <td>@Model.SingleBurial.SoftTissueTaken </td>
-            </tr>
-            <tr>
-                <td>Bone Taken:</td>
-                <td>@Model.SingleBurial.BoneTaken </td>
-            </tr>
-            <tr>
-                <td>Tooth Taken:</td>
-                <td>@Model.SingleBurial.ToothTaken </td>
-            </tr>
-            <tr>
-                <td>Textile Taken:</td>
-                <td>@Model.SingleBurial.TextileTaken </td>
-            </tr>
-            <tr>
-                <td>Description of Taken:</td>
-                <td>@Model.SingleBurial.DescriptionOfTaken </td>
-            </tr>
-            <tr>
-                <td>Artifact Found:</td>
-                <td>@Model.SingleBurial.ArtifactFound </td>
-            </tr>
+            </table>
+        </div>
+        <br />
 
-        </table>
+
+
 
     </div>
 
     <div class="col-lg-6">
         <h3 id="age">Age</h3>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Estimate Age at Death:</td>
+                    <td>@Model.SingleBurial.EstimateAgeAtDeath </td>
+                </tr>
+                <tr>
+                    <td>Burial Age Method:</td>
+                    <td>@Model.SingleBurial.BurialAgeMethod </td>
+                </tr>
+                <tr>
+                    <td>Age Code Single:</td>
+                    <td>@Model.SingleBurial.AgeCodeSingle </td>
+                </tr>
+                <tr>
+                    <td>Burial Adult Child:</td>
+                    <td>@Model.SingleBurial.BurialAdultChild </td>
+                </tr>
+                <tr>
+                    <td>Age Skull:</td>
+                    <td>@Model.SingleBurial.AgeSkull </td>
+                </tr>
+                <tr>
+                    <td>Estimate Living Stature:</td>
+                    <td>@Model.SingleBurial.EstimateLivingStature </td>
+                </tr>
+                <tr>
+                    <td>Tooth Attrition:</td>
+                    <td>@Model.SingleBurial.ToothAttrition </td>
+                </tr>
+                <tr>
+                    <td>Tooth Eruption:</td>
+                    <td>@Model.SingleBurial.ToothEruption </td>
+                </tr>
+                <tr>
+                    <td>Pathology Anomolies:</td>
+                    <td>@Model.SingleBurial.PathologyAnomalies </td>
+                </tr>
+                <tr>
+                    <td>Epiphyseal Union:</td>
+                    <td>@Model.SingleBurial.EpiphysealUnion </td>
+                </tr>
+            </table>
+        </div>
+        <br />
 
-        <table class="table">
-            <tr>
-                <td>Estimate Age at Death:</td>
-                <td>@Model.SingleBurial.EstimateAgeAtDeath </td>
-            </tr>
-            <tr>
-                <td>Burial Age Method:</td>
-                <td>@Model.SingleBurial.BurialAgeMethod </td>
-            </tr>
-            <tr>
-                <td>Age Code Single:</td>
-                <td>@Model.SingleBurial.AgeCodeSingle </td>
-            </tr>
-            <tr>
-                <td>Burial Adult Child:</td>
-                <td>@Model.SingleBurial.BurialAdultChild </td>
-            </tr>
-            <tr>
-                <td>Age Skull:</td>
-                <td>@Model.SingleBurial.AgeSkull </td>
-            </tr>
-            <tr>
-                <td>Estimate Living Stature:</td>
-                <td>@Model.SingleBurial.EstimateLivingStature </td>
-            </tr>
-            <tr>
-                <td>Tooth Attrition:</td>
-                <td>@Model.SingleBurial.ToothAttrition </td>
-            </tr>
-            <tr>
-                <td>Tooth Eruption:</td>
-                <td>@Model.SingleBurial.ToothEruption </td>
-            </tr>
-            <tr>
-                <td>Pathology Anomolies:</td>
-                <td>@Model.SingleBurial.PathologyAnomalies </td>
-            </tr>
-            <tr>
-                <td>Epiphyseal Union:</td>
-                <td>@Model.SingleBurial.EpiphysealUnion </td>
-            </tr>
-        </table>
+
+
 
     </div>
 
@@ -403,97 +427,103 @@
 <div class="row">
     <div class="col-lg-6">
         <h3 id="dates">Dates</h3>
-        <table class="table">
-            <tr>
-                <td>Year Excavated:</td>
-                <td>@Model.SingleBurial.YearExcavated </td>
-            </tr>
-            <tr>
-                <td>Month Excavated:</td>
-                <td>@Model.SingleBurial.MonthExcavated </td>
-            </tr>
-            <tr>
-                <td>Day Excavated:</td>
-                <td>@Model.SingleBurial.DayExcavated </td>
-            </tr>
-            <tr>
-                <td>Burial Direction:</td>
-                <td>@Model.SingleBurial.BurialDirection </td>
-            </tr>
-            <tr>
-                <td>Year on Skull:</td>
-                <td>@Model.SingleBurial.YearOnSkull </td>
-            </tr>
-            <tr>
-                <td>Month on Skull:</td>
-                <td>@Model.SingleBurial.MonthOnSkull </td>
-            </tr>
-            <tr>
-                <td>Day on Skull:</td>
-                <td>@Model.SingleBurial.DayOnSkull </td>
-            </tr>
-            <tr>
-                <td>ForemanMagnum:</td>
-                <td>@Model.SingleBurial. </td>
-            </tr>
-        </table>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Year Excavated:</td>
+                    <td>@Model.SingleBurial.YearExcavated </td>
+                </tr>
+                <tr>
+                    <td>Month Excavated:</td>
+                    <td>@Model.SingleBurial.MonthExcavated </td>
+                </tr>
+                <tr>
+                    <td>Day Excavated:</td>
+                    <td>@Model.SingleBurial.DayExcavated </td>
+                </tr>
+                <tr>
+                    <td>Burial Direction:</td>
+                    <td>@Model.SingleBurial.BurialDirection </td>
+                </tr>
+                <tr>
+                    <td>Year on Skull:</td>
+                    <td>@Model.SingleBurial.YearOnSkull </td>
+                </tr>
+                <tr>
+                    <td>Month on Skull:</td>
+                    <td>@Model.SingleBurial.MonthOnSkull </td>
+                </tr>
+                <tr>
+                    <td>Day on Skull:</td>
+                    <td>@Model.SingleBurial.DayOnSkull </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+
+
 
     </div>
 
     <div class="col-lg-6">
         <h3 id="skullinformation">Skull Information</h3>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Postcrania Trauma:</td>
+                    <td>@Model.SingleBurial.PostcraniaTrauma </td>
+                </tr>
+                <tr>
+                    <td>Cribra Orbitala:</td>
+                    <td>@Model.SingleBurial.CribraOrbitala </td>
+                </tr>
+                <tr>
+                    <td>Porotic Hyperostosis:</td>
+                    <td>@Model.SingleBurial.PoroticHyperostosis </td>
+                </tr>
+                <tr>
+                    <td>Porotic Hyperostosis Locations:</td>
+                    <td>@Model.SingleBurial.PoroticHyperostosisLocations </td>
+                </tr>
+                <tr>
+                    <td>Metopic Suture:</td>
+                    <td>@Model.SingleBurial.MetopicSuture </td>
+                </tr>
+                <tr>
+                    <td>Button Osteoma:</td>
+                    <td>@Model.SingleBurial.ButtonOsteoma </td>
+                </tr>
+                <tr>
+                    <td>Osteology Unknown Comment:</td>
+                    <td>@Model.SingleBurial.OsteologyUnknownComment </td>
+                </tr>
+                <tr>
+                    <td>Temporal Mindibular Joint Osteoarthritis:</td>
+                    <td>@Model.SingleBurial.TemporalMandibularJointOsteoarthritis </td>
+                </tr>
+                <tr>
+                    <td>Linear Hypoplasia Enamel:</td>
+                    <td>@Model.SingleBurial.LinearHypoplasiaEnamel </td>
+                </tr>
+                <tr>
+                    <td>Osteology Notes:</td>
+                    <td>@Model.SingleBurial.OsteologyNotes </td>
+                </tr>
+                <tr>
+                    <td>Skull at Magazine:</td>
+                    <td>@Model.SingleBurial.SkullAtMagazine </td>
+                </tr>
+                <tr>
+                    <td>Postcrania at Magazine:</td>
+                    <td>@Model.SingleBurial.PostcraniaAtMagazine </td>
+                </tr>
 
-        <table class="table">
-            <tr>
-                <td>Postcrania Trauma:</td>
-                <td>@Model.SingleBurial.PostcraniaTrauma </td>
-            </tr>
-            <tr>
-                <td>Cribra Orbitala:</td>
-                <td>@Model.SingleBurial.CribraOrbitala </td>
-            </tr>
-            <tr>
-                <td>Porotic Hyperostosis:</td>
-                <td>@Model.SingleBurial.PoroticHyperostosis </td>
-            </tr>
-            <tr>
-                <td>Porotic Hyperostosis Locations:</td>
-                <td>@Model.SingleBurial.PoroticHyperostosisLocations </td>
-            </tr>
-            <tr>
-                <td>Metopic Suture:</td>
-                <td>@Model.SingleBurial.MetopicSuture </td>
-            </tr>
-            <tr>
-                <td>Button Osteoma:</td>
-                <td>@Model.SingleBurial.ButtonOsteoma </td>
-            </tr>
-            <tr>
-                <td>Osteology Unknown Comment:</td>
-                <td>@Model.SingleBurial.OsteologyUnknownComment </td>
-            </tr>
-            <tr>
-                <td>Temporal Mindibular Joint Osteoarthritis:</td>
-                <td>@Model.SingleBurial.TemporalMandibularJointOsteoarthritis </td>
-            </tr>
-            <tr>
-                <td>Linear Hypoplasia Enamel:</td>
-                <td>@Model.SingleBurial.LinearHypoplasiaEnamel </td>
-            </tr>
-            <tr>
-                <td>Osteology Notes:</td>
-                <td>@Model.SingleBurial.OsteologyNotes </td>
-            </tr>
-            <tr>
-                <td>Skull at Magazine:</td>
-                <td>@Model.SingleBurial.SkullAtMagazine </td>
-            </tr>
-            <tr>
-                <td>Postcrania at Magazine:</td>
-                <td>@Model.SingleBurial.PostcraniaAtMagazine </td>
-            </tr>
+            </table>
+        </div>
+        <br />
 
-        </table>
+
+
 
 
     </div>
@@ -503,96 +533,103 @@
 <div class="row">
     <div class="col-lg-6">
         <h3 id="carbondating">Carbon Dating</h3>
-        <table class="table">
-            <tr>
-                <td>Burial Sample Taken:</td>
-                <td>@Model.SingleBurial.BurialSampleTaken </td>
-            </tr>
-            <tr>
-                <td>Body Analysis:</td>
-                <td>@Model.SingleBurial.BodyAnalysis </td>
-            </tr>
-            <tr>
-                <td>To Be Confirmed:</td>
-                <td>@Model.SingleBurial.ToBeConfirmed </td>
-            </tr>
-            <tr>
-                <td>Goods:</td>
-                <td>@Model.SingleBurial.Goods </td>
-            </tr>
-            <tr>
-                <td>Rack Number:</td>
-                <td>@Model.SingleBurial.RackNumber14c </td>
-            </tr>
-            <tr>
-                <td>Tube Number:</td>
-                <td>@Model.SingleBurial.TubeNumber </td>
-            </tr>
-            <tr>
-                <td>Description 14c:</td>
-                <td>@Model.SingleBurial.Description14c </td>
-            </tr>
-            <tr>
-                <td>Size in mL:</td>
-                <td>@Model.SingleBurial.SizeInMl </td>
-            </tr>
-            <tr>
-                <td>Foci:</td>
-                <td>@Model.SingleBurial.Foci </td>
-            </tr>
-            <tr>
-                <td>Location 14c:</td>
-                <td>@Model.SingleBurial.Location14c </td>
-            </tr>
-            <tr>
-                <td>Conventional 14C Age:</td>
-                <td>@Model.SingleBurial.Conventional14cAge </td>
-            </tr>
-            <tr>
-                <td>Calendar 14c Date:</td>
-                <td>@Model.SingleBurial.Calendar14cDate </td>
-            </tr>
-            <tr>
-                <td>Calibrated 95 Date Max:</td>
-                <td>@Model.SingleBurial.Calibrated95Datemax </td>
-            </tr>
-            <tr>
-                <td>Calibrated 95 Date Min:</td>
-                <td>@Model.SingleBurial.Calibrated95Datemin </td>
-            </tr>
-            <tr>
-                <td>Calibrated 95 Date Span:</td>
-                <td>@Model.SingleBurial.Calibrated95Datespan </td>
-            </tr>
-            <tr>
-                <td>Calibrated 95 Date Average:</td>
-                <td>@Model.SingleBurial.Calibrated95Dateavg </td>
-            </tr>
-            <tr>
-                <td>Area Category 14c:</td>
-                <td>@Model.SingleBurial.AreaCategory14c </td>
-            </tr>
-            <tr>
-                <td>Discrepency 14c:</td>
-                <td>@Model.SingleBurial.Discrepency14c </td>
-            </tr>
-            <tr>
-                <td>Lab Notes 14c:</td>
-                <td>@Model.SingleBurial.LabNotes14c </td>
-            </tr>
-            <tr>
-                <td>Did We Get a Picture of This Sucker</td>
-                <td>@Model.SingleBurial.PhotoTaken </td>
-            </tr>
-        </table>
+        <div style="height:20em;overflow:auto;">
+            <table class="table">
+                <tr>
+                    <td>Burial Sample Taken:</td>
+                    <td>@Model.SingleBurial.BurialSampleTaken </td>
+                </tr>
+                <tr>
+                    <td>Body Analysis:</td>
+                    <td>@Model.SingleBurial.BodyAnalysis </td>
+                </tr>
+                <tr>
+                    <td>To Be Confirmed:</td>
+                    <td>@Model.SingleBurial.ToBeConfirmed </td>
+                </tr>
+                <tr>
+                    <td>Goods:</td>
+                    <td>@Model.SingleBurial.Goods </td>
+                </tr>
+                <tr>
+                    <td>Rack Number:</td>
+                    <td>@Model.SingleBurial.RackNumber14c </td>
+                </tr>
+                <tr>
+                    <td>Tube Number:</td>
+                    <td>@Model.SingleBurial.TubeNumber </td>
+                </tr>
+                <tr>
+                    <td>Description 14c:</td>
+                    <td>@Model.SingleBurial.Description14c </td>
+                </tr>
+                <tr>
+                    <td>Size in mL:</td>
+                    <td>@Model.SingleBurial.SizeInMl </td>
+                </tr>
+                <tr>
+                    <td>Foci:</td>
+                    <td>@Model.SingleBurial.Foci </td>
+                </tr>
+                <tr>
+                    <td>Location 14c:</td>
+                    <td>@Model.SingleBurial.Location14c </td>
+                </tr>
+                <tr>
+                    <td>Conventional 14C Age:</td>
+                    <td>@Model.SingleBurial.Conventional14cAge </td>
+                </tr>
+                <tr>
+                    <td>Calendar 14c Date:</td>
+                    <td>@Model.SingleBurial.Calendar14cDate </td>
+                </tr>
+                <tr>
+                    <td>Calibrated 95 Date Max:</td>
+                    <td>@Model.SingleBurial.Calibrated95Datemax </td>
+                </tr>
+                <tr>
+                    <td>Calibrated 95 Date Min:</td>
+                    <td>@Model.SingleBurial.Calibrated95Datemin </td>
+                </tr>
+                <tr>
+                    <td>Calibrated 95 Date Span:</td>
+                    <td>@Model.SingleBurial.Calibrated95Datespan </td>
+                </tr>
+                <tr>
+                    <td>Calibrated 95 Date Average:</td>
+                    <td>@Model.SingleBurial.Calibrated95Dateavg </td>
+                </tr>
+                <tr>
+                    <td>Area Category 14c:</td>
+                    <td>@Model.SingleBurial.AreaCategory14c </td>
+                </tr>
+                <tr>
+                    <td>Discrepency 14c:</td>
+                    <td>@Model.SingleBurial.Discrepency14c </td>
+                </tr>
+                <tr>
+                    <td>Lab Notes 14c:</td>
+                    <td>@Model.SingleBurial.LabNotes14c </td>
+                </tr>
+                <tr>
+                    <td>Did We Get a Picture of This Sucker</td>
+                    <td>@Model.SingleBurial.PhotoTaken </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+
+
     </div>
     <div class="col-6">
 
     </div>
 </div>
 
+<div class="text-center">
+    <a href="#top">Back to Top</a>
+</div>
 
-<a class="text-center" href="#top">Back to top</a>
 
 
 

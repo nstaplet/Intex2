@@ -11,6 +11,7 @@
 
 <form method="post" asp-action="AddLocationInfo">
 
+    <p style="color:red"><b>@ViewBag.BurialExists</b></p>
     <label for="burialnum">Burial Number: </label>
     <input for="burialnum" name="burialnum" />
     <br /><br />
@@ -67,9 +68,8 @@
 
     <label for="tombnum">Tomb Number: </label>
     <input for="tombnum" name="tombnum" />
-    <br /><br />
+    <br />
 
-    <p style="color:red">@ViewBag.BurialExists</p>
     <div asp-validation-summary="All" style="color:red"></div>
 
     <button type="submit" class="blue_button">Continue</button>
