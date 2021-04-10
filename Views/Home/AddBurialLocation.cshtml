@@ -9,15 +9,15 @@
 <h4>Location Information</h4>
 <br />
 
-<form method="post" asp-action="AddLocationInfo">
+<form method="post" asp-action="AddLocationInfo" class="form-group">
 
     <p style="color:red"><b>@ViewBag.BurialExists</b></p>
     <label for="burialnum">Burial Number: </label>
-    <input for="burialnum" name="burialnum" />
-    <br /><br />
+    <input for="burialnum" name="burialnum" class="form-control" />
+    <br />
 
     <label asp-for="BurialLocationNs">Burial Location (N/S):</label>
-    <select asp-for="BurialLocationNs">
+    <select asp-for="BurialLocationNs" class="form-control">
         <option value="">Select One</option>
         <option value="N">North</option>
         <option value="S">South</option>
@@ -25,15 +25,15 @@
     <br />
 
     <label asp-for="LowValueNs">Low Value: </label>
-    <input asp-for="LowValueNs" />
+    <input asp-for="LowValueNs" class="form-control"/>
     <br />
 
     <label asp-for="HighValueNs">High Value: </label>
-    <input asp-for="HighValueNs" />
+    <input asp-for="HighValueNs" class="form-control" />
     <br />
 
     <label asp-for="BurialLocationEw">Burial Location (E/W):</label>
-    <select asp-for="BurialLocationEw">
+    <select asp-for="BurialLocationEw" class="form-control">
         <option value="">Select One</option>
         <option value="E">East</option>
         <option value="W">West</option>
@@ -41,19 +41,19 @@
     <br />
 
     <label asp-for="LowValueEw">Low Value: </label>
-    <input asp-for="LowValueEw" />
+    <input asp-for="LowValueEw"  class="form-control"/>
     <br />
 
     <label asp-for="HighValueEw">High Value: </label>
-    <input asp-for="HighValueEw" />
+    <input asp-for="HighValueEw" class="form-control" />
     <br />
-    <br />
+    
 
     <p>*Only one of these fields is required*</p>
     <p style="color:red">@ViewBag.SubLocationError</p>
 
     <label for="subplot">Subplot: </label>
-    <select for="subplot" name="subplot">
+    <select for="subplot" name="subplot" class="form-control">
         <option value=""></option>
         <option value="NE">NE</option>
         <option value="NW">NW</option>
@@ -63,15 +63,15 @@
     <br />
 
     <label for="areanum">Area Number: </label>
-    <input for="areanum" name="areanum" />
+    <input for="areanum" name="areanum" class="form-control" />
     <br />
 
     <label for="tombnum">Tomb Number: </label>
-    <input for="tombnum" name="tombnum" />
+    <input for="tombnum" name="tombnum" class="form-control" />
     <br />
 
     <div asp-validation-summary="All" style="color:red"></div>
 
-    <button type="submit" class="blue_button">Continue</button>
+    <button type="submit" class="btn blue_button">Continue</button>
 
 </form>
