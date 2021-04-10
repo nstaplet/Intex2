@@ -42,6 +42,13 @@
                     <option value="all">All</option>
                 </select>
             </div>
+            <div class="form-group">
+                <label>Min Depth</label>
+                <input type="number" step="0.01" min="0" max="10" value="@(ViewBag.MinDepth)" class="form-control" name="filter" />
+                <label>Max Depth</label>
+                <input type="number" step="0.01" min="0" max="10" value="@(ViewBag.MaxDepth)" class="form-control" name="filter" />
+            </div>
+
 
             <button type="submit" class="btn blue_button">Filter</button>
 
