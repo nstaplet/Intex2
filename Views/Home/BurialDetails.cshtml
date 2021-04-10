@@ -6,18 +6,21 @@ For more information on enabling MVC for empty projects, visit https://go.micros
 @model BasicBurial
 
     
-<div class="banner-container">
-    <img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%"/>
-    <div class="bottom-left" >
-        Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
-    </div>
-</div>
+
+<img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image"/>
 
 <br />
+<br />
 
+<div>
+    <h2 style="display: inline-block">
+    Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
+    </h2>
 
-<div class="text-right">
-    <a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a>
+    <div class="text-right">
+        <a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a>
+    </div>
+
 </div>
 
 
