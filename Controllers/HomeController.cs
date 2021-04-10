@@ -58,7 +58,7 @@ namespace Intex.Controllers
 
 
 
-            foreach (var sb in pageBurials)
+            foreach (var sb  in pageBurials)
             {
 
                 PackageBurials.Add(
