@@ -154,7 +154,7 @@ namespace Intex.Controllers
                 }
 
                 //Check to see if this burial record already exists
-                var burialexists = burialContext.Burial.Where(x => x.BurialId == burialnum && x.LocationId == locid && x.SublocationId == sublocid).FirstOrDefault();
+                var burialexists = burialContext.Burial.Where(x => x.BurialNumber == burialnum && x.LocationId == locid && x.SublocationId == sublocid).FirstOrDefault();
 
                 if (burialexists != null)
                 {
@@ -182,8 +182,20 @@ namespace Intex.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddBurialEssential(Burial br, string submitbtn)
+        public IActionResult AddBurialEssential(Burial br, int burialnum, int locid, int sublocid, string submitbtn)
         {
+            ViewBag.Locid = locid;
+            ViewBag.Sublocid = sublocid;
+            ViewBag.Burialnum = burialnum;
+
+            if (br.LengthOfRemains == null || br.BurialDepthMeters == null || br.SouthToHead == null || br.SouthToFeet == null ||
+                br.WestToHead == null || br.WestToFeet == null || br.PhotoTaken == null || br.Goods == null)
+            {
+                ViewBag.NoNullFields = "All fields are required";
+                return View("AddBurialEssential");
+            }
+
+
             if (br.PhotoTaken != true)
             {
                 ViewBag.NeedPhoto = "A photo should be taken before record is submitted";
@@ -195,8 +207,9 @@ namespace Intex.Controllers
                 burialContext.Burial.Add(new Burial
                 {
                     BurialId = (burialContext.Burial.Max(x => x.BurialId) + 1),
-                    LocationId = br.LocationId,
-                    SublocationId = br.SublocationId,
+                    BurialNumber = ViewBag.Burialnum,
+                    LocationId = ViewBag.Locid,
+                    SublocationId = ViewBag.Sublocid,
                     LengthOfRemains = br.LengthOfRemains,
                     BurialDepthMeters = br.BurialDepthMeters,
                     SouthToHead = br.SouthToHead,

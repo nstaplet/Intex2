@@ -12,11 +12,12 @@
 
 <form method="post" asp-action="AddBurialEssential">
 
-    <!--Values from previous form-->
-    <input type="hidden" asp-for="BurialNumber" value="@ViewBag.Burialnum" />
-    <input type="hidden" asp-for="LocationId" value="@ViewBag.Locid" />
-    <input type="hidden" asp-for="SublocationId" value="@ViewBag.Sublocid" />
 
+    <input type="hidden" name="burialnum" value="@ViewBag.Burialnum" />
+    <input type="hidden" name="locid" value="@ViewBag.Locid" />
+    <input type="hidden" name="sublocid" value="@ViewBag.Sublocid" />
+
+    <p style="color:red">@ViewBag.NoNullFields</p>
     Measurements (Enter in Meters)
     <br /><br />
     <label asp-for="LengthOfRemains">Length of Remains: </label>
