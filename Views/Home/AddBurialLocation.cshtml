@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Location 
+
+<h2>Add New Burial Record</h2>
+<h4>Location Information</h4>
+<br />
+
+<form method="post" asp-action="AddLocationInfo">
+
+    <label for="burialnum">Burial Number: </label>
+    <input for="burialnum" name="burialnum" />
+    <br /><br />
+
+    <label asp-for="BurialLocationNs">Burial Location (N/S):</label>
+    <select asp-for="BurialLocationNs">
+        <option value="">Select One</option>
+        <option value="N">North</option>
+        <option value="S">South</option>
+    </select>
+    <br />
+
+    <label asp-for="LowValueNs">Low Value: </label>
+    <input asp-for="LowValueNs" />
+    <br />
+
+    <label asp-for="HighValueNs">High Value: </label>
+    <input asp-for="HighValueNs" />
+    <br />
+
+    <label asp-for="BurialLocationEw">Burial Location (E/W):</label>
+    <select asp-for="BurialLocationEw">
+        <option value="">Select One</option>
+        <option value="E">East</option>
+        <option value="W">West</option>
+    </select>
+    <br />
+
+    <label asp-for="LowValueEw">Low Value: </label>
+    <input asp-for="LowValueEw" />
+    <br />
+
+    <label asp-for="HighValueEw">High Value: </label>
+    <input asp-for="HighValueEw" />
+    <br />
+    <br />
+
+    <p>*Only one of these fields is required*</p>
+    <p style="color:red">@ViewBag.SubLocationError</p>
+
+    <label for="subplot">Subplot: </label>
+    <select for="subplot" name="subplot">
+        <option value=""></option>
+        <option value="NE">NE</option>
+        <option value="NW">NW</option>
+        <option value="SE">SE</option>
+        <option value="SW">SW</option>
+    </select>
+    <br />
+
+    <label for="areanum">Area Number: </label>
+    <input for="areanum" name="areanum" />
+    <br />
+
+    <label for="tombnum">Tomb Number: </label>
+    <input for="tombnum" name="tombnum" />
+    <br /><br />
+
+    <p style="color:red">@ViewBag.BurialExists</p>
+    <div asp-validation-summary="All" style="color:red"></div>
+
+    <button type="submit" class="blue_button">Continue</button>
+
+</form>

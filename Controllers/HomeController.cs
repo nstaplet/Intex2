@@ -82,6 +82,88 @@ namespace Intex.Controllers
             return View(basicBurial);
         }
 
+        public IActionResult AddBurialLocation()
+        {
+            return View();
+        }
+
+        public IActionResult AddLocationInfo(Location lc, int burialnum, string subplot, int? areanum, string? tombnum)
+        {
+            if(ModelState.IsValid)
+            {
+                var checkLoc = burialContext.Location.Where(l =>
+                l.BurialLocationNs == lc.BurialLocationNs &&
+                l.LowValueNs == lc.LowValueNs &&
+                l.HighValueNs == lc.HighValueNs &&
+                l.BurialLocationEw == lc.BurialLocationEw &&
+                l.LowValueEw == lc.LowValueEw &&
+                l.HighValueEw == lc.HighValueEw).FirstOrDefault();
+
+                int locid = 0;
+                int sublocid = 0;
+
+                if (checkLoc == null)
+                {
+                    burialContext.Location.Add(lc);
+                    burialContext.SaveChanges();
+
+                    //Grabs the id of the most recently added location
+                    locid = burialContext.Location.Max(x => x.LocationId);
+                }
+                else
+                {
+                    locid = checkLoc.LocationId;
+                }
+
+                if (subplot == null && areanum == null && tombnum == null)
+                {
+                    ViewBag.SubLocationError = "You must enter a value in at least one of these fields";
+                    return View("AddBurialLocation");
+                }
+                else
+                {
+                    var checkSubLoc = burialContext.SubLocation.Where(x =>
+                        x.Subplot == subplot && x.AreaNumber == areanum && x.TombNumber == tombnum).FirstOrDefault();
+
+                    if (checkSubLoc == null)
+                    {
+                        burialContext.SubLocation.Add(new SubLocation
+                        {
+                            AreaNumber = areanum,
+                            Subplot = subplot,
+                            TombNumber = tombnum
+                        });
+                        burialContext.SaveChanges();
+
+                        sublocid = burialContext.SubLocation.Max(x => x.SublocationId);
+                    }
+                    else
+                    {
+                        sublocid = checkSubLoc.SublocationId;
+                    }
+                }
+
+                //Check to see if this burial record already exists
+                var burialexists = burialContext.Burial.Where(x => x.BurialId == burialnum && x.LocationId == locid && x.SublocationId == sublocid);
+
+                if (burialexists != null)
+                {
+                    ViewBag.BurialExists = "A burial record with this identification already exists";
+                    return View("AddBurialLocation");
+                }
+                else
+                {
+                    ViewBag.Locid = locid;
+                    ViewBag.Sublocid = sublocid;
+                    ViewBag.Burialnum = burialnum;
+                    return View("AddNewBurial");
+                }
+            }
+
+            return View("AddBurialLocation");
+        }
+
+
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
