@@ -228,13 +228,22 @@ namespace Intex.Controllers
                 }
                 else
                 {
-                    return View("BurialSummaryList");
+                    int currentburialid = burialContext.Burial.Max(x => x.BurialId);
+                    var currentburial = burialContext.Burial.Where(x => x.BurialId == currentburialid).FirstOrDefault();
+
+                    return View("BurialAdvancedForm", currentburial);
                 }
             }
             else
             {
                 return View("AddBurialEssential");
             }
+        }
+
+        public IActionResult BurialAdvancedForm(int burialid)
+        {
+            var currentburial = burialContext.Burial.Where(x => x.BurialId == burialid).FirstOrDefault();
+            return View(currentburial);
         }
 
 
