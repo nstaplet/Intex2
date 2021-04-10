@@ -19,15 +19,21 @@ namespace Intex.Models
         public int SublocationId { get; set; }
         [Required]
         public int BurialNumber { get; set; }
-        public double? BurialDepthMeters { get; set; }
-        public double? SouthToHead { get; set; }
-        public double? SouthToFeet { get; set; }
-        public double? WestToHead { get; set; }
-        public double? WestToFeet { get; set; }
+        [Required]
+        public double BurialDepthMeters { get; set; }
+        [Required]
+        public double SouthToHead { get; set; }
+        [Required]
+        public double SouthToFeet { get; set; }
+        [Required]
+        public double WestToHead { get; set; }
+        [Required]
+        public double WestToFeet { get; set; }
         public string BurialSituationNotes { get; set; }
         public string BurialPreservationNotes { get; set; }
         public string BurialWrapping { get; set; }
-        public double? LengthOfRemains { get; set; }
+        [Required]
+        public double LengthOfRemains { get; set; }
         public int? SampleNumber { get; set; }
         public string SexBySkull { get; set; }
         public string GenderCode { get; set; }
@@ -117,7 +123,8 @@ namespace Intex.Models
         public bool? BurialSampleTaken { get; set; }
         public string BodyAnalysis { get; set; }
         public bool? ToBeConfirmed { get; set; }
-        public bool? Goods { get; set; }
+        [Required]
+        public bool Goods { get; set; }
         public int? RackNumber14c { get; set; }
         public int? TubeNumber { get; set; }
         public string Description14c { get; set; }
@@ -133,6 +140,7 @@ namespace Intex.Models
         public string AreaCategory14c { get; set; }
         public bool? Discrepency14c { get; set; }
         public string LabNotes14c { get; set; }
-        public bool? PhotoTaken { get; set; }
+        [Required]
+        public bool PhotoTaken { get; set; }
     }
 }

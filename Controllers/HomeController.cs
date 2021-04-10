@@ -74,7 +74,6 @@ namespace Intex.Controllers
             BasicBurial basicBurial = new BasicBurial
             {
 
-
                 SingleBurial = burial,
                 SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
                 SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault()
@@ -139,6 +138,7 @@ namespace Intex.Controllers
                     {
                         burialContext.SubLocation.Add(new SubLocation
                         {
+                            SublocationId = (burialContext.SubLocation.Max(x => x.SublocationId) + 1),
                             AreaNumber = areanum,
                             Subplot = subplot,
                             TombNumber = tombnum
@@ -179,6 +179,49 @@ namespace Intex.Controllers
         public IActionResult AddBurialEssential()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBurialEssential(Burial br, string submitbtn)
+        {
+            if (br.PhotoTaken != true)
+            {
+                ViewBag.NeedPhoto = "A photo should be taken before record is submitted";
+                return View("AddBurialEssential");
+            }
+
+            if (ModelState.IsValid)
+            {
+                burialContext.Burial.Add(new Burial
+                {
+                    BurialId = (burialContext.Burial.Max(x => x.BurialId) + 1),
+                    LocationId = br.LocationId,
+                    SublocationId = br.SublocationId,
+                    LengthOfRemains = br.LengthOfRemains,
+                    BurialDepthMeters = br.BurialDepthMeters,
+                    SouthToHead = br.SouthToHead,
+                    SouthToFeet = br.SouthToFeet,
+                    WestToHead = br.WestToHead,
+                    WestToFeet = br.WestToFeet,
+                    PhotoTaken = br.PhotoTaken,
+                    Goods = br.Goods
+                });
+
+                burialContext.SaveChanges();
+
+                if (submitbtn == "finished")
+                {
+                    return View("BurialSummaryList");
+                }
+                else
+                {
+                    return View("AddBurialAdvanced");
+                }
+            }
+            else
+            {
+                return View("AddBurialEssential");
+            }
         }
 
 

@@ -10,7 +10,7 @@
 <h4>Essential Burial Information</h4>
 <br /> 
 
-<form method="post" asp-action="AddEssentialBurial">
+<form method="post" asp-action="AddBurialEssential">
 
     <!--Values from previous form-->
     <input type="hidden" asp-for="BurialNumber" value="@ViewBag.Burialnum" />
@@ -37,7 +37,7 @@
     <label asp-for="WestToFeet">West to Feet: </label>
     <input asp-for="WestToFeet" />
     <br />
-    <br />
+    <p style="color:red">@ViewBag.NeedPhoto</p>
     <label asp-for="PhotoTaken">Photo Taken? </label>
     <select asp-for="PhotoTaken">
         <option value="">Select One</option>
