@@ -30,11 +30,30 @@ namespace Intex.Controllers
             return View();
         }
 
-        public IActionResult BurialSummaryList(int pageNum = 1)
+        [HttpPost]
+        public IActionResult Filter(string[] filter)
         {
+            string id = string.Join("-", filter);
+
+            return RedirectToAction("BurialSummaryList", new { ID = id });
+        }
+
+
+        public IActionResult BurialSummaryList(string id, int pageNum = 1)
+        {
+            var filters = new Filters(id);
             int pageSize = 5;
             var SelectedBurials = burialContext.Burial;
-            var pageBurials = SelectedBurials.Skip((pageNum - 1) * pageSize).Take(pageSize);
+            IQueryable<Burial> query = SelectedBurials;
+
+            if (filters.HasHairColor)
+            {
+                query = query.Where(t => t.HairColorCode == filters.HairColor);
+            }
+
+
+
+            var pageBurials = query.Skip((pageNum - 1) * pageSize).Take(pageSize);
             List<BasicBurial> PackageBurials = new List<BasicBurial>();
 
 

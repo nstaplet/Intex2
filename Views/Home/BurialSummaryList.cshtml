@@ -16,8 +16,15 @@
 
             <div class="form-group">
                 <label>Hair Color:</label>
-                <select name="filter" class="form-control" asp-items="@(new SelectList(ViewBag.HairColor, "Hair_Color", "Hair Color", ViewBag.Filters.HairColor))">
+                <select name="filter">
                     <option value="all">All</option>
+                    <option value="K">Black</option>
+                    <option value="B">Brown</option>
+                    <option value="R">Red</option>
+                    <option value="A">Brown-Red</option>
+                    <option value="D">Blond</option>
+                    <option value="U">Unknown</option>
+
                 </select>
             </div>
 
