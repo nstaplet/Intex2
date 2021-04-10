@@ -418,7 +418,10 @@ namespace Intex.Models
 
             modelBuilder.Entity<Location>(entity =>
             {
-                entity.HasNoKey();
+                //entity.HasNoKey();
+                //entity.HasKey(e => new { e.MatchId, e.GameNumber, e.BowlerId });
+
+                entity.HasKey(e => new { e.LocationId });
 
                 entity.Property(e => e.BurialLocationEw)
                     .IsRequired()
