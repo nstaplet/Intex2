@@ -76,6 +76,8 @@ namespace Intex
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute("BurialListPageNum","{pagenum}", new { Controller = "Home", action = "BurialSummaryList" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

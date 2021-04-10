@@ -39,7 +39,7 @@ namespace Intex.Infrastructure
                 TagBuilder individualTag = new TagBuilder("a");
 
                 KeyValuePairs["pageNum"] = i;
-                individualTag.Attributes["href"] = urlHelp.Action("Index", KeyValuePairs);
+                individualTag.Attributes["href"] = urlHelp.Action("BurialSummaryList", KeyValuePairs);
                 individualTag.InnerHtml.Append(i.ToString());
 
                 finishedTag.InnerHtml.AppendHtml(individualTag);
