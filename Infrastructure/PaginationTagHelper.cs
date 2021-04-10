@@ -28,6 +28,14 @@ namespace Intex.Infrastructure
         [ViewContext]
         public ViewContext viewContext { get; set; }
 
+        public bool PageClassesEnabled { get; set; } = false;
+
+        public string PageClass { get; set; }
+
+        public string PageClassNormal { get; set; }
+
+        public string PageClassSelected { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             TagBuilder finishedTag = new TagBuilder("div");
@@ -40,6 +48,13 @@ namespace Intex.Infrastructure
 
                 KeyValuePairs["pageNum"] = i;
                 individualTag.Attributes["href"] = urlHelp.Action("BurialSummaryList", KeyValuePairs);
+
+                if (PageClassesEnabled)
+                {
+                    individualTag.AddCssClass(PageClass);
+                    individualTag.AddCssClass(i == PageInfo.CurrentPage ? PageClassSelected : PageClassNormal);
+                }
+
                 individualTag.InnerHtml.Append(i.ToString());
 
                 finishedTag.InnerHtml.AppendHtml(individualTag);
