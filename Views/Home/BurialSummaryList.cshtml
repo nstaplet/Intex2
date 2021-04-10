@@ -4,49 +4,49 @@
 @{
 }
 
-@model IEnumerable<BasicBurial>
- 
+@model BurialSummaryViewModel
+
 
 <h2>Burial Database Catalogue</h2>
 <br />
 
 
-@foreach (var b in Model)
+@foreach (var b in Model.Burials)
 {
-<div class="card">
-    <div class="card-header">
-    </div>
-    <div class="card-body">
-        <h5 class="card-title">Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h5>
-        <p class="card-text">
-            <div class="row">
-            <div class="col-4">
-                <b>Measurements (Meters)</b><br />
-                Depth: @b.SingleBurial.BurialDepthMeters meters<br />
-                Length: @b.SingleBurial.LengthOfRemains meters<br />
-                South to Head: @b.SingleBurial.SouthToHead<br />
-                South to Feet: @b.SingleBurial.SouthToFeet<br />
-                West to Head: @b.SingleBurial.WestToHead<br />
-                West to Feet: @b.SingleBurial.WestToFeet
-            </div>
-            <div class="col-4">
-                <b>Characteristics</b><br />
-                Age Category: @b.SingleBurial.AgeCodeSingle<br />
-                Estimated Age: @b.SingleBurial.EstimateAgeAtDeath<br />
-                C14 Estimated Average Age: @b.SingleBurial.Calibrated95Dateavg<br />
-                Gender: @b.SingleBurial.GenderCode<br />
-                Gender Method: @b.SingleBurial.BurialGenderMethod<br />
-                Hair color: @b.SingleBurial.HairColorCode
-            </div>
-            <div class="col-4">
-                <b>Additional</b><br />
-                Date Excavated: @b.SingleBurial.YearExcavated/@b.SingleBurial.MonthExcavated/@b.SingleBurial.DayExcavated<br />
-                Sample Taken: @b.SingleBurial.BurialSampleTaken<br />
-                Artifact Found: @b.SingleBurial.ArtifactFound<br />
-                Goods: @b.SingleBurial.Goods<br />
-                Photo Taken: @b.SingleBurial.PhotoTaken
-            </div>
-            </div>
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h5>
+            <p class="card-text">
+                <div class="row">
+                    <div class="col-4">
+                        <b>Measurements (Meters)</b><br />
+                        Depth: @b.SingleBurial.BurialDepthMeters meters<br />
+                        Length: @b.SingleBurial.LengthOfRemains meters<br />
+                        South to Head: @b.SingleBurial.SouthToHead<br />
+                        South to Feet: @b.SingleBurial.SouthToFeet<br />
+                        West to Head: @b.SingleBurial.WestToHead<br />
+                        West to Feet: @b.SingleBurial.WestToFeet
+                    </div>
+                    <div class="col-4">
+                        <b>Characteristics</b><br />
+                        Age Category: @b.SingleBurial.AgeCodeSingle<br />
+                        Estimated Age: @b.SingleBurial.EstimateAgeAtDeath<br />
+                        C14 Estimated Average Age: @b.SingleBurial.Calibrated95Dateavg<br />
+                        Gender: @b.SingleBurial.GenderCode<br />
+                        Gender Method: @b.SingleBurial.BurialGenderMethod<br />
+                        Hair color: @b.SingleBurial.HairColorCode
+                    </div>
+                    <div class="col-4">
+                        <b>Additional</b><br />
+                        Date Excavated: @b.SingleBurial.YearExcavated/@b.SingleBurial.MonthExcavated/@b.SingleBurial.DayExcavated<br />
+                        Sample Taken: @b.SingleBurial.BurialSampleTaken<br />
+                        Artifact Found: @b.SingleBurial.ArtifactFound<br />
+                        Goods: @b.SingleBurial.Goods<br />
+                        Photo Taken: @b.SingleBurial.PhotoTaken
+                    </div>
+                </div>
 
     </p>
         <div class="text-right">
@@ -58,8 +58,12 @@
         
 </div>
     </div>
-}
 
+
+}
+<div page-info="@Model.pageNumbering">
+
+</div>
 
 
 

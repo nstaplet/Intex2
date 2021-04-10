@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,8 +30,9 @@ namespace Intex.Controllers
             return View();
         }
 
-        public IActionResult BurialSummaryList()
+        public IActionResult BurialSummaryList(int pageNum = 0)
         {
+
             var SelectedBurials = burialContext.Burial;
 
             List<BasicBurial> PackageBurials = new List<BasicBurial>();
@@ -38,16 +40,31 @@ namespace Intex.Controllers
             foreach (var sb in SelectedBurials)
             {
 
+
                 PackageBurials.Add(
                     new BasicBurial
                     {
                         SingleBurial = sb,
                         SingleLocation = burialContext.Location.Where(b => b.LocationId == sb.LocationId).FirstOrDefault(),
-                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == sb.SublocationId).FirstOrDefault()
+                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == sb.SublocationId).FirstOrDefault(),
+
                     });
             }
+            int pageSize = 5;
 
-            return View(PackageBurials);
+            return View(new BurialSummaryViewModel
+            {
+                Burials = PackageBurials,
+
+                pageNumbering = new PageNumbering
+                {
+                    NumItemsPerPage = pageSize,
+                    CurrentPage = pageNum,
+
+                    TotalNumItems = 49
+                }
+
+            }) ;
         }
 
         public IActionResult BurialDetails(int id) 
