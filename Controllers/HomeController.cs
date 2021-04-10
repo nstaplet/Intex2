@@ -224,7 +224,7 @@ namespace Intex.Controllers
 
                 if (submitbtn == "finish")
                 {
-                    return View("BurialSummaryList");
+                    return View("BurialAddConfirmation");
                 }
                 else
                 {
@@ -235,6 +235,13 @@ namespace Intex.Controllers
             {
                 return View("AddBurialEssential");
             }
+        }
+
+
+        [HttpGet]
+        public IActionResult BurialAddConfirmation()
+        {
+            return View();
         }
 
 
