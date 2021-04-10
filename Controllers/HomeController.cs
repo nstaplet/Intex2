@@ -125,7 +125,8 @@ namespace Intex.Controllers
 
                 SingleBurial = burial,
                 SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
-                SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault()
+                SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault(),
+                SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
             };
 
             return View(basicBurial);
