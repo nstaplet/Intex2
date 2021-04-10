@@ -105,7 +105,16 @@ namespace Intex.Controllers
 
                 if (checkLoc == null)
                 {
-                    burialContext.Location.Add(lc);
+                    burialContext.Location.Add(new Location
+                    {
+                        LocationId = (burialContext.Location.Max(x => x.LocationId) + 1),
+                        BurialLocationNs = lc.BurialLocationNs,
+                        BurialLocationEw = lc.BurialLocationEw,
+                        LowValueNs = lc.LowValueNs,
+                        LowValueEw = lc.LowValueEw,
+                        HighValueNs = lc.HighValueNs,
+                        HighValueEw = lc.HighValueEw
+                    });
                     burialContext.SaveChanges();
 
                     //Grabs the id of the most recently added location
@@ -145,7 +154,7 @@ namespace Intex.Controllers
                 }
 
                 //Check to see if this burial record already exists
-                var burialexists = burialContext.Burial.Where(x => x.BurialId == burialnum && x.LocationId == locid && x.SublocationId == sublocid);
+                var burialexists = burialContext.Burial.Where(x => x.BurialId == burialnum && x.LocationId == locid && x.SublocationId == sublocid).FirstOrDefault();
 
                 if (burialexists != null)
                 {
