@@ -42,7 +42,7 @@ namespace Intex.Models
         {
             modelBuilder.Entity<Burial>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.BurialId });
 
                 entity.Property(e => e.AgeCodeSingle)
                     .HasColumnName("age_code_single")
@@ -371,7 +371,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<FieldBook>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.BookId });
 
                 entity.Property(e => e.BookId).HasColumnName("book_id");
 
@@ -383,7 +383,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<FieldBookEntry>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.BookId, e.BurialId });
 
                 entity.Property(e => e.BookId).HasColumnName("book_id");
 
@@ -405,7 +405,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<Image>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.ImageId });
 
                 entity.Property(e => e.BurialId).HasColumnName("burial_id");
 
@@ -418,9 +418,6 @@ namespace Intex.Models
 
             modelBuilder.Entity<Location>(entity =>
             {
-                //entity.HasNoKey();
-                //entity.HasKey(e => new { e.MatchId, e.GameNumber, e.BowlerId });
-
                 entity.HasKey(e => new { e.LocationId });
 
                 entity.Property(e => e.BurialLocationEw)
@@ -446,7 +443,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<Rack>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.RackId });
 
                 entity.Property(e => e.RackId).HasColumnName("rack_id");
 
@@ -458,7 +455,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<Sample>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.SampleId });
 
                 entity.Property(e => e.BurialId).HasColumnName("burial_id");
 
@@ -487,7 +484,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<ShelfLocation>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.ShelflocationId });
 
                 entity.Property(e => e.BurialId).HasColumnName("burial_id");
 
@@ -502,7 +499,7 @@ namespace Intex.Models
 
             modelBuilder.Entity<SubLocation>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => new { e.SublocationId });
 
                 entity.Property(e => e.AreaNumber).HasColumnName("area_number");
 
