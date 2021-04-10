@@ -165,11 +165,19 @@ namespace Intex.Controllers
                     ViewBag.Locid = locid;
                     ViewBag.Sublocid = sublocid;
                     ViewBag.Burialnum = burialnum;
-                    return View("AddNewBurial");
+                    return View("AddBurialEssential");
                 }
             }
 
             return View("AddBurialLocation");
+        }
+
+
+        //Action for getting to form for burial essentials
+        [HttpGet]
+        public IActionResult AddBurialEssential()
+        {
+            return View();
         }
 
 
