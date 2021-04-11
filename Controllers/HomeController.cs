@@ -571,6 +571,127 @@ namespace Intex.Controllers
         }
 
 
+        public IActionResult ViewSamples(int burialid, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = burialid;
+
+            var SampleList = burialContext.Sample.Where(x => x.BurialId == burialid).ToList();
+
+            if (SampleList.Count() == 0)
+            {
+                ViewBag.NoSamples = "There are currently no samples associated with this burial";
+            }
+
+            return View("ViewSamples", SampleList);
+        }
+
+        public IActionResult AddSample(int burialid, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = burialid;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SubmitSample(Sample s, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = s.BurialId;
+
+            if (ModelState.IsValid)
+            {
+                var checkmatch = burialContext.Sample.Where(x => x.BurialId == s.BurialId && x.SampleId == s.SampleId).FirstOrDefault();
+
+                if (checkmatch == null)
+                {
+                    burialContext.Sample.Add(new Sample
+                    {
+                        SampleId = s.SampleId,
+                        BurialId = s.BurialId,
+                        SampleRackNumber = s.SampleRackNumber,
+                        SampleBagNumber = s.SampleBagNumber,
+                        SampleDateYear = s.SampleDateYear,
+                        SampleDateMonth = s.SampleDateMonth,
+                        SampleDateDay = s.SampleDateDay,
+                        PreviouslySampled = s.PreviouslySampled,
+                        InitialsForSample = s.InitialsForSample,
+                        SampleNotes = s.SampleNotes
+                    });
+
+                    burialContext.SaveChanges();
+
+                    var SampleList = burialContext.Sample.Where(x => x.BurialId == s.BurialId).ToList();
+
+                    if (SampleList.Count() == 0)
+                    {
+                        ViewBag.NoSamples = "There are currently no samples associated with this burial";
+                    }
+
+                    return View("ViewSamples", SampleList);
+                }
+
+                else
+                {
+                    ViewBag.Exists = "This burial already has a sample with this sample number";
+                    return View("AddSample");
+                }
+                
+            }
+
+            return View("AddSample");
+        }
+
+        public IActionResult DeleteSample(int sampleid, int burialid, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = burialid;
+
+            Sample sampleToDelete = burialContext.Sample.Where(x => x.SampleId == sampleid && x.BurialId == burialid).FirstOrDefault();
+            burialContext.Remove(sampleToDelete);
+            burialContext.SaveChanges();
+
+            var SampleList = burialContext.Sample.Where(x => x.BurialId == burialid).ToList();
+
+            if (SampleList.Count() == 0)
+            {
+                ViewBag.NoSamples = "There are currently no samples associated with this burial";
+            }
+
+            return View("ViewSamples", SampleList);
+        }
+
+
+        public IActionResult EditSample(int sampleid, int burialid, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = burialid;
+
+            Sample SampleToEdit = burialContext.Sample.Where(x => x.SampleId == sampleid && x.BurialId == burialid).FirstOrDefault();
+
+            return View(SampleToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult EditSampleSubmit(Sample s, string burialname)
+        {
+            ViewBag.BurialName = burialname;
+            ViewBag.BurialId = s.BurialId;
+
+            if (ModelState.IsValid)
+            {
+                burialContext.Update(s);
+                burialContext.SaveChanges();
+
+                var SampleList = burialContext.Sample.Where(x => x.BurialId == s.BurialId).ToList();
+
+                return View("ViewSamples", SampleList);
+
+            }
+            return View("EditSample", s);
+        }
+
 
 
         //upload images to s3

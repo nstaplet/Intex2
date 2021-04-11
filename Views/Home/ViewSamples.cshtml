@@ -1,0 +1,77 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<Sample>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+
+
+<h4>@ViewBag.BurialName</h4>
+<h2>Samples Collected</h2>
+
+@if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
+{
+<form method="get" asp-action="AddSample">
+    <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+    <input type="hidden" name="burialid" value="@ViewBag.BurialId" />
+    <button class="blue_button" style="float:right" type="submit">Add Sample</button>
+</form>
+}
+<br />
+<br />
+
+<h4>@ViewBag.NoSamples</h4>
+
+@foreach (var s in Model)
+{
+    <div class="card">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Sample #@s.SampleId</h5>
+            <div class="row">
+                <p class="card-text">
+                    <div class="col-4">
+                        Collection Date: @s.SampleDateMonth/@s.SampleDateDay/@s.SampleDateYear<br />
+                        Rack Number: @s.SampleRackNumber<br />
+                        Bag Number: @s.SampleBagNumber<br />
+                        Previously Sampled? @s.PreviouslySampled<br />
+                    </div>
+                    <div class="col-4">
+                        Initials: @s.InitialsForSample<br />
+                        Sample Description Notes: <br />
+                        @s.SampleNotes
+                    </div>
+                </p>
+                <div class="col-4">
+                    <div class="row">
+                        @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
+                        {
+                            <form method="get" asp-action="EditSample">
+                                <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+                                <input type="hidden" name="burialid" value="@s.BurialId" />
+                                <input type="hidden" name="sampleid" value="@s.SampleId" />
+                                <button class="blue_button" type="submit" style="float:right">Edit</button>
+                            </form>
+                        }
+                    </div>
+                    <br />
+                    <div class="row">
+                        @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+                        {
+                            <form method="get" asp-action="DeleteSample" onclick="return confirm('Are you sure you want to delete this Sample?')">
+                                <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+                                <input type="hidden" name="burialid" value="@s.BurialId" />
+                                <input type="hidden" name="sampleid" value="@s.SampleId" />
+                                <button class="orange_button" type="submit" style="float:right">Delete</button>
+                            </form>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

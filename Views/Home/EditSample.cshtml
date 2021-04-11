@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Sample
+
+<h4>@ViewBag.BurialName</h4>
+<h2>Edit Sample #@Model.SampleId</h2>
+<br />
+
+<form method="post" asp-action="EditSampleSubmit" class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <input type="hidden" asp-for="BurialId" value="@ViewBag.Burialid" />
+            <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+            
+            <input type="hidden" asp-for="SampleId" value="@Model.SampleId" />
+
+            <label asp-for="SampleRackNumber">Rack Number: </label>
+            <input asp-for="SampleRackNumber" class="form-control" value="@Model.SampleRackNumber" />
+            <br />
+
+            <label asp-for="SampleBagNumber">Bag Number: </label>
+            <input asp-for="SampleBagNumber" class="form-control" value="@Model.SampleBagNumber" />
+            <br />
+
+            <label asp-for="SampleDateYear">Year Collected: </label>
+            <input asp-for="SampleDateYear" class="form-control" value="@Model.SampleDateYear" />
+            <br />
+
+            <label asp-for="SampleDateMonth">Month Collected: </label>
+            <input asp-for="SampleDateMonth" class="form-control" value="@Model.SampleDateMonth"/>
+            <br />
+
+            <label asp-for="SampleDateDay">Day Collected: </label>
+            <input asp-for="SampleDateDay" class="form-control" value="@Model.SampleDateDay"/>
+            <br />
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <label>Previously Sampled? </label><br />
+            @if (Model.PreviouslySampled == true)
+            {
+                <label for="true">Yes</label>
+                <input type="radio" asp-for="PreviouslySampled" value="true" id="true" checked />
+
+                <label for="false">No</label>
+                <input type="radio" asp-for="PreviouslySampled" value="false" id="false" />
+            }
+            else if (Model.PreviouslySampled == false)
+            {
+                <label for="true">Yes</label>
+                <input type="radio" asp-for="PreviouslySampled" value="true" id="true" />
+
+                <label for="false">No</label>
+                <input type="radio" asp-for="PreviouslySampled" value="false" id="false" checked />
+            }
+            else
+            {
+                <label for="true">Yes</label>
+                <input type="radio" asp-for="PreviouslySampled" value="true" id="true" />
+
+                <label for="false">No</label>
+                <input type="radio" asp-for="PreviouslySampled" value="false" id="false" />
+            }
+            <br /><br />
+
+
+            <label asp-for="InitialsForSample">Initials for the Sample: </label>
+            <input asp-for="InitialsForSample" class="form-control" value="@Model.InitialsForSample"/>
+            <br />
+
+            <label asp-for="SampleNotes">Sample Description Notes:</label><br />
+            <textarea asp-for="SampleNotes" class="form-control" value="@Model.SampleNotes"></textarea>
+
+            <br />
+
+            <div asp-validation-summary="All" style="color:red"></div>
+
+            <button type="submit" class="btn blue_button">Save Changes</button>
+
+        </div>
+    </div>
+</form>

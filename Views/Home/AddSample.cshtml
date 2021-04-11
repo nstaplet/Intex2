@@ -1,0 +1,75 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model Sample
+
+<h4>@ViewBag.BurialName</h4>
+<h2>Add New Sample</h2>
+<br />
+
+<p style="color:red"><b>@ViewBag.Exists</b></p>
+
+<form method="post" asp-action="SubmitSample" class="form-group">
+    <div class="row">
+        <div class="col-lg-6">
+
+            <input type="hidden" asp-for="BurialId" value="@ViewBag.Burialid" />
+            <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+
+            <label asp-for="SampleId">Sample Number: </label>
+            <input asp-for="SampleId" class="form-control" />
+            <br />
+
+            <label asp-for="SampleRackNumber">Rack Number: </label>
+            <input asp-for="SampleRackNumber" class="form-control" />
+            <br />
+
+            <label asp-for="SampleBagNumber">Bag Number: </label>
+            <input asp-for="SampleBagNumber" class="form-control" />
+            <br />
+
+            <label asp-for="SampleDateYear">Year Collected: </label>
+            <input asp-for="SampleDateYear" class="form-control" />
+            <br />
+
+            <label asp-for="SampleDateMonth">Month Collected: </label>
+            <input asp-for="SampleDateMonth" class="form-control" />
+            <br />
+
+            <label asp-for="SampleDateDay">Day Collected: </label>
+            <input asp-for="SampleDateDay" class="form-control" />
+            <br />
+
+        </div>
+
+        <div class="col-lg-6">
+
+            <label>Previously Sampled? </label><br />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="true">Yes</label>
+            <input type="radio" asp-for="PreviouslySampled" value="true" id="true" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="false">No</label>
+            <input type="radio" asp-for="PreviouslySampled" value="false" id="false" />
+
+            <br /><br />
+
+
+            <label asp-for="InitialsForSample">Initials for the Sample: </label>
+            <input asp-for="InitialsForSample" class="form-control" />
+            <br />
+
+            <label asp-for="SampleNotes">Sample Description Notes:</label><br />
+            <textarea asp-for="SampleNotes" class="form-control"></textarea>
+
+            <br />
+
+            <div asp-validation-summary="All" style="color:red"></div>
+
+            <button type="submit" class="btn blue_button">Save</button>
+
+        </div>
+    </div>
+</form>
