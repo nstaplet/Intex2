@@ -9,6 +9,7 @@
 <h4>Advanced Information</h4>
 <br />
 
+<div class="col-6">
 <form method="post" asp-action="SubmitAdvancedForm">
 
     <div asp-validation-summary="All"></div>
@@ -22,30 +23,30 @@
     <input type="hidden" asp-for="BurialNumber" value="@Model.BurialNumber" />
 
     <div class="card">
-        <div class="card-body">
+        <div class="card-body form-group ">
             Measurements (Enter in Meters)
             <br /><br />
             <label asp-for="LengthOfRemains">Length of Remains: </label>
-            <input asp-for="LengthOfRemains" value="@Model.LengthOfRemains" />
+            <input asp-for="LengthOfRemains" value="@Model.LengthOfRemains" class="form-control" />
             <br />
             <label asp-for="BurialDepthMeters">Burial Depth: </label>
-            <input asp-for="BurialDepthMeters" value="@Model.BurialDepthMeters" />
+            <input asp-for="BurialDepthMeters" value="@Model.BurialDepthMeters" class="form-control" />
             <br />
             <label asp-for="SouthToHead">South to Head: </label>
-            <input asp-for="SouthToHead" value="@Model.SouthToHead" />
+            <input asp-for="SouthToHead" value="@Model.SouthToHead" class="form-control" />
             <br />
             <label asp-for="SouthToFeet">South to Feet: </label>
-            <input asp-for="SouthToFeet" value="@Model.SouthToFeet" />
+            <input asp-for="SouthToFeet" value="@Model.SouthToFeet" class="form-control" />
             <br />
             <label asp-for="WestToHead">West to Head: </label>
-            <input asp-for="WestToHead" value="@Model.WestToHead" />
+            <input asp-for="WestToHead" value="@Model.WestToHead" class="form-control" />
             <br />
             <label asp-for="WestToFeet">West to Feet: </label>
-            <input asp-for="WestToFeet" value="@Model.WestToFeet" />
+            <input asp-for="WestToFeet" value="@Model.WestToFeet" class="form-control" />
             <br />
             <p style="color:red">@ViewBag.NeedPhoto</p>
-            <label asp-for="PhotoTaken">Photo Taken? </label>
-            <select asp-for="PhotoTaken">
+            <label asp-for="PhotoTaken">Photo Taken?</label>
+            <select asp-for="PhotoTaken" class="form-control">
                 @if (Model.PhotoTaken == null)
                 {
                     <option value="" selected>Select One</option>
@@ -68,7 +69,7 @@
             <br />
 
             <label asp-for="Goods">Burial Goods? </label>
-            <select asp-for="Goods">
+            <select asp-for="Goods" class="form-control">
                 @if (Model.Goods == null)
                 {
                     <option value="" selected>Select One</option>
@@ -98,14 +99,14 @@
 
     <!--Here is where the advanced data can be added-->
     <label asp-for="BurialSituationNotes">Burial Situation Notes: </label><br />
-    <textarea asp-for="BurialSituationNotes" value="@Model.BurialSituationNotes"></textarea>
+    <textarea asp-for="BurialSituationNotes" value="@Model.BurialSituationNotes" class="form-control"></textarea>
     <br />
     <label asp-for="BurialPreservationNotes">Burial Preservation Notes: : </label><br />
-    <textarea asp-for="BurialPreservationNotes" value="@Model.BurialPreservationNotes"></textarea>
+    <textarea asp-for="BurialPreservationNotes" value="@Model.BurialPreservationNotes" class="form-control"></textarea>
     <br />
 
     <label asp-for="PreservationIndex">Preservation Index: </label>
-    <select asp-for="PreservationIndex">
+    <select asp-for="PreservationIndex" class="form-control">
         @if (Model.PreservationIndex == null)
         {
             <option value="" selected></option>
@@ -164,7 +165,7 @@
     <br />
 
     <label asp-for="BurialWrapping">Burial Wrapping Code: </label>
-    <select asp-for="BurialWrapping">
+    <select asp-for="BurialWrapping" class="form-control">
         @if (Model.BurialWrapping == null)
         {
             <option value="" selected></option>
@@ -209,11 +210,11 @@
     <br />
 
     <label asp-for="SampleNumber">Sample Number: </label>
-    <input asp-for="SampleNumber" value="@Model.SampleNumber" />
+    <input asp-for="SampleNumber" value="@Model.SampleNumber" class="form-control" />
     <br />
 
     <label asp-for="BurialGenderMethod">Gender Method: </label>
-    <select asp-for="BurialGenderMethod">
+    <select asp-for="BurialGenderMethod" class="form-control">
         @if (Model.BurialGenderMethod == null)
         {
             <option value="" selected></option>
@@ -246,7 +247,7 @@
     <br />
 
     <label asp-for="SexBySkull">Sex Determined By Skull: </label>
-    <select asp-for="SexBySkull">
+    <select asp-for="SexBySkull" class="form-control">
         @if (Model.SexBySkull == null)
         {
             <option value="" selected></option>
@@ -280,7 +281,7 @@
     <br />
 
     <label asp-for="GenderCode">Gender Code: </label>
-    <select asp-for="GenderCode">
+    <select asp-for="GenderCode" class="form-control">
         @if (Model.GenderCode == null)
         {
             <option value="" selected></option>
@@ -313,7 +314,7 @@
     <br />
 
     <label asp-for="GenderGe">Gender by Giles/Elliot Method: </label>
-    <select asp-for="GenderGe">
+    <select asp-for="GenderGe" class="form-control">
         @if (Model.GenderGe == null)
         {
             <option value="" selected></option>
@@ -346,11 +347,11 @@
     <br />
 
     <label asp-for="GeFunctionTotal">Giles/Elliot Function Total: </label>
-    <input asp-for="GeFunctionTotal" value="@Model.GeFunctionTotal" />
+    <input asp-for="GeFunctionTotal" value="@Model.GeFunctionTotal" class="form-control" />
     <br />
 
     <label asp-for="GenderBodyCol">Gender by Measurements: </label>
-    <select asp-for="GenderBodyCol">
+    <select asp-for="GenderBodyCol" class="form-control">
         @if (Model.GenderBodyCol == null)
         {
             <option value="" selected></option>
@@ -384,7 +385,7 @@
     <br />
 
     <label asp-for="VentralArc">Ventral Arc: </label>
-    <select asp-for="VentralArc">
+    <select asp-for="VentralArc" class="form-control">
         @if (Model.VentralArc == null)
         {
             <option value="" selected></option>
@@ -429,7 +430,7 @@
     <br />
 
     <label asp-for="SubpubicAngle">Subpubic Angle: </label>
-    <select asp-for="SubpubicAngle">
+    <select asp-for="SubpubicAngle" class="form-control">
         @if (Model.SubpubicAngle == null)
         {
             <option value="" selected></option>
@@ -474,7 +475,7 @@
     <br />
 
     <label asp-for="SciaticNotch">Sciatic Notch: </label>
-    <select asp-for="SciaticNotch">
+    <select asp-for="SciaticNotch" class="form-control">
         @if (Model.SciaticNotch == null)
         {
             <option value="" selected></option>
@@ -519,7 +520,7 @@
     <br />
 
     <label asp-for="PubicBone">Pubic Bone: </label>
-    <select asp-for="PubicBone">
+    <select asp-for="PubicBone" class="form-control">
         @if (Model.PubicBone == null)
         {
             <option value="" selected></option>
@@ -564,7 +565,7 @@
     <br />
 
     <label asp-for="PreaurSulcus">Preaur Sulcus: </label>
-    <select asp-for="PreaurSulcus">
+    <select asp-for="PreaurSulcus" class="form-control">
         @if (Model.PreaurSulcus == null)
         {
             <option value="" selected></option>
@@ -609,7 +610,7 @@
     <br />
 
     <label asp-for="MedialIpRamus">Medial IP Ramus: </label>
-    <select asp-for="MedialIpRamus">
+    <select asp-for="MedialIpRamus" class="form-control">
         @if (Model.MedialIpRamus == null)
         {
             <option value="" selected></option>
@@ -654,7 +655,7 @@
     <br />
 
     <label asp-for="DorsalPitting">Dorsal Pitting: </label>
-    <select asp-for="DorsalPitting">
+    <select asp-for="DorsalPitting" class="form-control">
         @if (Model.DorsalPitting == null)
         {
             <option value="" selected></option>
@@ -699,7 +700,7 @@
     <br />
 
     <label asp-for="Robust">Robust: </label>
-    <select asp-for="Robust">
+    <select asp-for="Robust" class="form-control">
         @if (Model.Robust == null)
         {
             <option value="" selected></option>
@@ -744,7 +745,7 @@
     <br />
 
     <label asp-for="SupraorbitalRidges">Supraorbital Ridges: </label>
-    <select asp-for="SupraorbitalRidges">
+    <select asp-for="SupraorbitalRidges" class="form-control">
         @if (Model.SupraorbitalRidges == null)
         {
             <option value="" selected></option>
@@ -789,7 +790,7 @@
     <br />
 
     <label asp-for="OrbitEdge">Orbit Edge: </label>
-    <select asp-for="OrbitEdge">
+    <select asp-for="OrbitEdge" class="form-control">
         @if (Model.OrbitEdge == null)
         {
             <option value="" selected></option>
@@ -834,7 +835,7 @@
     <br />
 
     <label asp-for="ParietalBossing">Parietal Bossing: </label>
-    <select asp-for="ParietalBossing">
+    <select asp-for="ParietalBossing" class="form-control">
         @if (Model.ParietalBossing == null)
         {
             <option value="" selected></option>
@@ -879,7 +880,7 @@
     <br />
 
     <label asp-for="Gonian">Gonian: </label>
-    <select asp-for="Gonian">
+    <select asp-for="Gonian" class="form-control">
         @if (Model.Gonian == null)
         {
             <option value="" selected></option>
@@ -924,7 +925,7 @@
     <br />
 
     <label asp-for="NuchalCrest">Nuchal Crest: </label>
-    <select asp-for="NuchalCrest">
+    <select asp-for="NuchalCrest" class="form-control">
         @if (Model.NuchalCrest == null)
         {
             <option value="" selected></option>
@@ -969,7 +970,7 @@
     <br />
 
     <label asp-for="ZygomaticCrest">Zygomatic Crest: </label>
-    <select asp-for="ZygomaticCrest">
+    <select asp-for="ZygomaticCrest" class="form-control">
         @if (Model.ZygomaticCrest == null)
         {
             <option value="" selected></option>
@@ -1014,7 +1015,7 @@
     <br />
 
     <label asp-for="BasilarSuture">Basilar Suture: </label>
-    <select asp-for="BasilarSuture">
+    <select asp-for="BasilarSuture" class="form-control">
         @if (Model.BasilarSuture == null)
         {
             <option value="" selected></option>
@@ -1037,7 +1038,7 @@
     <br />
 
     <label asp-for="CranialSuture">Cranial Suture: </label>
-    <select asp-for="CranialSuture">
+    <select asp-for="CranialSuture" class="form-control">
         @if (Model.CranialSuture == null)
         {
             <option value="" selected></option>
@@ -1060,48 +1061,48 @@
     <br />
 
     <label asp-for="MaximumCranialLength">Maximum Cranial Length: </label>
-    <input asp-for="MaximumCranialLength" value="@Model.MaximumCranialLength" />
+    <input asp-for="MaximumCranialLength" value="@Model.MaximumCranialLength" class="form-control" />
     <br />
 
     <label asp-for="MaximumCranialBreadth">Maximum Cranial Breadth: </label>
-    <input asp-for="MaximumCranialBreadth" value="@Model.MaximumCranialBreadth" />
+    <input asp-for="MaximumCranialBreadth" value="@Model.MaximumCranialBreadth" class="form-control" />
     <br />
 
     <label asp-for="FemurHead">Femur Head: </label>
-    <input asp-for="FemurHead" value="@Model.FemurHead" />
+    <input asp-for="FemurHead" value="@Model.FemurHead" class="form-control" />
     <br />
 
     <label asp-for="FemurDiameter">Femur Diameter: </label>
-    <input asp-for="FemurDiameter" value="@Model.FemurDiameter" />
+    <input asp-for="FemurDiameter" value="@Model.FemurDiameter" class="form-control" />
     <br />
 
     <label asp-for="FemurLength">Femur Length: </label>
-    <input asp-for="FemurLength" value="@Model.FemurLength" />
+    <input asp-for="FemurLength" value="@Model.FemurLength" class="form-control" />
     <br />
 
 
     <label asp-for="ForemanMagnum">Foreman Magnum: </label>
-    <input asp-for="ForemanMagnum" value="@Model.ForemanMagnum" />
+    <input asp-for="ForemanMagnum" value="@Model.ForemanMagnum" class="form-control" />
     <br />
 
     <label asp-for="HumerusHead">Humerus Head: </label>
-    <input asp-for="HumerusHead" value="@Model.Humerus" />
+    <input asp-for="HumerusHead" value="@Model.Humerus" class="form-control" />
     <br />
 
     <label asp-for="Humerus">Humerus: </label>
-    <input asp-for="Humerus" value="@Model.Humerus" />
+    <input asp-for="Humerus" value="@Model.Humerus" class="form-control" />
     <br />
 
     <label asp-for="HumerusLength">Humerus Length: </label>
-    <input asp-for="HumerusLength" value="@Model.HumerusLength" />
+    <input asp-for="HumerusLength" value="@Model.HumerusLength" class="form-control" />
     <br />
 
     <label asp-for="TibiaLength">Tibia Length: </label>
-    <input asp-for="TibiaLength" value="@Model.TibiaLength" />
+    <input asp-for="TibiaLength" value="@Model.TibiaLength" class="form-control" />
     <br />
 
     <label asp-for="Osteophytosis">Osteophytosis: </label>
-    <select asp-for="Osteophytosis">
+    <select asp-for="Osteophytosis" class="form-control">
         @if (Model.Osteophytosis == null)
         {
             <option value="" selected></option>
@@ -1146,7 +1147,7 @@
     <br />
 
     <label asp-for="PubicSymphysis">Pubic Symphysis: </label>
-    <select asp-for="PubicSymphysis">
+    <select asp-for="PubicSymphysis" class="form-control">
         @if (Model.PubicSymphysis == null)
         {
             <option value="" selected></option>
@@ -1205,52 +1206,52 @@
     <br />
 
     <label asp-for="BoneLength">Bone Length: </label>
-    <input asp-for="BoneLength" value="@Model.BoneLength" />
+    <input asp-for="BoneLength" value="@Model.BoneLength" class="form-control" />
     <br />
 
     <label asp-for="MedialClavicle">Medial Clavicle: </label>
-    <input asp-for="MedialClavicle" value="@Model.MedialClavicle" />
+    <input asp-for="MedialClavicle" value="@Model.MedialClavicle" class="form-control" />
     <br />
 
     <label asp-for="IliacCrest">Iliac Crest: </label>
-    <input asp-for="IliacCrest" value="@Model.IliacCrest" />
+    <input asp-for="IliacCrest" value="@Model.IliacCrest" class="form-control" />
     <br />
 
     <label asp-for="BasionBregmaHeight">Basion Bregma Height: </label>
-    <input asp-for="BasionBregmaHeight" value="@Model.BasionBregmaHeight" />
+    <input asp-for="BasionBregmaHeight" value="@Model.BasionBregmaHeight" class="form-control" />
     <br />
 
     <label asp-for="BasionNasion">Basion Nasion: </label>
-    <input asp-for="BasionNasion" value="@Model.BasionNasion" />
+    <input asp-for="BasionNasion" value="@Model.BasionNasion" class="form-control" />
     <br />
 
     <label asp-for="BasionProsthionLength">Basion Prosthion Length: </label>
-    <input asp-for="BasionProsthionLength" value="@Model.BasionProsthionLength" />
+    <input asp-for="BasionProsthionLength" value="@Model.BasionProsthionLength" class="form-control" />
     <br />
 
     <label asp-for="BizygomaticDiameter">Bizygomatic Diameter: </label>
-    <input asp-for="BizygomaticDiameter" value="@Model.BizygomaticDiameter" />
+    <input asp-for="BizygomaticDiameter" value="@Model.BizygomaticDiameter" class="form-control" />
     <br />
 
     <label asp-for="NasionProsthion">Nasion Prosthion: </label>
-    <input asp-for="NasionProsthion" value="@Model.NasionProsthion" />
+    <input asp-for="NasionProsthion" value="@Model.NasionProsthion" class="form-control" />
     <br />
 
     <label asp-for="MaximumNasalBreadth">Maximum Nasal Breadth: </label>
-    <input asp-for="MaximumNasalBreadth" value="@Model.MaximumNasalBreadth" />
+    <input asp-for="MaximumNasalBreadth" value="@Model.MaximumNasalBreadth" class="form-control" />
     <br />
 
     <label asp-for="InterorbitalBreadth">Interorbital Breadth: </label>
-    <input asp-for="InterorbitalBreadth" value="@Model.InterorbitalBreadth" />
+    <input asp-for="InterorbitalBreadth" value="@Model.InterorbitalBreadth" class="form-control" />
     <br />
     <br />
 
     <label asp-for="HairColor">Hair Color: </label>
-    <input asp-for="HairColor" value="@Model.HairColor" />
+    <input asp-for="HairColor" value="@Model.HairColor" class="form-control" />
     <br />
 
     <label asp-for="HairColorCode">Hair Color Code: </label>
-    <select asp-for="HairColorCode">
+    <select asp-for="HairColorCode" class="form-control">
         @if (Model.HairColorCode == null)
         {
             <option value="" selected></option>
@@ -1329,25 +1330,25 @@
     @if (Model.BurialSampleTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" />
+        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" />
+        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.BurialSampleTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" />
+        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" />
+        <input type="radio" asp-for="BurialSampleTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="BurialSampleTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1355,25 +1356,25 @@
     @if (Model.HairTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="HairTaken" value="true" id="true" />
+        <input type="radio" asp-for="HairTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="HairTaken" value="false" id="false" />
+        <input type="radio" asp-for="HairTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.HairTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="HairTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="HairTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="HairTaken" value="false" id="false" />
+        <input type="radio" asp-for="HairTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="HairTaken" value="true" id="true" />
+        <input type="radio" asp-for="HairTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="HairTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="HairTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1381,25 +1382,25 @@
     @if (Model.SoftTissueTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" />
+        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" />
+        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.SoftTissueTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" />
+        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" />
+        <input type="radio" asp-for="SoftTissueTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="SoftTissueTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1407,25 +1408,25 @@
     @if (Model.BoneTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BoneTaken" value="true" id="true" />
+        <input type="radio" asp-for="BoneTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BoneTaken" value="false" id="false" />
+        <input type="radio" asp-for="BoneTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.BoneTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BoneTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="BoneTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BoneTaken" value="false" id="false" />
+        <input type="radio" asp-for="BoneTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="BoneTaken" value="true" id="true" />
+        <input type="radio" asp-for="BoneTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="BoneTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="BoneTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1433,25 +1434,25 @@
     @if (Model.ToothTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToothTaken" value="true" id="true" />
+        <input type="radio" asp-for="ToothTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToothTaken" value="false" id="false" />
+        <input type="radio" asp-for="ToothTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.ToothTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToothTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="ToothTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToothTaken" value="false" id="false" />
+        <input type="radio" asp-for="ToothTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToothTaken" value="true" id="true" />
+        <input type="radio" asp-for="ToothTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToothTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="ToothTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1459,69 +1460,69 @@
     @if (Model.TextileTaken == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TextileTaken" value="true" id="true" />
+        <input type="radio" asp-for="TextileTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TextileTaken" value="false" id="false" />
+        <input type="radio" asp-for="TextileTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.TextileTaken == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TextileTaken" value="true" id="true" checked />
+        <input type="radio" asp-for="TextileTaken" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TextileTaken" value="false" id="false" />
+        <input type="radio" asp-for="TextileTaken" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TextileTaken" value="true" id="true" />
+        <input type="radio" asp-for="TextileTaken" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TextileTaken" value="false" id="false" checked />
+        <input type="radio" asp-for="TextileTaken" value="false" id="false" checked class="form-control" />
         <br />
     }
 
     <label asp-for="DescriptionOfTaken">Description of Taken: </label>
-    <input asp-for="DescriptionOfTaken" value="@Model.DescriptionOfTaken" />
+    <input asp-for="DescriptionOfTaken" value="@Model.DescriptionOfTaken" class="form-control" />
     <br />
 
     <label asp-for="ArtifactFound">Artifact Found: </label>
     @if (Model.ArtifactFound == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ArtifactFound" value="true" id="true" />
+        <input type="radio" asp-for="ArtifactFound" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ArtifactFound" value="false" id="false" />
+        <input type="radio" asp-for="ArtifactFound" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.ArtifactFound == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ArtifactFound" value="true" id="true" checked />
+        <input type="radio" asp-for="ArtifactFound" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ArtifactFound" value="false" id="false" />
+        <input type="radio" asp-for="ArtifactFound" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ArtifactFound" value="true" id="true" />
+        <input type="radio" asp-for="ArtifactFound" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ArtifactFound" value="false" id="false" checked />
+        <input type="radio" asp-for="ArtifactFound" value="false" id="false" checked class="form-control" />
         <br />
     }
 
     <label asp-for="ArtifactsDescription">Artifacts Description: </label>
-    <input asp-for="ArtifactsDescription" value="@Model.ArtifactsDescription" />
+    <input asp-for="ArtifactsDescription" value="@Model.ArtifactsDescription" class="form-control" />
     <br />
     <br />
 
     <label asp-for="EstimateAgeAtDeath">Estimated Age at Death: </label>
-    <input asp-for="EstimateAgeAtDeath" value="@Model.EstimateAgeAtDeath" />
+    <input asp-for="EstimateAgeAtDeath" value="@Model.EstimateAgeAtDeath" class="form-control" />
     <br />
 
     <label asp-for="BurialAgeMethod">Burail Age Method: </label>
-    <select asp-for="BurialGenderMethod">
+    <select asp-for="BurialGenderMethod" class="form-control">
         @if (Model.BurialAgeMethod == null)
         {
             <option value="" selected></option>
@@ -1555,11 +1556,11 @@
     <br />
 
     <label asp-for="AgeSkull">Age Based on Skull: </label>
-    <input asp-for="AgeSkull" value="@Model.AgeSkull" />
+    <input asp-for="AgeSkull" value="@Model.AgeSkull" class="form-control" />
     <br />
 
     <label asp-for="BurialAdultChild">Adult or Child: </label>
-    <select asp-for="BurialAdultChild">
+    <select asp-for="BurialAdultChild" class="form-control">
         @if (Model.BurialAdultChild == null)
         {
             <option value="" selected></option>
@@ -1592,7 +1593,7 @@
     <br />
 
     <label asp-for="AgeCodeSingle">Age Code: </label>
-    <select asp-for="AgeCodeSingle">
+    <select asp-for="AgeCodeSingle" class="form-control">
         @if (Model.AgeCodeSingle == null)
         {
             <option value="" selected></option>
@@ -1651,11 +1652,11 @@
     <br />
 
     <label asp-for="EstimateLivingStature">Estimated Living Stature: </label>
-    <input asp-for="EstimateLivingStature" value="@Model.EstimateLivingStature" />
+    <input asp-for="EstimateLivingStature" value="@Model.EstimateLivingStature" class="form-control" />
     <br />
 
     <label asp-for="ToothAttrition">Tooth Attrition: </label>
-    <select asp-for="ToothAttrition">
+    <select asp-for="ToothAttrition" class="form-control">
         @if (Model.ToothAttrition == null)
         {
             <option value="" selected></option>
@@ -1714,11 +1715,11 @@
     <br />
 
     <label asp-for="ToothEruption">Tooth Eruption: </label>
-    <input asp-for="ToothEruption" value="@Model.ToothEruption" />
+    <input asp-for="ToothEruption" value="@Model.ToothEruption" class="form-control" />
     <br />
 
     <label asp-for="PathologyAnomalies">Pathology Anomamlies: </label>
-    <input asp-for="PathologyAnomalies" value="@Model.PathologyAnomalies" />
+    <input asp-for="PathologyAnomalies" value="@Model.PathologyAnomalies" class="form-control" />
     <br />
 
 
@@ -1726,81 +1727,81 @@
     @if (Model.EpiphysealUnion == null)
     {
         <label for="Yes">Yes</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" />
+        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" class="form-control" />
         <label for="No">No</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" />
+        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" class="form-control" />
         <br />
     }
     else if (Model.EpiphysealUnion == "Yes")
     {
         <label for="Yes">Yes</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" checked />
+        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" checked class="form-control" />
         <label for="No">No</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" />
+        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" class="form-control" />
         <br />
     }
     else
     {
         <label for="Yes">Yes</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" />
+        <input type="radio" asp-for="EpiphysealUnion" value="Yes" id="Yes" class="form-control" />
         <label for="No">No</label>
-        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" checked />
+        <input type="radio" asp-for="EpiphysealUnion" value="No" id="No" checked class="form-control" />
         <br />
     }
     <br />
 
     <label asp-for="YearExcavated">Year Excavated: </label>
-    <input asp-for="YearExcavated" value="@Model.YearExcavated" />
+    <input asp-for="YearExcavated" value="@Model.YearExcavated" class="form-control" />
 
     <label asp-for="MonthExcavated">Month Excavated: </label>
-    <input asp-for="MonthExcavated" value="@Model.MonthExcavated" />
+    <input asp-for="MonthExcavated" value="@Model.MonthExcavated" class="form-control" />
 
     <label asp-for="DayExcavated">Day Excavated: </label>
-    <input asp-for="DayExcavated" value="@Model.DayExcavated" />
+    <input asp-for="DayExcavated" value="@Model.DayExcavated" class="form-control" />
     <br />
 
     <label asp-for="YearOnSkull">Year On Skull: </label>
-    <input asp-for="YearOnSkull" value="@Model.YearOnSkull" />
+    <input asp-for="YearOnSkull" value="@Model.YearOnSkull" class="form-control" />
 
     <label asp-for="MonthOnSkull">Month On Skull: </label>
-    <input asp-for="MonthOnSkull" value="@Model.MonthOnSkull" />
+    <input asp-for="MonthOnSkull" value="@Model.MonthOnSkull" class="form-control" />
 
     <label asp-for="DayOnSkull">Day On Skull: </label>
-    <input asp-for="DayOnSkull" value="@Model.DayOnSkull" />
+    <input asp-for="DayOnSkull" value="@Model.DayOnSkull" class="form-control" />
     <br />
 
     <label asp-for="BodyAnalysis">Year of Body Analysis: </label>
-    <input asp-for="BodyAnalysis" value="@Model.BodyAnalysis" />
+    <input asp-for="BodyAnalysis" value="@Model.BodyAnalysis" class="form-control" />
     <br />
 
     <label asp-for="ToBeConfirmed">To Be Confirmed: </label>
     @if (Model.ToBeConfirmed == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" />
+        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" />
+        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.ToBeConfirmed == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" checked />
+        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" />
+        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" />
+        <input type="radio" asp-for="ToBeConfirmed" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" checked />
+        <input type="radio" asp-for="ToBeConfirmed" value="false" id="false" checked class="form-control" />
         <br />
     }
 
     <label asp-for="BurialDirection">Burial Direction </label>
-    <select asp-for="BurialDirection">
+    <select asp-for="BurialDirection" class="form-control">
         @if (Model.BurialDirection == null)
         {
             <option value="" selected></option>
@@ -1826,17 +1827,17 @@
     @if (Model.SkullTrauma == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SkullTrauma" value="true" id="true" />
+        <input type="radio" asp-for="SkullTrauma" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SkullTrauma" value="false" id="false" />
+        <input type="radio" asp-for="SkullTrauma" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.SkullTrauma == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SkullTrauma" value="true" id="true" checked />
+        <input type="radio" asp-for="SkullTrauma" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SkullTrauma" value="false" id="false" />
+        <input type="radio" asp-for="SkullTrauma" value="false" id="false" class="form-control" />
         <br />
     }
     else
@@ -1844,7 +1845,7 @@
         <label for="true">Yes</label>
         <input type="radio" asp-for="SkullTrauma" value="true" id="true" />
         <label for="false">No</label>
-        <input type="radio" asp-for="SkullTrauma" value="false" id="false" checked />
+        <input type="radio" asp-for="SkullTrauma" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1852,25 +1853,25 @@
     @if (Model.PostcraniaTrauma == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" />
+        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" />
+        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.PostcraniaTrauma == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" checked />
+        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" />
+        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" />
+        <input type="radio" asp-for="PostcraniaTrauma" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" checked />
+        <input type="radio" asp-for="PostcraniaTrauma" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1879,25 +1880,25 @@
     @if (Model.CribraOrbitala == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" />
+        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" />
+        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.CribraOrbitala == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" checked />
+        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" />
+        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" />
+        <input type="radio" asp-for="CribraOrbitala" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" checked />
+        <input type="radio" asp-for="CribraOrbitala" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1905,34 +1906,34 @@
     @if (Model.PoroticHyperostosis == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" />
+        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" />
+        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.PoroticHyperostosis == "true")
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" checked />
+        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" />
+        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" />
+        <input type="radio" asp-for="PoroticHyperostosis" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" checked />
+        <input type="radio" asp-for="PoroticHyperostosis" value="false" id="false" checked class="form-control" />
         <br />
     }
 
     <label asp-for="PoroticHyperostosisLocations">Porotic Hyperostosis Locations: </label>
-    <input asp-for="PoroticHyperostosisLocations" value="@Model.PoroticHyperostosisLocations" />
+    <input asp-for="PoroticHyperostosisLocations" value="@Model.PoroticHyperostosisLocations" class="form-control" />
     <br />
 
     <label asp-for="MetopicSuture">Metopic Suture: </label>
-    <select asp-for="MetopicSuture">
+    <select asp-for="MetopicSuture" class="form-control">
         @if (Model.MetopicSuture == null)
         {
             <option value="" selected></option>
@@ -1958,25 +1959,25 @@
     @if (Model.ButtonOsteoma == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" />
+        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" />
+        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.ButtonOsteoma == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" checked />
+        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" />
+        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" />
+        <input type="radio" asp-for="ButtonOsteoma" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" checked />
+        <input type="radio" asp-for="ButtonOsteoma" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -1984,25 +1985,25 @@
     @if (Model.TemporalMandibularJointOsteoarthritis == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.TemporalMandibularJointOsteoarthritis == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" checked />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" checked />
+        <input type="radio" asp-for="TemporalMandibularJointOsteoarthritis" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -2010,41 +2011,41 @@
     @if (Model.LinearHypoplasiaEnamel == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" class="form-control" />
         <br />
     }
     else if (Model.LinearHypoplasiaEnamel == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" checked />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" checked class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" checked />
+        <input type="radio" asp-for="LinearHypoplasiaEnamel" value="false" id="false" checked class="form-control" />
         <br />
     }
 
     <label asp-for="OsteologyUnknownComment">Osteology Unknown Comment: </label><br />
-    <textarea asp-for="OsteologyUnknownComment" value="@Model.OsteologyUnknownComment"></textarea>
+    <textarea asp-for="OsteologyUnknownComment" value="@Model.OsteologyUnknownComment" class="form-control"></textarea>
     <br />
 
     <label asp-for="OsteologyNotes">Osteology Notes: </label><br />
-    <textarea asp-for="OsteologyNotes" value="@Model.OsteologyNotes"></textarea>
+    <textarea asp-for="OsteologyNotes" value="@Model.OsteologyNotes" class="form-control"></textarea>
     <br />
 
     <label asp-for="SkullAtMagazine">Skull At Magazine: </label>
     @if (Model.SkullAtMagazine == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" />
+        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" class="form-control"/>
         <label for="false">No</label>
         <input type="radio" asp-for="SkullAtMagazine" value="false" id="false" />
         <br />
@@ -2052,17 +2053,17 @@
     else if (Model.SkullAtMagazine == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" checked />
+        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" checked class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="SkullAtMagazine" value="false" id="false" />
+        <input type="radio" asp-for="SkullAtMagazine" value="false" id="false" class="form-control" />
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" />
+        <input type="radio" asp-for="SkullAtMagazine" value="true" id="true" class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="SkullAtMagazine" value="false" id="false" checked />
+        <input type="radio" asp-for="SkullAtMagazine" value="false" id="false" checked class="form-control" />
         <br />
     }
 
@@ -2070,113 +2071,114 @@
     @if (Model.PostcraniaAtMagazine == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" class="form-control" />
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" class="form-control"/>
         <br />
     }
     else if (Model.PostcraniaAtMagazine == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" checked />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" checked class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" class="form-control"/>
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="true" id="true" class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" checked />
+        <input type="radio" asp-for="PostcraniaAtMagazine" value="false" id="false" checked class="form-control"/>
         <br />
     }
     <br />
 
     <label asp-for="RackNumber14c">14C Rack Number: </label>
-    <input asp-for="RackNumber14c" value="@Model.RackNumber14c" />
+    <input asp-for="RackNumber14c" value="@Model.RackNumber14c" class="form-control"/>
     <br />
 
     <label asp-for="TubeNumber">14C Tube Number: </label>
-    <input asp-for="TubeNumber" value="@Model.TubeNumber" />
+    <input asp-for="TubeNumber" value="@Model.TubeNumber" class="form-control"/>
     <br />
 
     <label asp-for="Description14c">14C Description: </label>
-    <input asp-for="Description14c" value="@Model.Description14c" />
+    <input asp-for="Description14c" value="@Model.Description14c" class="form-control"/>
     <br />
 
     <label asp-for="SizeInMl">Size in ml: </label>
-    <input asp-for="SizeInMl" value="@Model.SizeInMl" />
+    <input asp-for="SizeInMl" value="@Model.SizeInMl" class="form-control"/>
     <br />
 
     <label asp-for="Foci">Foci: </label>
-    <input asp-for="Foci" value="@Model.Foci" />
+    <input asp-for="Foci" value="@Model.Foci" class="form-control"/>
     <br />
 
     <label asp-for="Location14c">14C Location: </label>
-    <input asp-for="Location14c" value="@Model.Location14c" />
+    <input asp-for="Location14c" value="@Model.Location14c" class="form-control"/>
     <br />
 
     <label asp-for="Conventional14cAge">14C Conventional Age: </label>
-    <input asp-for="Conventional14cAge" value="@Model.Conventional14cAge" />
+    <input asp-for="Conventional14cAge" value="@Model.Conventional14cAge" class="form-control"/>
     <br />
 
     <label asp-for="Calendar14cDate">14C Calendar Date: </label>
-    <input asp-for="Calendar14cDate" value="@Model.Calendar14cDate" />
+    <input asp-for="Calendar14cDate" value="@Model.Calendar14cDate" class="form-control"/>
     <br />
 
     <label asp-for="Calibrated95Datemax">Calibrated 95% Calendar Date Max: </label>
-    <input asp-for="Calibrated95Datemax" value="@Model.Calibrated95Datemax" />
+    <input asp-for="Calibrated95Datemax" value="@Model.Calibrated95Datemax" class="form-control"/>
     <br />
 
     <label asp-for="Calibrated95Datemin">Calibrated 95% Calendar Date Min: </label>
-    <input asp-for="Calibrated95Datemin" value="@Model.Calibrated95Datemin" />
+    <input asp-for="Calibrated95Datemin" value="@Model.Calibrated95Datemin" class="form-control"/>
     <br />
 
     <label asp-for="Calibrated95Datespan">Calibrated 95% Calendar Date Span: </label>
-    <input asp-for="Calibrated95Datespan" value="@Model.Calibrated95Datespan" />
+    <input asp-for="Calibrated95Datespan" value="@Model.Calibrated95Datespan" class="form-control"/>
     <br />
 
     <label asp-for="Calibrated95Dateavg">Calibrated 95% Calendar Date Average: </label>
-    <input asp-for="Calibrated95Dateavg" value="@Model.Calibrated95Dateavg" />
+    <input asp-for="Calibrated95Dateavg" value="@Model.Calibrated95Dateavg" class="form-control"/>
     <br />
 
     <label asp-for="AreaCategory14c">14C Area Category: </label>
-    <input asp-for="AreaCategory14c" value="@Model.AreaCategory14c" />
+    <input asp-for="AreaCategory14c" value="@Model.AreaCategory14c" class="form-control"/>
     <br />
 
     <label asp-for="Discrepency14c">14C Discrepency: </label>
     @if (Model.Discrepency14c == null)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="Discrepency14c" value="true" id="true" />
+        <input type="radio" asp-for="Discrepency14c" value="true" id="true" class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="Discrepency14c" value="false" id="false" />
+        <input type="radio" asp-for="Discrepency14c" value="false" id="false" class="form-control"/>
         <br />
     }
     else if (Model.Discrepency14c == true)
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="Discrepency14c" value="true" id="true" checked />
+        <input type="radio" asp-for="Discrepency14c" value="true" id="true" checked class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="Discrepency14c" value="false" id="false" />
+        <input type="radio" asp-for="Discrepency14c" value="false" id="false" class="form-control"/>
         <br />
     }
     else
     {
         <label for="true">Yes</label>
-        <input type="radio" asp-for="Discrepency14c" value="true" id="true" />
+        <input type="radio" asp-for="Discrepency14c" value="true" id="true" class="form-control"/>
         <label for="false">No</label>
-        <input type="radio" asp-for="Discrepency14c" value="false" id="false" checked />
+        <input type="radio" asp-for="Discrepency14c" value="false" id="false" checked class="form-control"/>
         <br />
     }
 
     <label asp-for="LabNotes14c">14C Lab Notes: </label><br />
-    <textarea asp-for="LabNotes14c" value="@Model.LabNotes14c"></textarea>
+    <textarea asp-for="LabNotes14c" value="@Model.LabNotes14c" class="form-control"></textarea>
     <br />
     <br />
 
-    <button type="submit" class="blue_button">Save</button>
+    <button type="submit" class="btn blue_button">Save</button>
 
 
 </form>
+</div>
