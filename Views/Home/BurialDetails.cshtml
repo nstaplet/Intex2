@@ -1,17 +1,17 @@
 ﻿@*
-For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
 }
 @model BasicBurial
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
 
-    
 
-<img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image"/>
 
+
+<img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image" />
 <br />
-<br />
-
 <div class="row">
     <div class="col-8">
         <h2 style="display: inline-block">
@@ -20,9 +20,32 @@ For more information on enabling MVC for empty projects, visit https://go.micros
     </div>
 
 
-    <div class="col-4 text-right">
-        <a asp-action="#" class="btn orange_button">Edit Record</a>
-        <a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-4">
+                @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
+                {
+                    <form asp-action="BurialAdvancedForm">
+                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
+                        <button type="submit" class="btn orange_button">Delete</button>
+                    </form>
+                }
+            </div>
+            <div class="col-4">
+                @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
+                {
+                    <form asp-action="BurialAdvancedForm">
+                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
+                        <button type="submit" class="btn blue_button">Edit</button>
+                    </form>
+                }
+            </div>
+            <div class="col-4"><a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a></div>
+
+
+        </div>
+
+
     </div>
 
 </div>
