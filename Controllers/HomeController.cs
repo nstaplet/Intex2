@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Intex.Controllers
 {
@@ -291,6 +292,31 @@ namespace Intex.Controllers
         [HttpGet]
         public IActionResult BurialAddConfirmation()
         {
+            return View();
+        }
+
+
+        //upload images to s3
+        public async Task<IActionResult> FileUploadForm()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> FileUploadForm(FileUploadFormModal FileUpload)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await FileUpload.FormFile.CopyToAsync(memoryStream);
+                // Upload the file if less than 2 MB
+                if (memoryStream.Length < 2097152)
+                {
+                    await s3Upload.UploadFileAsync(memoryStream, "arn:aws:s3:us-east-1:963873112149:accesspoint/intex2-8accesspoint", "ASIA6A22QQBKVEFKUOPJ");
+                }
+                else
+                {
+                    ModelState.AddModelError("File", "The file is too large.");
+                }
+            }
             return View();
         }
 
