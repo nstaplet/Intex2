@@ -4,104 +4,10 @@
 @{
 }
 @model BasicBurial
-@using Microsoft.AspNetCore.Authorization
-@inject IAuthorizationService AuthorizationService
-
-
-
-<img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image" />
-<br />
-<br />
-<div class="row">
-    <div class="col-6">
-        <h2 style="display: inline-block">
-            Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
-        </h2>
-    </div>
-
-
-    <div class="col-6">
-        <div class="row">
-            <div class="col-1"></div>
-            <div class="col-2">
-                @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
-                {
-                    <form asp-action="DeleteBurial" onclick="return confirm('Are you sure you want to delete this Record?')">
-                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="orange_button">Delete</button>
-                    </form>
-                }
-            </div>
-            <div class="col-3">
-                @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
-                {
-                    <form asp-action="BurialAdvancedForm">
-                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="blue_button">Edit Data</button>
-                    </form>
-                }
-            </div>
-            <div class="col-4">
-                @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
-                {
-                    <form asp-action="EditBurialLocation">
-                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="blue_button">Edit Location</button>
-                    </form>
-                }
-            </div>
-            <div class="col-2"><a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a></div>
-
-        </div>
-    </div>
-
-</div>
-<br />
-
-<form asp-action="ViewSamples">
-    <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-    <input type="hidden" name="burialname" value="Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber" />
-    <button type="submit" class="blue_button">Samples</button>
-</form>
-<br />
-
-
-
-<!--Link to samples associated with the burial-->
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar border-bottom box-shadow mb-0" style="background-color: #002a5d; border-radius: 4px">
-    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse text-center">
-        <ul class="navbar-nav navbar-sub-nav flex-grow-1">
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#burialexhumation">Burial Exhumation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#burialsituation">Burial Situation</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#gender">Gender</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#age">Age</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#carbondating">Carbon Dating</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#samples">Samples/Artifacts</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-light text-center" href="#osteology">Osteology</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-
-<br />
-<br />
 
 <div class="row">
-    <div class="col-lg-6" >
-        <h3 id="burialexhumation">Burial Exhumation</h3>
+    <div class="col-lg-6">
+        <h3 id="">Burial Exhumation</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -157,7 +63,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <h3 id="burialsituation">Burial Situation</h3>
+        <h3 id="">Burial Situation</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -217,15 +123,15 @@
                     <td>Day on Skull:</td>
                     <td>@Model.SingleBurial.DayOnSkull </td>
                 </tr>
+
+
             </table>
         </div>
     </div>
 </div>
-<br /><br />
-
 <div class="row">
     <div class="col-lg-6">
-        <h3 id="gender">Gender</h3>
+        <h3 id="">Gender</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -276,7 +182,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <h3 id="age">Age</h3>
+        <h3 id="">Age</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -311,11 +217,9 @@
         </div>
     </div>
 </div>
-<br /><br />
-
 <div class="row">
     <div class="col-lg-6">
-        <h3 id="carbondating">Carbon Dating</h3>
+        <h3 id="">Carbon Dating</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -382,7 +286,7 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <h3 id="samples">Samples</h3>
+        <h3 id="">Samples</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -430,12 +334,9 @@
         </div>
     </div>
 </div>
-<br /><br />
-
-
 <div class="row">
     <div class="col-lg-6">
-        <h3 id="osteology">Osteology</h3>
+        <h3 id="">Osteology</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
                 <tr>
@@ -625,16 +526,7 @@
             </table>
         </div>
     </div>
-    <div class="col-lg-6"></div>
 </div>
-<br /><br />
-
-<div class="text-center">
-    <a href="#top">Back to Top</a>
-</div>
-
-
-
 
 
 
