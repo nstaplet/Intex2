@@ -28,7 +28,7 @@
                 {
                     <form asp-action="DeleteBurial" onclick="return confirm('Are you sure you want to delete this Record?')">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="orange_button">Delete</button>
+                        <button type="submit" class="btn orange_button">Delete</button>
                     </form>
                 }
             </div>
@@ -37,7 +37,7 @@
                 {
                     <form asp-action="BurialAdvancedForm">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="blue_button">Edit Data</button>
+                        <button type="submit" class="btn blue_button">Edit Data</button>
                     </form>
                 }
             </div>
@@ -46,7 +46,7 @@
                 {
                     <form asp-action="EditBurialLocation">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="blue_button">Edit Location</button>
+                        <button type="submit" class="btn blue_button">Edit Location</button>
                     </form>
                 }
             </div>
@@ -61,7 +61,7 @@
 <form asp-action="ViewSamples">
     <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
     <input type="hidden" name="burialname" value="Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber" />
-    <button type="submit" class="blue_button">Samples</button>
+    <button type="submit" class=" btn blue_button">Samples</button>
 </form>
 <br />
 
