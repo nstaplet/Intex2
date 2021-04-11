@@ -45,6 +45,11 @@ namespace Intex
             //attribute to a razor page or controller or whatever.
             services.AddAuthorization(options =>
             {
+                options.AddPolicy("Admin", policy =>
+                    policy.RequireRole("Admin"));
+                options.AddPolicy("Research", policy =>
+                    policy.RequireRole("Researcher"));
+                
                 options.FallbackPolicy = new AuthorizationPolicyBuilder()
                     .RequireAuthenticatedUser()
                     .Build();
