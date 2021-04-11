@@ -296,6 +296,176 @@ namespace Intex.Controllers
             return View(currentburial);
         }
 
+        [HttpPost]
+        public IActionResult SubmitAdvancedForm(Burial br)
+        {
+            if (ModelState.IsValid)
+            {
+                burialContext.Update(br);
+                burialContext.SaveChanges();
+
+                Burial burial = burialContext.Burial.Where(b => b.BurialId == br.BurialId).FirstOrDefault();
+                BasicBurial basicBurial = new BasicBurial
+                {
+
+                    SingleBurial = burial,
+                    SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
+                    SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault(),
+                    SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
+                };
+
+
+                return View("BurialDetails", basicBurial);
+            }
+
+            return View("BurialAdvancedForm", br);
+        }
+
+
+        public IActionResult EditBurialLocation(int burialid)
+        {
+            Burial burial = burialContext.Burial.Where(b => b.BurialId == burialid).FirstOrDefault();
+            BasicBurial basicBurial = new BasicBurial
+            {
+
+                SingleBurial = burial,
+                SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
+                SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault(),
+                SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
+            };
+
+            ViewBag.BB = basicBurial;
+
+            if (basicBurial.SingleSublocation.Subplot == null)
+            {
+                ViewBag.SubplotNull = "true";
+            }
+            else
+            {
+                ViewBag.SubplotNull = basicBurial.SingleSublocation.Subplot;
+            }
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SubmitBurialLocation(Location lc, int burialnum, string subplot, int? areanum, string? tombnum, int BBid)
+        {
+            Burial burial = burialContext.Burial.Where(b => b.BurialId == BBid).FirstOrDefault();
+            BasicBurial basicBurial = new BasicBurial
+            {
+                SingleBurial = burial,
+                SingleLocation = burialContext.Location.Where(b => b.LocationId == burial.LocationId).FirstOrDefault(),
+                SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == burial.SublocationId).FirstOrDefault(),
+                SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
+            };
+
+            ViewBag.BB = basicBurial;
+
+            if (basicBurial.SingleSublocation.Subplot == null)
+            {
+                ViewBag.SubplotNull = "true";
+            }
+            else
+            {
+                ViewBag.SubplotNull = basicBurial.SingleSublocation.Subplot;
+            }
+
+            if (ModelState.IsValid)
+            {
+                var checkLoc = burialContext.Location.Where(l =>
+                l.BurialLocationNs == lc.BurialLocationNs &&
+                l.LowValueNs == lc.LowValueNs &&
+                l.HighValueNs == lc.HighValueNs &&
+                l.BurialLocationEw == lc.BurialLocationEw &&
+                l.LowValueEw == lc.LowValueEw &&
+                l.HighValueEw == lc.HighValueEw).FirstOrDefault();
+
+                int locid = 0;
+                int sublocid = 0;
+
+                if (checkLoc == null)
+                {
+                    burialContext.Location.Add(new Location
+                    {
+                        LocationId = (burialContext.Location.Max(x => x.LocationId) + 1),
+                        BurialLocationNs = lc.BurialLocationNs,
+                        BurialLocationEw = lc.BurialLocationEw,
+                        LowValueNs = lc.LowValueNs,
+                        LowValueEw = lc.LowValueEw,
+                        HighValueNs = lc.HighValueNs,
+                        HighValueEw = lc.HighValueEw
+                    });
+                    burialContext.SaveChanges();
+
+                    //Grabs the id of the most recently added location
+                    locid = burialContext.Location.Max(x => x.LocationId);
+                }
+                else
+                {
+                    locid = checkLoc.LocationId;
+                }
+
+                if (subplot == null && areanum == null && tombnum == null)
+                {
+                    ViewBag.SubLocationError = "You must enter a value in at least one of these fields";
+                    return View("EditBurialLocation");
+                }
+                else
+                {
+                    var checkSubLoc = burialContext.SubLocation.Where(x =>
+                        x.Subplot == subplot && x.AreaNumber == areanum && x.TombNumber == tombnum).FirstOrDefault();
+
+                    if (checkSubLoc == null)
+                    {
+                        burialContext.SubLocation.Add(new SubLocation
+                        {
+                            SublocationId = (burialContext.SubLocation.Max(x => x.SublocationId) + 1),
+                            AreaNumber = areanum,
+                            Subplot = subplot,
+                            TombNumber = tombnum
+                        });
+                        burialContext.SaveChanges();
+
+                        sublocid = burialContext.SubLocation.Max(x => x.SublocationId);
+                    }
+                    else
+                    {
+                        sublocid = checkSubLoc.SublocationId;
+                    }
+                }
+
+                //Check to see if this burial record already exists
+                var burialexists = burialContext.Burial.Where(x => x.BurialNumber == burialnum && x.LocationId == locid && x.SublocationId == sublocid).FirstOrDefault();
+
+                if (burialexists != null)
+                {
+                    ViewBag.BurialExists = "A burial record with this identification already exists";
+                    return View("EditBurialLocation");
+                }
+                else
+                {
+                    Burial changeBur = burialContext.Burial.Where(x => x.BurialId == BBid).FirstOrDefault();
+                    changeBur.LocationId = locid;
+                    changeBur.SublocationId = sublocid;
+                    changeBur.BurialNumber = burialnum;
+
+                    burialContext.SaveChanges();
+
+                    BasicBurial changedBurial = new BasicBurial
+                    {
+
+                        SingleBurial = changeBur,
+                        SingleLocation = burialContext.Location.Where(b => b.LocationId == changeBur.LocationId).FirstOrDefault(),
+                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == changeBur.SublocationId).FirstOrDefault(),
+                        SingleImage = burialContext.Image.Where(b => b.BurialId == changeBur.BurialId).FirstOrDefault()
+                    };
+                    return View("BurialDetails", changedBurial);
+                }
+            }
+            return View("EditBurialLocation");
+        }
+
 
         [HttpGet]
         public IActionResult BurialAddConfirmation()

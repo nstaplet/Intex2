@@ -11,7 +11,7 @@
 
 
 <img src="~/img/DesertBanner.PNG" style="opacity: .5; width: 100%" class="banner-image" />
-<br />
+<br /><br />
 <div class="row">
     <div class="col-8">
         <h2 style="display: inline-block">
@@ -21,8 +21,8 @@
 
 
     <div class="col-4">
-        <div class="row>
-            <div class="col-4">
+        <div class="row">
+            <div class="col-3">
                 @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
                 {
                     <form asp-action="BurialAdvancedForm">
@@ -31,16 +31,25 @@
                     </form>
                 }
             </div>
-            <div class="col-4">
+            <div class="col-3">
                 @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
                 {
                     <form asp-action="BurialAdvancedForm">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                        <button type="submit" class="btn blue_button">Edit</button>
+                        <button type="submit" class="btn blue_button">Edit Data</button>
                     </form>
                 }
             </div>
-            <div class="col-4"><a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a></div>
+            <div class="col-3">
+                @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
+                {
+                    <form asp-action="EditBurialLocation">
+                        <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
+                        <button type="submit" class="btn blue_button">Edit Location</button>
+                    </form>
+                }
+            </div>
+            <div class="col-3"><a asp-action="BurialSummaryList" class="btn btn-secondary">Back</a></div>
 
 
         </div>

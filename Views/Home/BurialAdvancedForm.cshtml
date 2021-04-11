@@ -9,8 +9,17 @@
 <h4>Advanced Information</h4>
 <br />
 
-<form>
+<form method="post" asp-action="SubmitAdvancedForm">
+
+    <div asp-validation-summary="All"></div>
+
     Essential Burial Information<br />
+    <p style="color:red"><b>@ViewBag.NeedEssentialFields</b></p>
+
+    <input type="hidden" asp-for="BurialId" value="@Model.BurialId" />
+    <input type="hidden" asp-for="LocationId" value="@Model.LocationId" />
+    <input type="hidden" asp-for="SublocationId" value="@Model.SublocationId" />
+    <input type="hidden" asp-for="BurialNumber" value="@Model.BurialNumber" />
 
     <div class="card">
         <div class="card-body">
@@ -1056,10 +1065,6 @@
 
     <label asp-for="MaximumCranialBreadth">Maximum Cranial Breadth: </label>
     <input asp-for="MaximumCranialBreadth" value="@Model.MaximumCranialBreadth" />
-    <br />
-
-    <label asp-for="ForemanMagnum">Foreman Magnum: </label>
-    <input asp-for="ForemanMagnum" value="@Model.ForemanMagnum" />
     <br />
 
     <label asp-for="FemurHead">Femur Head: </label>
@@ -2169,8 +2174,9 @@
     <label asp-for="LabNotes14c">14C Lab Notes: </label><br />
     <textarea asp-for="LabNotes14c" value="@Model.LabNotes14c"></textarea>
     <br />
+    <br />
 
-
+    <button type="submit" class="blue_button">Save</button>
 
 
 </form>
