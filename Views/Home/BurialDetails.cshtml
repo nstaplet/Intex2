@@ -92,6 +92,9 @@
             <li class="nav-item">
                 <a class="nav-link text-light text-center" href="#osteology">Osteology</a>
             </li>
+            <li>
+                <a class="nav-link text-light text-center" href="#photos">Photos</a> 
+            </li>
         </ul>
     </div>
 </nav>
@@ -626,10 +629,14 @@
             </table>
         </div>
     </div>
-    <div class="col-lg-6">
+    <div class="col-lg-6" id="photos">
         @if (Model.SingleImage != null)
         {
             <img src="@Model.SingleImage.ImagePath" class="img-fluid" />
+        }
+        else
+        {
+            <h5 class="text-center">No Photos Found</h5>
         }
     </div>
 </div>
