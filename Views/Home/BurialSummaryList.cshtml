@@ -50,15 +50,10 @@
             </div>
             <div class="form-group">
                 <label>Location</label>
-                <input class="form-control" name="filter" list="location" value=""/>
-                <datalist id="location">
-                    <option value="all">All</option>
+                <select class="form-control" name="filter" list="location" asp-items="@(new SelectList(ViewBag.Location , ViewBag.Filters.Location))">
 
-                    @foreach (var i in ViewBag.Location)
-                    {
-                        <option value="@i">@i</option>
-                    }
-                </datalist>
+                    <option value="all">All</option>
+                </select>
             </div>
 
 
