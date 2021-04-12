@@ -9,16 +9,31 @@
 
 
 <h4>@ViewBag.BurialName</h4>
-<h2>Samples Collected</h2>
 
-@if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
-{
-<form method="get" asp-action="AddSample">
-    <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
-    <input type="hidden" name="burialid" value="@ViewBag.BurialId" />
-    <button class="btn blue_button" style="float:right" type="submit">Add Sample</button>
-</form>
-}
+<div class="row">
+    <h2 class="col-9">Samples Collected</h2>
+    <div class="btn-toolbar text-right col-3">
+        @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
+        {
+            <div class="btn-group" style="padding:2.5px">
+                <form method="get" asp-action="AddSample">
+                    <input type="hidden" name="burialname" value="@ViewBag.BurialName" />
+                    <input type="hidden" name="burialid" value="@ViewBag.BurialId" />
+                    <button class="btn blue_button" style="float:right" type="submit">Add Sample</button>
+                </form>
+            </div>
+            
+        }
+        <div class="btn-group" style="padding:2.5px">
+            <form method="post" asp-action="BurialDetails">
+                <input type="hidden" name="id" value="@ViewBag.BurialID" />
+                <button type="submit" style="float:right" class="btn btn-secondary blue_button">Back</button>
+
+            </form>
+        </div>
+    </div>
+</div>
+
 <br />
 <br />
 
