@@ -54,6 +54,7 @@ namespace Intex.Controllers
             ViewBag.Location = burialContext.Location
                 .Select(b => b.BurialLocationNs + " "+ b.LowValueNs + "/" + b.HighValueNs + " " + b.BurialLocationEw + " " + b.LowValueEw + "/" + b.HighValueEw).Distinct();
             ViewBag.Sample = burialContext.Burial.Select(b => b.BurialSampleTaken).Distinct();
+            ViewBag.Wrap = burialContext.Burial.Select(b => b.BurialWrapping).Where(b => b.Length > 0).Distinct();
             //****************************************************************************************************8
 
             int pageSize = 5;
@@ -94,7 +95,10 @@ namespace Intex.Controllers
             {
                 query = query.Where(t => t.BurialSampleTaken == filters.Sample);
             }
-
+            if (filters.HasWrap)
+            {
+                query = query.Where(t => t.BurialWrapping == filters.Wrap);
+            }
 
 
             //**********END IF STATEMENTS *********************************************************************8
