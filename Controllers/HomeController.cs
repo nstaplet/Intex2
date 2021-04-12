@@ -692,13 +692,27 @@ namespace Intex.Controllers
             return View("EditSample", s);
         }
 
+        //from burial details view all images related to burial
+        public IActionResult ViewAllImages(int burialid)
+        {
+            ViewBag.BurialId = burialid;
 
+            var ImageList = burialContext.Image.Where(x => x.BurialId == burialid).ToList();
+
+            if (ImageList.Count() == 0)
+            {
+                ViewBag.NoImages = "There are currently no images associated with this burial";
+            }
+
+            return View("ViewAllImages", ImageList);
+        }
 
         //upload images to s3
         public async Task<IActionResult> FileUploadForm()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> FileUploadForm(FileUploadFormModal FileUpload)
         {
