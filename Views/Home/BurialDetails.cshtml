@@ -16,7 +16,6 @@
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 
-
 <h2 style="display: inline-block">
     Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
 </h2>
@@ -33,7 +32,7 @@
                         <button type="submit" class="btn blue_button">Samples</button>
                     </form>
                 </div>
-                
+
                 <div class="btn-group" style="padding: 5px">
                     <form asp-action="ViewAllImages">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
@@ -57,7 +56,7 @@
                         </form>
                     }
                 </div>
-                <div class="btn-group" style="padding: 2.5px"">
+                <div class="btn-group" style="padding: 2.5px" ">
                     @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
                     {
                         <form asp-action="EditBurialLocation">
@@ -66,7 +65,7 @@
                         </form>
                     }
                 </div>
-                <div class="btn-group" style="padding: 2.5px"">
+                <div class="btn-group" style="padding: 2.5px" ">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
                     {
                         <form asp-action="DeleteBurial" onclick="return confirm('Are you sure you want to delete this Record?')">
@@ -117,7 +116,7 @@
                 <a class="nav-link text-light text-center" href="#osteology">Osteology</a>
             </li>
             <li>
-                <a class="nav-link text-light text-center" href="#photos">Photos</a> 
+                <a class="nav-link text-light text-center" href="#photos">Photos</a>
             </li>
         </ul>
     </div>
@@ -127,7 +126,7 @@
 <br />
 
 <div class="row">
-    <div class="col-lg-6" >
+    <div class="col-lg-6">
         <h3 id="burialexhumation">Burial Exhumation</h3>
         <div style="height:20em;overflow:auto;">
             <table class="table">
@@ -248,7 +247,8 @@
         </div>
     </div>
 </div>
-<br /><br />
+<br />
+<br />
 
 <div class="row">
     <div class="col-lg-6">
@@ -338,7 +338,8 @@
         </div>
     </div>
 </div>
-<br /><br />
+<br />
+<br />
 
 <div class="row">
     <div class="col-lg-6">
@@ -457,7 +458,8 @@
         </div>
     </div>
 </div>
-<br /><br />
+<br />
+<br />
 
 
 <div class="row">
@@ -653,7 +655,8 @@
             </table>
         </div>
     </div>
-    <div class="col-lg-6" id="photos">
+    <div class="col-lg-6">
+        <h3 id="photos">Photos</h3>
         @if (Model.SingleImage != null)
         {
             <img src="@Model.SingleImage.ImagePath" class="img-fluid" />
@@ -664,11 +667,19 @@
         }
     </div>
 </div>
-<br /><br />
+<br />
+<br />
 
 <div class="text-center">
     <a href="#top">Back to Top</a>
 </div>
+
+@section Scripts
+{
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}
 
 
 

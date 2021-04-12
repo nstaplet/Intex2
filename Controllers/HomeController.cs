@@ -740,7 +740,7 @@ namespace Intex.Controllers
             return View(BurialImages);
         }
 
-        IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View("Privacy");
         }
