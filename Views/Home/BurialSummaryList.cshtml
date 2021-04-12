@@ -98,11 +98,41 @@
                                     </tr>
                                     <tr>
                                         <td>Burial Direction:&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>@b.SingleBurial.BurialDirection</td>
+                                        @if (b.SingleBurial.BurialDirection == "W")
+                                        {
+                                            <td>West</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "E")
+                                        {
+                                            <td>East</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
                                     </tr>
                                     <tr>
                                         <td>Burial Wrapping:</td>
-                                        <td>@b.SingleBurial.BurialWrapping</td>
+                                        @if (b.SingleBurial.BurialWrapping == "W")
+                                        {
+                                            <td>Full/Nearly Full</td>
+                                        }
+                                        else if (b.SingleBurial.BurialWrapping == "H")
+                                        {
+                                            <td>Partial</td>
+                                        }
+                                        else if (b.SingleBurial.BurialWrapping == "B")
+                                        {
+                                            <td>Bones/Partial</td>
+                                        }
+                                        else if (b.SingleBurial.BurialWrapping == "U")
+                                        {
+                                            <td>Unknown</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
                                     </tr>
                                 </table>
                             </div>
@@ -110,8 +140,20 @@
                                 <b>Characteristics</b><br />
                                 <table>
                                     <tr>
-                                        <td>Age Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        <td>@b.SingleBurial.AgeCodeSingle</td>
+                                        <td>Age Code: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        @if (b.SingleBurial.AgeCodeSingle == "A")
+                                        {
+                                            <td>Adult</td>
+                                        }
+                                        else if (b.SingleBurial.AgeCodeSingle == "C")
+                                        {
+                                            <td>Child</td>
+                                        }
+                                        else if (b.SingleBurial.AgeCodeSingle == "U")
+                                        {
+                                            <td>Unknown</td>
+                                        }
+                                        else { <td></td> }
                                     </tr>
                                     <tr>
                                         <td>Estimated Age:</td>
@@ -119,7 +161,26 @@
                                     </tr>
                                     <tr>
                                         <td>Gender:</td>
-                                        <td>@b.SingleBurial.GenderCode</td>
+                                        @if (b.SingleBurial.GenderCode == "F")
+                                        {
+                                            <td>Female</td>
+                                        }
+                                        else if (b.SingleBurial.GenderCode == "M")
+                                        {
+                                            <td>Male</td>
+                                        }
+                                        else if (b.SingleBurial.GenderCode == "S")
+                                        {
+                                            <td>SubAdult</td>
+                                        }
+                                        else if (b.SingleBurial.GenderCode == "U")
+                                        {
+                                            <td>Undetermined</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
                                     </tr>
                                     <tr>
                                         <td>Hair Color:</td>
