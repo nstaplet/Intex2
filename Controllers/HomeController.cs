@@ -125,7 +125,7 @@ namespace Intex.Controllers
             });
         }
 
-        public IActionResult BurialDetails(int id) 
+        public IActionResult BurialDetails(int id)
         {
             Burial burial = burialContext.Burial.Where(b => b.BurialId == id).FirstOrDefault();
             BasicBurial basicBurial = new BasicBurial
@@ -700,13 +700,28 @@ namespace Intex.Controllers
             return View("EditSample", s);
         }
 
+        //from burial details view all images related to burial
+        public IActionResult ViewAllImages(int burialid, string burialname)
+        {
+            ViewBag.BurialId = burialid;
+            ViewBag.BurialName = burialname;
 
+            var ImageList = burialContext.Image.Where(x => x.BurialId == burialid).ToList();
+
+            if (ImageList.Count() == 0)
+            {
+                ViewBag.NoImages = "There are currently no images associated with this burial";
+            }
+
+            return View("ViewAllImages", ImageList);
+        }
 
         //upload images to s3
         public async Task<IActionResult> FileUploadForm()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> FileUploadForm(FileUploadFormModal FileUpload)
         {
@@ -726,6 +741,27 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Setting up Gallery View
+        public IActionResult ImageGallery()
+        {
+            List<BasicBurial> BurialImages = new List<BasicBurial>();
+
+            foreach (var i in burialContext.Image)
+            {
+                Burial assocBurial = burialContext.Burial.Where(x => x.BurialId == i.BurialId).FirstOrDefault();
+
+                BurialImages.Add(
+                    new BasicBurial
+                    {
+                        SingleBurial = assocBurial,
+                        SingleLocation = burialContext.Location.Where(b => b.LocationId == assocBurial.LocationId).FirstOrDefault(),
+                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == assocBurial.SublocationId).FirstOrDefault(),
+                        SingleImage = i
+                    });
+            }
+
+            return View(BurialImages);
+        }
 
         IActionResult Privacy()
         {
@@ -737,5 +773,7 @@ namespace Intex.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

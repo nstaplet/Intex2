@@ -76,34 +76,110 @@
                 <div class="card-header">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h5>
+                    <div class="row">
+                        <div class="col-7">
+                            <h5 class="card-title">Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h5>
+                        </div>
+                        
+                        <div class="col-5">
+                            <p style="float:right" class="text-right">
+                                Date Excavated: @b.SingleBurial.MonthExcavated/@b.SingleBurial.DayExcavated/@b.SingleBurial.YearExcavated<br />
+                            </p>
+                        </div>
+
+                    </div>
                     <p class="card-text">
                         <div class="row">
                             <div class="col-4">
-                                <b>Measurements (Meters)</b><br />
-                                Depth: @b.SingleBurial.BurialDepthMeters meters<br />
-                                Length: @b.SingleBurial.LengthOfRemains meters<br />
-                                South to Head: @b.SingleBurial.SouthToHead<br />
-                                South to Feet: @b.SingleBurial.SouthToFeet<br />
-                                West to Head: @b.SingleBurial.WestToHead<br />
-                                West to Feet: @b.SingleBurial.WestToFeet
+                                <b>Burial Situation</b><br />
+                                <table>
+                                    <tr>
+                                        <td>Depth:</td>
+                                        <td>@b.SingleBurial.BurialDepthMeters</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Length:</td>
+                                        <td>@b.SingleBurial.LengthOfRemains</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Burial Direction:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>@b.SingleBurial.BurialDirection</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Burial Wrapping:</td>
+                                        <td>@b.SingleBurial.BurialWrapping</td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="col-4">
                                 <b>Characteristics</b><br />
-                                Age Category: @b.SingleBurial.AgeCodeSingle<br />
-                                Estimated Age: @b.SingleBurial.EstimateAgeAtDeath<br />
-                                C14 Estimated Average Age: @b.SingleBurial.Calibrated95Dateavg<br />
-                                Gender: @b.SingleBurial.GenderCode<br />
-                                Gender Method: @b.SingleBurial.BurialGenderMethod<br />
-                                Hair color: @b.SingleBurial.HairColorCode
+                                <table>
+                                    <tr>
+                                        <td>Age Category: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>@b.SingleBurial.AgeCodeSingle</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Estimated Age:</td>
+                                        <td>@b.SingleBurial.EstimateAgeAtDeath</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender:</td>
+                                        <td>@b.SingleBurial.GenderCode</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hair Color:</td>
+
+                                        @if (b.SingleBurial.HairColorCode == "B")
+                                        {
+                                            <td>Brown</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "K")
+                                        {
+                                            <td>Black</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "A")
+                                        {
+                                            <td>Brown-Red</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "R")
+                                        {
+                                            <td>Red</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "D")
+                                        {
+                                            <td>Blond</td>
+                                        }
+                                        else if (b.SingleBurial.HairColorCode == "U")
+                                        {
+                                            <td>Unknown</td>
+                                        }
+                                        else
+                                        {
+                                            <td></td>
+                                        }
+                                    </tr>
+                                </table>
                             </div>
                             <div class="col-4">
                                 <b>Additional</b><br />
-                                Date Excavated: @b.SingleBurial.YearExcavated/@b.SingleBurial.MonthExcavated/@b.SingleBurial.DayExcavated<br />
-                                Sample Taken: @b.SingleBurial.BurialSampleTaken<br />
-                                Artifact Found: @b.SingleBurial.ArtifactFound<br />
-                                Goods: @b.SingleBurial.Goods<br />
-                                Photo Taken: @b.SingleBurial.PhotoTaken
+                                <table>
+                                    <tr>
+                                        <td>Sample Taken:</td>
+                                        <td>@b.SingleBurial.BurialSampleTaken</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Artifact Found:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                                        <td>@b.SingleBurial.ArtifactFound</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Goods:</td>
+                                        <td>@b.SingleBurial.Goods</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Photo Taken</td>
+                                        <td>@b.SingleBurial.PhotoTaken</td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
 
