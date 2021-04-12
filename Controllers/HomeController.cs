@@ -108,8 +108,8 @@ namespace Intex.Controllers
 
                     });
             }
+            //Send paging information and packaged variables to the view
             
-
             return View(new BurialSummaryViewModel
             {
                 Burials = PackageBurials,
@@ -127,6 +127,7 @@ namespace Intex.Controllers
 
         public IActionResult BurialDetails(int id)
         {
+            //Use View model to gather all burial information accross multiple models
             Burial burial = burialContext.Burial.Where(b => b.BurialId == id).FirstOrDefault();
             BasicBurial basicBurial = new BasicBurial
             {
@@ -145,10 +146,12 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Gets Location information from form, with additional information as values from hidden inputs
         public IActionResult AddLocationInfo(Location lc, int burialnum, string subplot, int? areanum, string? tombnum)
         {
             if(ModelState.IsValid)
             {
+                //Check to see if the location entered already exists in the Location model
                 var checkLoc = burialContext.Location.Where(l =>
                 l.BurialLocationNs == lc.BurialLocationNs &&
                 l.LowValueNs == lc.LowValueNs &&
@@ -157,11 +160,13 @@ namespace Intex.Controllers
                 l.LowValueEw == lc.LowValueEw &&
                 l.HighValueEw == lc.HighValueEw).FirstOrDefault();
 
+                //Initialize placeholder variables for the location and sublocation ids
                 int locid = 0;
                 int sublocid = 0;
 
                 if (checkLoc == null)
                 {
+                    //If location doesn't exist in Location DB, create new location 
                     burialContext.Location.Add(new Location
                     {
                         LocationId = (burialContext.Location.Max(x => x.LocationId) + 1),
@@ -179,9 +184,11 @@ namespace Intex.Controllers
                 }
                 else
                 {
+                    //Use the id for the location that already exists
                     locid = checkLoc.LocationId;
                 }
 
+                //Check to ensure at least one of the subplot fields has a value entered
                 if (subplot == null && areanum == null && tombnum == null)
                 {
                     ViewBag.SubLocationError = "You must enter a value in at least one of these fields";
@@ -189,11 +196,13 @@ namespace Intex.Controllers
                 }
                 else
                 {
+                    //Check to see if the sublocation already exists in the Sublocation model
                     var checkSubLoc = burialContext.SubLocation.Where(x =>
                         x.Subplot == subplot && x.AreaNumber == areanum && x.TombNumber == tombnum).FirstOrDefault();
 
                     if (checkSubLoc == null)
                     {
+                        //If sublocation doesn't exist, add it to the database
                         burialContext.SubLocation.Add(new SubLocation
                         {
                             SublocationId = (burialContext.SubLocation.Max(x => x.SublocationId) + 1),
@@ -207,13 +216,16 @@ namespace Intex.Controllers
                     }
                     else
                     {
+                        //Otherwise use sublocation that already exists
                         sublocid = checkSubLoc.SublocationId;
                     }
                 }
 
-                //Check to see if this burial record already exists
+                //Check to see if this entire burial record already exists
+                //Combination of location, sublocation, and burial number
                 var burialexists = burialContext.Burial.Where(x => x.BurialNumber == burialnum && x.LocationId == locid && x.SublocationId == sublocid).FirstOrDefault();
 
+                //Return warning if burial record already exists
                 if (burialexists != null)
                 {
                     ViewBag.BurialExists = "A burial record with this identification already exists";
@@ -221,6 +233,7 @@ namespace Intex.Controllers
                 }
                 else
                 {
+                    //Pass location, sublocation, and burial number through viewbags to the second page of the form
                     ViewBag.Locid = locid;
                     ViewBag.Sublocid = sublocid;
                     ViewBag.Burialnum = burialnum;
@@ -239,13 +252,18 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Post Action for submitting the form for adding essential burial information
         [HttpPost]
         public IActionResult AddBurialEssential(Burial br, int burialnum, int locid, int sublocid, string submitbtn)
         {
+            //Reset viewbags in case form needs to be regenerated (unsuccessful submission)
             ViewBag.Locid = locid;
             ViewBag.Sublocid = sublocid;
             ViewBag.Burialnum = burialnum;
 
+
+            //Ensure no fields are left blank - custom validation
+            //Original records don't require these fields, but records being added should
             if (br.LengthOfRemains == null || br.BurialDepthMeters == null || br.SouthToHead == null || br.SouthToFeet == null ||
                 br.WestToHead == null || br.WestToFeet == null || br.PhotoTaken == null || br.Goods == null)
             {
@@ -253,17 +271,21 @@ namespace Intex.Controllers
                 return View("AddBurialEssential");
             }
 
-
+            //Custom validation for ensuring photo taken is true
             if (br.PhotoTaken != true)
             {
                 ViewBag.NeedPhoto = "A photo should be taken before record is submitted";
                 return View("AddBurialEssential");
             }
 
+            //Regular model validation
             if (ModelState.IsValid)
             {
+                //If inputs are valid, create new burial record
                 burialContext.Burial.Add(new Burial
                 {
+                    //Generate burial id by finding the max id in the database and adding 1
+                    //Use viewbags to assign correct burial num, location, and sublocation from previous form
                     BurialId = (burialContext.Burial.Max(x => x.BurialId) + 1),
                     BurialNumber = ViewBag.Burialnum,
                     LocationId = ViewBag.Locid,
@@ -280,8 +302,10 @@ namespace Intex.Controllers
 
                 burialContext.SaveChanges();
 
+                //Can either submit burial with just the basic information, or go to the advanced form to enter more data
                 if (submitbtn == "finish")
                 {
+                    //If finished, take user to the burial details page for the newly created burial
                     int currentburialid = burialContext.Burial.Max(x => x.BurialId);
                     var burial = burialContext.Burial.Where(x => x.BurialId == currentburialid).FirstOrDefault();
                     BasicBurial basicBurial = new BasicBurial
@@ -298,6 +322,7 @@ namespace Intex.Controllers
                 }
                 else
                 {
+                    //If continueing, send user to the advanced burial form
                     int currentburialid = burialContext.Burial.Max(x => x.BurialId);
                     var currentburial = burialContext.Burial.Where(x => x.BurialId == currentburialid).FirstOrDefault();
 
@@ -310,15 +335,19 @@ namespace Intex.Controllers
             }
         }
 
+        //Serves as both the add and edit form for advanced burial data - auto fills values
         public IActionResult BurialAdvancedForm(int burialid)
         {
+            //Return burial associated with the id passed in
             var currentburial = burialContext.Burial.Where(x => x.BurialId == burialid).FirstOrDefault();
             return View(currentburial);
         }
 
+        //Action for submitting the advanced form
         [HttpPost]
         public IActionResult SubmitAdvancedForm(Burial br)
         {
+            //If model is valid, update the burial
             if (ModelState.IsValid)
             {
                 burialContext.Update(br);
@@ -354,8 +383,10 @@ namespace Intex.Controllers
                 SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
             };
 
+            //Use Viewbag to store the basic burial information for burial to edit
             ViewBag.BB = basicBurial;
 
+            //Avoid null errors - can't autofill subplot options if subplot is null in form
             if (basicBurial.SingleSublocation.Subplot == null)
             {
                 ViewBag.SubplotNull = "true";
@@ -368,6 +399,7 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Submitting burial location 
         [HttpPost]
         public IActionResult SubmitBurialLocation(Location lc, int burialnum, string subplot, int? areanum, string? tombnum, int BBid)
         {
@@ -380,6 +412,7 @@ namespace Intex.Controllers
                 SingleImage = burialContext.Image.Where(b => b.BurialId == burial.BurialId).FirstOrDefault()
             };
 
+            //Reset viewbag in case submission is unsuccessful
             ViewBag.BB = basicBurial;
 
             if (basicBurial.SingleSublocation.Subplot == null)
@@ -393,6 +426,8 @@ namespace Intex.Controllers
 
             if (ModelState.IsValid)
             {
+                //Check to make sure location and sublocation 
+                //Same logic as initially adding burial location
                 var checkLoc = burialContext.Location.Where(l =>
                 l.BurialLocationNs == lc.BurialLocationNs &&
                 l.LowValueNs == lc.LowValueNs &&
@@ -486,7 +521,7 @@ namespace Intex.Controllers
             return View("EditBurialLocation");
         }
 
-
+        //Temporary confirmation page used in debugging
         [HttpGet]
         public IActionResult BurialAddConfirmation()
         {
@@ -505,15 +540,19 @@ namespace Intex.Controllers
         }
 
 
+        //Action for returning samples associated with a burial
         public IActionResult ViewSamples(int burialid, string burialname)
         {
+            //Hold onto burial name (requires info from three models - save time by storing concat version)
             ViewBag.BurialName = burialname;
             ViewBag.BurialId = burialid;
 
+            //Create list of all samples associated with burial
             var SampleList = burialContext.Sample.Where(x => x.BurialId == burialid).ToList();
 
             if (SampleList.Count() == 0)
             {
+                //If there are no samples, set view bag message
                 ViewBag.NoSamples = "There are currently no samples associated with this burial";
             }
 
@@ -528,6 +567,7 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Action for submitting sample
         [HttpPost]
         public IActionResult SubmitSample(Sample s, string burialname)
         {
@@ -536,6 +576,8 @@ namespace Intex.Controllers
 
             if (ModelState.IsValid)
             {
+                //Check to make sure sample for this burial doesn't already exist
+                //Unique combination of sample id and burial id
                 var checkmatch = burialContext.Sample.Where(x => x.BurialId == s.BurialId && x.SampleId == s.SampleId).FirstOrDefault();
 
                 if (checkmatch == null)
@@ -597,6 +639,7 @@ namespace Intex.Controllers
         }
 
 
+        //Pass sample to edit
         public IActionResult EditSample(int sampleid, int burialid, string burialname)
         {
             ViewBag.BurialName = burialname;
