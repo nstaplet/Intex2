@@ -703,6 +703,7 @@ namespace Intex.Controllers
         //from burial details view all images related to burial
         public IActionResult ViewAllImages(int burialid, string burialname)
         {
+            ViewBag.burialname = burialname;
             ViewBag.BurialId = burialid;
             ViewBag.BurialName = burialname;
 
