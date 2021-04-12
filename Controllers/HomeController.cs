@@ -732,6 +732,27 @@ namespace Intex.Controllers
             return View();
         }
 
+        //Setting up Gallery View
+        public IActionResult ImageGallery()
+        {
+            List<BasicBurial> BurialImages = new List<BasicBurial>();
+
+            foreach (var i in burialContext.Image)
+            {
+                Burial assocBurial = burialContext.Burial.Where(x => x.BurialId == i.BurialId).FirstOrDefault();
+
+                BurialImages.Add(
+                    new BasicBurial
+                    {
+                        SingleBurial = assocBurial,
+                        SingleLocation = burialContext.Location.Where(b => b.LocationId == assocBurial.LocationId).FirstOrDefault(),
+                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == assocBurial.SublocationId).FirstOrDefault(),
+                        SingleImage = i
+                    });
+            }
+
+            return View(BurialImages);
+        }
 
 
 
