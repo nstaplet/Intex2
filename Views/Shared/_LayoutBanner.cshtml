@@ -23,7 +23,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" sty>
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="BurialSummaryList">Burials</a>
                         </li>
@@ -32,23 +32,26 @@
             </div>
         </nav>
     </header>
-    @*<div id="bannerimage"></div>*@
+
+    <div id="bannerimage">
+        <img src="~/img/HieroglyphicsBanner2.PNG" />
+    </div>
 
 
     <div class="container">
         <div>
             <main role="main" class="pb-3">
-            <br />
-            <br />
-                
+                <br />
+                <br />
+
                 @RenderBody()
             </main>
         </div>
     </div>
 
     @*<main role="main" class="pb-3">
-        @RenderBody()
-    </main>*@
+            @RenderBody()
+        </main>*@
 
     <footer class="border-top footer text-muted text-center">
         <div class="container">

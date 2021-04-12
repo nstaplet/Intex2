@@ -117,7 +117,7 @@ namespace Intex.Controllers
             });
         }
 
-        public IActionResult BurialDetails(int id) 
+        public IActionResult BurialDetails(int id)
         {
             Burial burial = burialContext.Burial.Where(b => b.BurialId == id).FirstOrDefault();
             BasicBurial basicBurial = new BasicBurial
