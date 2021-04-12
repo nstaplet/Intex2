@@ -33,8 +33,8 @@ a.navbar-brand {
 
 #homebannerimage {
     width: 100%;
-    background-image: url(../img/burial.jpg);
-    height: 200px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../img/burial.jpg);
+    height: 220px;
     background-color: purple;
     background-position: center;
     padding: 0;
