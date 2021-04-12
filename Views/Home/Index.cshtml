@@ -1,12 +1,22 @@
 ﻿@{
     ViewData["Title"] = "BYU Egypt Excavation Project";
+
+    if (User.Identity.IsAuthenticated & User.IsInRole("Admin") || User.Identity.IsAuthenticated & User.IsInRole("Researcher"))
+    {
+
+        Layout = "_HomeAdminLayoutBanner";
+    }
+    else
+    {
+        Layout = "_HomeLayoutBanner";
+    }
 }
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
 <div class="text-center">
-    <img src="~/img/burial.jpg" class="img-fluid" alt="responsive image" />
+   
     <h1 class="display-3">
         BYU Fag el-Gamous Database
     </h1>

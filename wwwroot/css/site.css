@@ -20,14 +20,24 @@ a.navbar-brand {
     border-radius: 4px;
 }
 
+
 #bannerimage {
     width: 100%;
     background-image: url(../img/HieroglyphicsBanner2.PNG);
-    height: 100px;
+    height: 150px;
     background-color: purple;
     background-position: center;
     padding: 0;
+        
+}
 
+#homebannerimage {
+    width: 100%;
+    background-image: url(../img/burial.jpg);
+    height: 250px;
+    background-color: purple;
+    background-position: center;
+    padding: 0;
 }
 
 nav {
