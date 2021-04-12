@@ -19,11 +19,13 @@
         <form asp-action="Filter" method="post">
 
             <div class="form-group">
-                <label>Hair Color:</label>
-                <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.HairColor , ViewBag.Filters.HairColor))">
+                <label>Location</label>
+                <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.Location , ViewBag.Filters.Location))">
+
                     <option value="all">All</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Burial Direction</label>
                 <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.Direction , ViewBag.Filters.BurialDirection))">
@@ -42,17 +44,23 @@
                     <option value="all">All</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label>Min Depth</label>
                 <input type="number" step="0.01" min="0" max="10" value="@(ViewBag.MinDepth)" class="form-control" name="filter" />
                 <label>Max Depth</label>
                 <input type="number" step="0.01" min="0" max="10" value="@(ViewBag.MaxDepth)" class="form-control" name="filter" />
             </div>
-            <div class="form-group">
-                <label>Location</label>
-                <select class="form-control" name="filter"  asp-items="@(new SelectList(ViewBag.Location , ViewBag.Filters.Location))">
 
+            <div class="form-group">
+                <label>Hair Color:</label>
+                <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.HairColor , ViewBag.Filters.HairColor))">
                     <option value="all">All</option>
+                </select>
+            </div>
+            <div class=" form-group">
+                <label>Sample Taken</label>
+                <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.Sample , ViewBag.Filters.Sample))">
                 </select>
             </div>
 
