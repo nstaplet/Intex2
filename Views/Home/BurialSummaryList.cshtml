@@ -63,7 +63,12 @@
                 <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.Sample , ViewBag.Filters.Sample))">
                 </select>
             </div>
-
+            <div class=" form-group">
+                <label>Burial Wrapping</label>
+                <select class="form-control" name="filter" asp-items="@(new SelectList(ViewBag.Wrap , ViewBag.Filters.Wrap))">
+                    <option value="all">All</option>
+                </select>
+            </div>
 
             <button type="submit" class="btn blue_button">Filter</button>
 

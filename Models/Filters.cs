@@ -25,6 +25,7 @@ namespace Intex.Models
                 Sample = Convert.ToBoolean(filters[7]);
 
             }
+            Wrap = filters[8];
 
 
 
@@ -45,6 +46,7 @@ namespace Intex.Models
         public double DepthMin {get; }
         public string Location { get; }
         public bool? Sample { get; }
+        public string Wrap { get; set; }
 
 
 
@@ -60,6 +62,7 @@ namespace Intex.Models
         public bool HasMaxDepth => DepthMax != 10;
         public bool HasLocation => Location.ToLower() != "all";
         public bool HasSample => Sample != null;
+        public bool HasWrap => Wrap != "all";
 
 
 
