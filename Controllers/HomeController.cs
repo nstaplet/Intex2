@@ -51,6 +51,8 @@ namespace Intex.Controllers
             ViewBag.Age = burialContext.Burial.Select(b => b.AgeCodeSingle).Where(b => b.Length > 0).Distinct();
             ViewBag.MinDepth = filters.DepthMin;
             ViewBag.MaxDepth = filters.DepthMax;
+            ViewBag.Location = burialContext.Location
+                .Select(b => b.BurialLocationNs + " "+ b.LowValueNs + "/" + b.HighValueNs + " " + b.BurialLocationEw + " " + b.LowValueEw + "/" + b.HighValueEw).Distinct();
             //****************************************************************************************************8
 
             int pageSize = 5;
@@ -82,6 +84,12 @@ namespace Intex.Controllers
             {
                 query = query.Where(t => t.BurialDepthMeters <= filters.DepthMax);
             }
+            if (filters.HasLocation)
+            {
+                var loc = burialContext.Location.Where(b => (b.BurialLocationNs + " " + b.LowValueNs + "%2F" + b.HighValueNs + " " + b.BurialLocationEw + " " + b.LowValueEw + "%2F" + b.HighValueEw) == filters.Location ).FirstOrDefault();
+                query = query.Where(t => t.LocationId == loc.LocationId);
+            }
+
             //**********END IF STATEMENTS *********************************************************************8
 
             var pageBurials = query.Skip((pageNum - 1) * pageSize).Take(pageSize);
@@ -117,7 +125,7 @@ namespace Intex.Controllers
             });
         }
 
-        public IActionResult BurialDetails(int id) 
+        public IActionResult BurialDetails(int id)
         {
             Burial burial = burialContext.Burial.Where(b => b.BurialId == id).FirstOrDefault();
             BasicBurial basicBurial = new BasicBurial
@@ -697,6 +705,7 @@ namespace Intex.Controllers
         {
             ViewBag.burialname = burialname;
             ViewBag.BurialId = burialid;
+            ViewBag.BurialName = burialname;
 
             var ImageList = burialContext.Image.Where(x => x.BurialId == burialid).ToList();
 
@@ -755,12 +764,17 @@ namespace Intex.Controllers
             return View(BurialImages);
         }
 
-
+        IActionResult Privacy()
+        {
+            return View("Privacy");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        
     }
 }

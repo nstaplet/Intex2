@@ -1,9 +1,16 @@
-﻿<!DOCTYPE html>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BYU Fag el-Gamous Database</title>
+    <title>@ViewData["Title"] - Intex</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -23,42 +30,39 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse" sty>
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="BurialSummaryList">Burials</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="ImageGallery">Gallery</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-light" href="https://religion.byu.edu/event/egyptian-excavation-exhibit">BYU Website</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="AddBurialLocation">Add Record</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    @*<div id="bannerimage"></div>*@
 
+    <div id="bannerimage">
+    </div>
 
     <div class="container">
         <div>
             <main role="main" class="pb-3">
-            <br />
-            <br />
-                
+                <br />
+                <br />
+
                 @RenderBody()
             </main>
         </div>
     </div>
 
     @*<main role="main" class="pb-3">
-        @RenderBody()
-    </main>*@
+            @RenderBody()
+        </main>*@
 
     <footer class="border-top footer text-muted text-center">
         <div class="container">
-            &copy; 2021 - BYU Fag el-Gamous Database - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Intex - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

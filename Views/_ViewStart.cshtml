@@ -1,12 +1,21 @@
 ﻿@*@{
-    Layout = "_Layout";
-}*@
+        Layout = "_Layout";
+    }*@
 
-@if (User.Identity.IsAuthenticated & User.IsInRole("Admin") || User.Identity.IsAuthenticated & User.IsInRole("Researcher")) 
-{
-    Layout = "_AdminLayout";
-}
-else
-{
-    Layout = "_Layout";
+
+
+@{
+    
+
+    @*var controller = HttpContext.Current.Request.RequestContext.RouteData.Values["Controller"].ToString();*@
+
+    if (User.Identity.IsAuthenticated & User.IsInRole("Admin") || User.Identity.IsAuthenticated & User.IsInRole("Researcher"))
+    {
+
+        Layout = "_AdminLayout";
+    }
+    else
+    {
+        Layout = "_Layout";
+    }
 }
