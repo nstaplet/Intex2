@@ -53,6 +53,7 @@ namespace Intex.Controllers
             ViewBag.MaxDepth = filters.DepthMax;
             ViewBag.Location = burialContext.Location
                 .Select(b => b.BurialLocationNs + " "+ b.LowValueNs + "/" + b.HighValueNs + " " + b.BurialLocationEw + " " + b.LowValueEw + "/" + b.HighValueEw).Distinct();
+            ViewBag.Sample = burialContext.Burial.Select(b => b.BurialSampleTaken).Distinct();
             //****************************************************************************************************8
 
             int pageSize = 5;
@@ -89,6 +90,12 @@ namespace Intex.Controllers
                 var loc = burialContext.Location.Where(b => (b.BurialLocationNs + " " + b.LowValueNs + "%2F" + b.HighValueNs + " " + b.BurialLocationEw + " " + b.LowValueEw + "%2F" + b.HighValueEw) == filters.Location ).FirstOrDefault();
                 query = query.Where(t => t.LocationId == loc.LocationId);
             }
+            if (filters.HasSample)
+            {
+                query = query.Where(t => t.BurialSampleTaken == filters.Sample);
+            }
+
+
 
             //**********END IF STATEMENTS *********************************************************************8
 

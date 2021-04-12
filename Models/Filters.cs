@@ -11,15 +11,22 @@ namespace Intex.Models
 
         public Filters(string filterstring)
         {
-            FilterString = filterstring ?? "all-all-all-all-0-10-all";
+            FilterString = filterstring ?? "all-all-all-all-0-10-all-null-all";
             string[] filters = FilterString.Split('-');
-            HairColor = filters[0];
+            HairColor = filters[6];
             BurialDirection = filters[1];
             Gender = filters[2];
             Age = filters[3];
             DepthMin = Convert.ToDouble(filters[4]);
             DepthMax = Convert.ToDouble(filters[5]);
-            Location = filters[6];
+            Location = filters[0];
+            if (filters[7] == "True" || filters[7] == "False")
+            {
+                Sample = Convert.ToBoolean(filters[7]);
+
+            }
+
+
 
 
 
@@ -37,6 +44,7 @@ namespace Intex.Models
         public double DepthMax { get; }
         public double DepthMin {get; }
         public string Location { get; }
+        public bool? Sample { get; }
 
 
 
@@ -51,6 +59,7 @@ namespace Intex.Models
         public bool HasMinDepth => DepthMin != 0;
         public bool HasMaxDepth => DepthMax != 10;
         public bool HasLocation => Location.ToLower() != "all";
+        public bool HasSample => Sample != null;
 
 
 
