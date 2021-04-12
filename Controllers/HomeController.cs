@@ -500,82 +500,8 @@ namespace Intex.Controllers
 
             burialContext.Remove(burialToDelete);
             burialContext.SaveChanges();
+            return RedirectToAction("BurialSummaryList");
 
-            string id = null;
-            int pageNum = 1;
-
-            //**********SETTING UP VIEWBAG TO HAVE FILTER FORM RETAIN PARAMETERS ************************
-            var filters = new Filters(id);
-            ViewBag.Filters = filters;
-            ViewBag.HairColor = burialContext.Burial.Select(b => b.HairColorCode).Where(b => b.Length > 0).Distinct();
-            ViewBag.Direction = burialContext.Burial.Select(b => b.BurialDirection).Where(b => b.Length > 0).Distinct();
-            ViewBag.Gender = burialContext.Burial.Select(b => b.GenderCode).Where(b => b.Length > 0).Distinct();
-            ViewBag.Age = burialContext.Burial.Select(b => b.AgeCodeSingle).Where(b => b.Length > 0).Distinct();
-            ViewBag.MinDepth = filters.DepthMin;
-            ViewBag.MaxDepth = filters.DepthMax;
-            //****************************************************************************************************8
-
-            int pageSize = 5;
-            var SelectedBurials = burialContext.Burial;
-            IQueryable<Burial> query = SelectedBurials;
-            //**********THIS IS THE IF STATEMENTS FOR THE FILTERING. ***************************************************8
-            if (filters.HasHairColor)
-            {
-                query = query.Where(t => t.HairColorCode == filters.HairColor);
-            }
-
-            if (filters.HasBurialDirection)
-            {
-                query = query.Where(t => t.BurialDirection == filters.BurialDirection);
-            }
-            if (filters.HasGender)
-            {
-                query = query.Where(t => t.GenderCode == filters.Gender);
-            }
-            if (filters.HasAge)
-            {
-                query = query.Where(t => t.AgeCodeSingle == filters.Age);
-            }
-            if (filters.HasMinDepth)
-            {
-                query = query.Where(t => t.BurialDepthMeters >= filters.DepthMin);
-            }
-            if (filters.HasMaxDepth)
-            {
-                query = query.Where(t => t.BurialDepthMeters <= filters.DepthMax);
-            }
-            //**********END IF STATEMENTS *********************************************************************8
-
-            var pageBurials = query.Skip((pageNum - 1) * pageSize).Take(pageSize);
-            List<BasicBurial> PackageBurials = new List<BasicBurial>();
-
-
-            foreach (var sb in pageBurials)
-            {
-                PackageBurials.Add(
-                    new BasicBurial
-                    {
-                        SingleBurial = sb,
-                        SingleLocation = burialContext.Location.Where(b => b.LocationId == sb.LocationId).FirstOrDefault(),
-                        SingleSublocation = burialContext.SubLocation.Where(b => b.SublocationId == sb.SublocationId).FirstOrDefault(),
-
-                    });
-            }
-
-
-            return View("BurialSummaryList", new BurialSummaryViewModel
-            {
-                Burials = PackageBurials,
-
-                pageNumbering = new PageNumbering
-                {
-                    NumItemsPerPage = pageSize,
-                    CurrentPage = pageNum,
-
-                    TotalNumItems = query.Count()
-                }
-
-            });
         }
 
 
