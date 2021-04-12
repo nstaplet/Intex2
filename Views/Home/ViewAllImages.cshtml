@@ -2,6 +2,7 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    
 }
 
 @model IEnumerable<Image>
@@ -25,4 +26,9 @@
     }
 </div>
 
-<a asp-action="BurialDetails" class="btn btn-secondary">Back</a>
+
+<form method="post" asp-action="BurialDetails">
+    <input type="hidden" name="id" value="@ViewBag.BurialID"/>
+    <button type="submit" class="btn btn-secondary blue_button">Back</button>
+
+</form>
