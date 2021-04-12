@@ -7,11 +7,27 @@
 
 <h4>Gallery</h4>
 <h2>All Images From the Fag el-Gamous Cemetery</h2>
+<br /><br />
 
-@foreach (BasicBurial b in Model)
-{
-    <div class="col-6 text-center">
-        <h4>Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h4>
+<div class="row">
+    @foreach (BasicBurial b in Model)
+    {
+    <div class="col-4">
+
+        <form asp-action="BurialDetails">
+            <input type="hidden" name="id" value="@b.SingleBurial.BurialId" />
+            <button type="submit" class="btn text-black-50 bg-white border-color:black">
+                <h5>Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h5>
+            </button>
+        </form>
+        <br />
         <img src="@b.SingleImage.ImagePath" class="img-fluid" />
+        <br /><br />
     </div>
-}
+     }
+</div>
+
+
+
+
+

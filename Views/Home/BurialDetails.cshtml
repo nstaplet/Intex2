@@ -53,7 +53,8 @@
             <div class="col-4">
                 <form asp-action="ViewAllImages">
                     <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
-                    <button type="submit" class="btn btn-secondary blue_button" >View All Images</button>
+                    <input type="hidden" name="burialname" value="Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber" />
+                    <button type="submit" class="btn btn-secondary blue_button">View All Images</button>
                 </form>
             </div>
             <div class="col-2">

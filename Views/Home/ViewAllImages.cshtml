@@ -6,17 +6,23 @@
 
 @model IEnumerable<Image>
 
+<h4>View Images</h4>
+<h2>All Images For Burial @ViewBag.burialname</h2>
+<br /><br />
+
 <h3>@ViewBag.NoImages</h3>
 
 <div class="row">
-    <div class="col-6">
-        @foreach (var i in Model)
-        {
+    @foreach (var i in Model)
+    {
+        <div class="col-4">
 
+            <h5>Image #@i.ImageId</h5>
+            <br />
             <img src="@i.ImagePath" class="img-fluid" />
-
-        }
-    </div>
+            <br /><br />
+        </div>
+    }
 </div>
 
 <a asp-action="BurialDetails" class="btn btn-secondary">Back</a>

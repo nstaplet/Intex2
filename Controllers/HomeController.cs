@@ -693,8 +693,9 @@ namespace Intex.Controllers
         }
 
         //from burial details view all images related to burial
-        public IActionResult ViewAllImages(int burialid)
+        public IActionResult ViewAllImages(int burialid, string burialname)
         {
+            ViewBag.burialname = burialname;
             ViewBag.BurialId = burialid;
 
             var ImageList = burialContext.Image.Where(x => x.BurialId == burialid).ToList();
