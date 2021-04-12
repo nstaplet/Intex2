@@ -18,6 +18,7 @@ namespace Intex.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        //Bring in database context
         private MummyBurialContext burialContext { get; set; }
 
         public HomeController(ILogger<HomeController> logger, MummyBurialContext ctx)
