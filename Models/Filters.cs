@@ -11,7 +11,7 @@ namespace Intex.Models
 
         public Filters(string filterstring)
         {
-            FilterString = filterstring ?? "all-all-all-all-0-10";
+            FilterString = filterstring ?? "all-all-all-all-0-10-all";
             string[] filters = FilterString.Split('-');
             HairColor = filters[0];
             BurialDirection = filters[1];
@@ -19,6 +19,10 @@ namespace Intex.Models
             Age = filters[3];
             DepthMin = Convert.ToDouble(filters[4]);
             DepthMax = Convert.ToDouble(filters[5]);
+            Location = filters[6];
+
+
+
 
 
 
@@ -32,19 +36,21 @@ namespace Intex.Models
         public string Age { get; }
         public double DepthMax { get; }
         public double DepthMin {get; }
-        
+        public string Location { get; }
+
+
+
 
 
 
         public bool HasHairColor => HairColor.ToLower() != "all";
-       // public bool HasBurialDepth => BurialDepth.ToLower() != "all";
 
         public bool HasBurialDirection => BurialDirection.ToLower() != "all";
         public bool HasGender => Gender.ToLower() != "all";
         public bool HasAge => Age.ToLower() != "all";
         public bool HasMinDepth => DepthMin != 0;
         public bool HasMaxDepth => DepthMax != 10;
-
+        public bool HasLocation => Location.ToLower() != "all";
 
 
 

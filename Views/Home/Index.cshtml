@@ -1,14 +1,27 @@
 ﻿@{
     ViewData["Title"] = "BYU Egypt Excavation Project";
+
+    if (User.Identity.IsAuthenticated & User.IsInRole("Admin") || User.Identity.IsAuthenticated & User.IsInRole("Researcher"))
+    {
+
+        Layout = "_HomeAdminLayoutBanner";
+    }
+    else
+    {
+        Layout = "_HomeLayoutBanner";
+    }
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 <div class="text-center">
-    <img src="~/img/burial.jpg" class="img-fluid" alt="responsive image" />
+   
     <h1 class="display-3">
         BYU Fag el-Gamous Database
     </h1>
 
-   
+
 </div>
 <br />
 
@@ -18,26 +31,37 @@
     <div class="row">
         <div class="col-sm">
             <h4>DISCOVERIES FOR THE WORLD TO SEE</h4>
-            <p>Fag el-Gamous (which means Way of the Water Buffalo) is a large and important cemetery in Egypt that has been under archeological investigation (primarily by BYU researchers) for over 25 years. 
-            The excavation has garnered international attention because of the interesting insights gained by studying the Fag el-Gamous mummies.</p>
+            <p>
+                Fag el-Gamous (which means Way of the Water Buffalo) is a large and important cemetery in Egypt that has been under archeological investigation (primarily by BYU researchers) for over 25 years.
+                The excavation has garnered international attention because of the interesting insights gained by studying the Fag el-Gamous mummies.
+            </p>
             <form asp-action="BurialSummaryList">
                 <button type="submit" class="btn btn-primary blue_button">Explore the Database</button>
             </form>
         </div>
         @*<div class="col-sm">
-            <img src="~/img/scrap.JPG" style="width:200px" />
-        </div>*@
-        <div class="col-sm">
-            <h4>RESEARCHER ACCESS</h4>
-            <p>During multiple years of study, researchers have excavated more than 1,000 mummies and collected data in field notes, spreadsheets,
-            and simple databases about each mummy’s location, physical orientation in the ground, burial depth, 
+                <img src="~/img/scrap.JPG" style="width:200px" />
+            </div>*@
+    <div class="col-sm">
+        <h4>RESEARCHER ACCESS</h4>
+        <p>
+            During multiple years of study, researchers have excavated more than 1,000 mummies and collected data in field notes, spreadsheets,
+            and simple databases about each mummy’s location, physical orientation in the ground, burial depth,
             hair color, wrapping , gender, age, bone
-            dimensions, items accompanying the mummy, and more. </p>
-            <form asp-controller ="Research" asp-action="Index">
-                <button type="submit" class="btn btn-primary blue_button" >Sign in as a Researcher</button>
-            </form>
-            
-        </div>
+            dimensions, items accompanying the mummy, and more.
+        </p>
+
+        @if (SignInManager.IsSignedIn(User) && User.Identity.IsAuthenticated == true)
+        {
+            <a class="btn blue_button" asp-area="Identity" asp-page="/Account/">Sign In as a Researcher</a>
+        }
+        else
+        {
+            <a class="btn blue_button" asp-area="Identity" asp-page="/Account/Login">Sign In as a Researcher</a>
+        }
+
+
+    </div>
     </div>
 </div>
 
@@ -53,10 +77,10 @@
         <div class="row">
             <div class="col-8">
                 <p>
-                    Less than 1% of all burials are found with a cross symbol, either as textile images or objects and none are found deeper than 1 m. 
-                    Burial NE10 has two 7 cm square multi-colored cross symbols embroidered in one of the inner layers of clothing. 
+                    Less than 1% of all burials are found with a cross symbol, either as textile images or objects and none are found deeper than 1 m.
+                    Burial NE10 has two 7 cm square multi-colored cross symbols embroidered in one of the inner layers of clothing.
                     The radiocarbon date of NE10 should provide evidence for one of the earliest uses of a Christian symbol in this cemetery.
-                    Because crosses were not used as Christian symbols in the earliest phases of Christianity, a cross-laden burial cannot tell us about the timing of the advent of Christianity. 
+                    Because crosses were not used as Christian symbols in the earliest phases of Christianity, a cross-laden burial cannot tell us about the timing of the advent of Christianity.
                     It can provide a date that represents the latest possible time for the advent of a Christian presence in the population of the cemetery.
                 </p>
             </div>
@@ -74,13 +98,15 @@
                 <img src="~/img/burialsite.jpg" class="img-fluid" />
             </div>
             <div class="col-8">
-                <p>The 1000 + burials excavated to date at the cemetery are found largely in rectangular shafts at 0.3–3.0 m deep and oriented on an east–west axis.
-                The high burial density, varying between 1.3 and 3.0 burials per square meter, is due in part to multiple burials in the same shaft. 
-                The stratigraphically deepest burials in a shaft are buried head east and later burials in the same shaft are buried head west.
-                It has been argued that this directional shift occurred as early as the late first to the early second century AD.
-                AMS radiocarbon dating of the available samples shows that the deepest and presumably oldest head-east burial dates to AD 79–230, and the oldest head-west burial dates to AD 128–284. 
-                One of the deepest signs of Christianity, a cross symbol, is present in the outer wrapping of a burial dated AD 545–645.
-                The head-east and head-west burial practices in the Fag el-Gamous cemetery coexisted for at least 200 years.</p>
+                <p>
+                    The 1000 + burials excavated to date at the cemetery are found largely in rectangular shafts at 0.3–3.0 m deep and oriented on an east–west axis.
+                    The high burial density, varying between 1.3 and 3.0 burials per square meter, is due in part to multiple burials in the same shaft.
+                    The stratigraphically deepest burials in a shaft are buried head east and later burials in the same shaft are buried head west.
+                    It has been argued that this directional shift occurred as early as the late first to the early second century AD.
+                    AMS radiocarbon dating of the available samples shows that the deepest and presumably oldest head-east burial dates to AD 79–230, and the oldest head-west burial dates to AD 128–284.
+                    One of the deepest signs of Christianity, a cross symbol, is present in the outer wrapping of a burial dated AD 545–645.
+                    The head-east and head-west burial practices in the Fag el-Gamous cemetery coexisted for at least 200 years.
+                </p>
             </div>
         </div>
 
