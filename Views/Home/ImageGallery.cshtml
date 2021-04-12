@@ -1,0 +1,17 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<BasicBurial>
+
+<h4>Gallery</h4>
+<h2>All Images From the Fag el-Gamous Cemetery</h2>
+
+@foreach (BasicBurial b in Model)
+{
+    <div class="col-6 text-center">
+        <h4>Burial ID: @b.SingleLocation.BurialLocationNs @b.SingleLocation.LowValueNs/@b.SingleLocation.HighValueNs @b.SingleLocation.BurialLocationEw @b.SingleLocation.LowValueEw/@b.SingleLocation.HighValueEw @b.SingleSublocation.Subplot #@b.SingleBurial.BurialNumber</h4>
+        <img src="@b.SingleImage.ImagePath" class="img-fluid" />
+    </div>
+}
