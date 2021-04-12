@@ -16,11 +16,6 @@
 @using Microsoft.AspNetCore.Authorization
 @inject IAuthorizationService AuthorizationService
 
-<!-- testing -->
-
-<img src="~/img/HieroglyphicsBanner2.PNG" style="width: 100%" class="banner-image" />
-<br />
-<br />
 
 <h2 style="display: inline-block">
     Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber
@@ -40,7 +35,7 @@
                 </div>
                 
                 <div class="btn-group" style="padding: 5px">
-                    <form>
+                    <form asp-action="ViewAllImages">
                         <input type="hidden" name="burialid" value="@Model.SingleBurial.BurialId" />
                         <input type="hidden" name="burialname" value="Mummy @Model.SingleLocation.BurialLocationNs @Model.SingleLocation.LowValueNs/@Model.SingleLocation.HighValueNs @Model.SingleLocation.BurialLocationEw @Model.SingleLocation.LowValueEw/@Model.SingleLocation.HighValueEw @Model.SingleSublocation.Subplot #@Model.SingleBurial.BurialNumber" />
                         <button type="submit" class="btn blue_button">View All Images</button>
