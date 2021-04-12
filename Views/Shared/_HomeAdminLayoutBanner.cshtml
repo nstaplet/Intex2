@@ -22,7 +22,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-0" style="background-color: #002a5d">
             <div class="container">
-                <a class="navbar-brand font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
                 Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -49,12 +49,23 @@
             </div>
         </nav>
     </header>
-    <div id="homebannerimage"></div>
+    <div id="homebannerimage">
+        <div class="text-center">
+
+            <h1 class="display-2 text-light">
+                BYU Egypt Excavation
+            </h1>
+            <br />
+            <h4 class="display-4 text-light">Fag el-Gamous Database</h4>
+
+
+        </div>
+    </div>
     <div class="container">
         <div>
             <main role="main" class="pb-3">
                 <br />
-                <br />
+                
 
                 @RenderBody()
             </main>
