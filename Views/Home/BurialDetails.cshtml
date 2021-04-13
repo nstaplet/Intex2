@@ -47,7 +47,7 @@
                         </form>
                     }
                 </div>
-                <div class="btn-group" style="padding: 2.5px" ">
+                <div class="btn-group" style="padding: 2.5px">
                     @if (((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded) || ((await AuthorizationService.AuthorizeAsync(User, "Research")).Succeeded))
                     {
                         <form asp-action="EditBurialLocation">
@@ -56,7 +56,7 @@
                         </form>
                     }
                 </div>
-                <div class="btn-group" style="padding: 2.5px" ">
+                <div class="btn-group" style="padding: 2.5px">
                     @if ((await AuthorizationService.AuthorizeAsync(User, "Admin")).Succeeded)
                     {
                         <form asp-action="DeleteBurial" onclick="return confirm('Are you sure you want to delete this Record?')">
