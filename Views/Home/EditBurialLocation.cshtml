@@ -7,6 +7,12 @@
 
 <h2>Edit Location Burial Information</h2>
 <h4>Essential Burial Information</h4>
+
+<form method="post" asp-action="BurialDetails">
+    <input type="hidden" name="id" value="@ViewBag.BB.SingleBurial.BurialId" />
+    <button type="submit" class="btn btn-secondary" style="border-radius: 4px">Back</button>
+</form>
+
 <form method="post" asp-action="SubmitBurialLocation" class="form-group">
     <div class="row">
         <div class="col-lg-6">
@@ -129,8 +135,10 @@
 
             <div asp-validation-summary="All" style="color:red"></div>
 
+            
             <button type="submit" class="btn blue_button">Save Changes</button>
-
+                    
         </div>
     </div>
 </form>
+
