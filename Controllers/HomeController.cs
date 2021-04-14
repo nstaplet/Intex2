@@ -590,7 +590,7 @@ namespace Intex.Controllers
             {
                 //Check to make sure sample for this burial doesn't already exist
                 //Unique combination of sample id and burial id
-                var checkmatch = burialContext.Sample.Where(x => x.BurialId == s.BurialId && x.SampleId == s.SampleId).FirstOrDefault();
+                var checkmatch = burialContext.Sample.Where(x => x.SampleId == s.SampleId).FirstOrDefault();
 
                 if (checkmatch == null)
                 {
@@ -622,7 +622,7 @@ namespace Intex.Controllers
 
                 else
                 {
-                    ViewBag.Exists = "This burial already has a sample with this sample number";
+                    ViewBag.Exists = "A sample with this sample number already exists!";
                     return View("AddSample");
                 }
                 
